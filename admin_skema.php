@@ -126,16 +126,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         .dynamic-field input,
         .dynamic-field select { /* Termasuk select di sini */
-            flex: 1;
-            padding: 8px; /* Menyamakan padding dengan input lain */
+            flex-grow: 1; /* Bertanggung jawab untuk mengambil sisa ruang */
+            flex-shrink: 1; /* Izinkan menyusut jika perlu */
+            flex-basis: 0; /* Mulai dari basis 0 agar flex-grow bekerja proporsional */
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            min-width: 100px; /* Tambahkan min-width agar tidak terlalu sempit */
             /* font-size: 14px; /* Dihapus agar mewarisi dari .form-group input */
         }
 
-        .dynamic-field input[type="number"] { /* Penyesuaian untuk input number agar tidak terlalu lebar */
+        /* Input nomor di Unit Kompetensi memiliki style inline flex: 0 0 60px; yang akan diutamakan */
+        /* Jika ingin override dari CSS, gunakan !important atau selector yang lebih spesifik */
+        /* Untuk saat ini, kita biarkan style inline tersebut */
+        /* .dynamic-field input[type="number"] {
              flex: 0 0 70px;
-        }
+        } */
 
         .remove-btn { /* Style tombol hapus field dinamis */
             background-color: #e74c3c;
