@@ -387,15 +387,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <!-- Metode Pengujian Tab -->
                     <div id="add-tab-metode_pengujian" class="tab-content">
                         <h4>Metode Pengujian Skema</h4>
-                        <div class="form-group">
-                            <label for="add_metode_pengujian_skema">Pilih Metode Pengujian</label>
-                            <select id="add_metode_pengujian_skema" name="metode_pengujian_skema" class="form-control">
-                                <option value="">-- Pilih Metode --</option>
-                                <option value="Sertifikasi Jarak Jauh (SJJ)">Sertifikasi Jarak Jauh (SJJ)</option>
-                                <option value="Metode Paperless (non-kertas)">Metode Paperless (non-kertas)</option>
-                                <option value="Paper-based (berbasis kertas)">Paper-based (berbasis kertas)</option>
-                            </select>
+                        <div id="add-metode-pengujian-fields">
+                            <!-- Field dinamis akan ditambahkan di sini oleh JavaScript -->
+                            <div class="dynamic-field">
+                                <select name="metode_pengujian_skema[]" class="form-control">
+                                    <option value="">-- Pilih Metode --</option>
+                                    <option value="Sertifikasi Jarak Jauh (SJJ)">Sertifikasi Jarak Jauh (SJJ)</option>
+                                    <option value="Metode Paperless (non-kertas)">Metode Paperless (non-kertas)</option>
+                                    <option value="Paper-based (berbasis kertas)">Paper-based (berbasis kertas)</option>
+                                </select>
+                                <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+                            </div>
                         </div>
+                        <button type="button" class="add-btn" onclick="addMetodePengujianField()">+ Tambah Metode</button>
                     </div>
                 </div>
 
@@ -513,15 +517,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <!-- Metode Pengujian Tab for Edit -->
                     <div id="edit-tab-metode_pengujian" class="tab-content">
                         <h4>Metode Pengujian Skema</h4>
-                        <div class="form-group">
-                            <label for="edit_metode_pengujian_skema">Pilih Metode Pengujian</label>
-                            <select id="edit_metode_pengujian_skema" name="metode_pengujian_skema" class="form-control">
-                                <option value="">-- Pilih Metode --</option>
-                                <option value="Sertifikasi Jarak Jauh (SJJ)">Sertifikasi Jarak Jauh (SJJ)</option>
-                                <option value="Metode Paperless (non-kertas)">Metode Paperless (non-kertas)</option>
-                                <option value="Paper-based (berbasis kertas)">Paper-based (berbasis kertas)</option>
-                            </select>
+                        <div id="edit-metode-pengujian-fields">
+                            <!-- Field dinamis akan diisi di sini oleh JavaScript saat edit -->
                         </div>
+                        <button type="button" class="add-btn" onclick="addEditMetodePengujianField()">+ Tambah Metode</button>
                     </div>
                 </div>
 
@@ -735,6 +734,30 @@ function addAsesmenField() {
     console.log('Added asesmen field to ADD modal');
 }
 
+// Add Metode Pengujian field for ADD modal
+function addMetodePengujianField() {
+    const container = document.getElementById('add-metode-pengujian-fields');
+    if (!container) {
+        console.error('Container add-metode-pengujian-fields not found');
+        return;
+    }
+
+    const div = document.createElement('div');
+    div.className = 'dynamic-field';
+    div.innerHTML = `
+        <select name="metode_pengujian_skema[]" class="form-control">
+            <option value="">-- Pilih Metode --</option>
+            <option value="Sertifikasi Jarak Jauh (SJJ)">Sertifikasi Jarak Jauh (SJJ)</option>
+            <option value="Metode Paperless (non-kertas)">Metode Paperless (non-kertas)</option>
+            <option value="Paper-based (berbasis kertas)">Paper-based (berbasis kertas)</option>
+        </select>
+        <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+    `;
+    container.appendChild(div);
+    console.log('Added metode pengujian field to ADD modal');
+}
+
+
 // ===== FUNCTIONS FOR EDIT MODAL =====
 
 // Add Unit field for EDIT modal
@@ -824,6 +847,35 @@ function addEditAsesmenField() {
     container.appendChild(div);
     console.log('Added asesmen field to EDIT modal');
 }
+
+// Add Metode Pengujian field for EDIT modal
+function addEditMetodePengujianField(selectedValue = "") {
+    const container = document.getElementById('edit-metode-pengujian-fields');
+    if (!container) {
+        console.error('Container edit-metode-pengujian-fields not found');
+        return;
+    }
+
+    const div = document.createElement('div');
+    div.className = 'dynamic-field';
+    div.innerHTML = `
+        <select name="metode_pengujian_skema[]" class="form-control">
+            <option value="">-- Pilih Metode --</option>
+            <option value="Sertifikasi Jarak Jauh (SJJ)" ${selectedValue === "Sertifikasi Jarak Jauh (SJJ)" ? "selected" : ""}>Sertifikasi Jarak Jauh (SJJ)</option>
+            <option value="Metode Paperless (non-kertas)" ${selectedValue === "Metode Paperless (non-kertas)" ? "selected" : ""}>Metode Paperless (non-kertas)</option>
+            <option value="Paper-based (berbasis kertas)" ${selectedValue === "Paper-based (berbasis kertas)" ? "selected" : ""}>Paper-based (berbasis kertas)</option>
+        </select>
+        <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+    `;
+    container.appendChild(div);
+    // Jika ada selectedValue, kita set setelah append untuk memastikan elemen ada di DOM
+    if (selectedValue) {
+        const newSelect = div.querySelector('select');
+        newSelect.value = selectedValue;
+    }
+    console.log('Added metode pengujian field to EDIT modal');
+}
+
 
 // Remove field function (universal)
 function removeField(button) {
@@ -1012,13 +1064,25 @@ function populateEditForm(data) {
         populateEditPersyaratan(data.persyaratan || []);
         populateEditDokumen(data.dokumen || data.dokumen_persyaratan || []);
         populateEditAsesmen(data.asesmen || data.metode_asesmen || []);
-        // Populate Metode Pengujian
-        if (data.skema && data.skema.metode_pengujian) {
-            safeSetValue('edit_metode_pengujian_skema', data.skema.metode_pengujian);
-        } else if (data.metode_pengujian_skema) { // Fallback if it's a direct property
-             safeSetValue('edit_metode_pengujian_skema', data.metode_pengujian_skema);
-        }
         
+        // Populate Metode Pengujian (sekarang array)
+        const metodePengujianContainer = document.getElementById('edit-metode-pengujian-fields');
+        if (metodePengujianContainer) {
+            metodePengujianContainer.innerHTML = ''; // Kosongkan dulu
+            const metodePengujianData = data.metode_pengujian_skema || (data.skema ? data.skema.metode_pengujian : []);
+            if (Array.isArray(metodePengujianData) && metodePengujianData.length > 0) {
+                metodePengujianData.forEach(metode => {
+                    if (typeof metode === 'string') { // Jika array of strings
+                        addEditMetodePengujianField(metode);
+                    } else if (typeof metode === 'object' && metode.metode_pengujian) { // Jika array of objects
+                        addEditMetodePengujianField(metode.metode_pengujian);
+                    }
+                });
+            } else {
+                 addEditMetodePengujianField(); // Tambahkan satu field kosong jika tidak ada data
+            }
+        }
+
         console.log('Edit form populated successfully');
         
     } catch (error) {
@@ -1368,7 +1432,8 @@ function resetForm(formType) {
             `${prefix}unit-fields`,
             `${prefix}persyaratan-fields`,
             `${prefix}dokumen-fields`,
-            `${prefix}asesmen-fields`
+            `${prefix}asesmen-fields`,
+            `${prefix}metode-pengujian-fields` // Tambahkan kontainer metode pengujian
         ];
         
         containers.forEach(containerId => {
@@ -1380,11 +1445,19 @@ function resetForm(formType) {
         
         // Reset tabs to first tab
         if (formType === 'add') {
-            showAddTab('unit'); // Default to 'unit' or any other first tab
-            document.getElementById('add_metode_pengujian_skema').value = ""; // Reset dropdown
-        } else {
-            showEditTab('unit'); // Default to 'unit' for edit
-            document.getElementById('edit_metode_pengujian_skema').value = ""; // Reset dropdown
+            showAddTab('unit');
+            const addMetodeContainer = document.getElementById('add-metode-pengujian-fields');
+            if (addMetodeContainer) {
+                addMetodeContainer.innerHTML = ''; // Kosongkan
+                addMetodePengujianField(); // Tambah satu field default
+            }
+        } else { // edit
+            showEditTab('unit');
+            const editMetodeContainer = document.getElementById('edit-metode-pengujian-fields');
+            if (editMetodeContainer) {
+                editMetodeContainer.innerHTML = ''; // Kosongkan
+                 addEditMetodePengujianField(); // Tambah satu field default
+            }
         }
         
         console.log(`${formType} form reset successfully`);
@@ -1586,6 +1659,8 @@ window.adminSkemaJS = {
     addEditPersyaratanField,
     addEditDokumenField,
     addEditAsesmenField,
+    addMetodePengujianField, // Tambahkan fungsi baru
+    addEditMetodePengujianField, // Tambahkan fungsi baru
     removeField,
     resetForm,
     generateKodeSkema,
