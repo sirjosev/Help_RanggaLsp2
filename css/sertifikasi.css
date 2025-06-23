@@ -84,10 +84,34 @@
   
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); /* Lebar minimum card diubah menjadi 360px */
+    /* Mengatur untuk selalu mencoba 3 kolom, lebar kolom akan fleksibel (1fr) */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
   
+  /* Media Queries untuk responsivitas grid card */
+  @media (max-width: 992px) { /* Tablet dan layar lebih kecil */
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 576px) { /* Mobile */
+    .card-grid {
+      grid-template-columns: 1fr; /* Satu kolom penuh */
+    }
+    main {
+      width: 100%; /* Main content mengambil lebar penuh di mobile */
+    }
+    aside {
+      width: 100%; /* Sidebar mengambil lebar penuh dan akan di atas main content */
+      margin-bottom: 20px; /* Jarak antara sidebar dan main content */
+    }
+    .container {
+      flex-direction: column; /* Tumpuk sidebar dan main content di mobile */
+    }
+  }
+
   .card {
     background-color: #fff;
     border: 1px solid #ddd;
