@@ -312,6 +312,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <button type="button" class="tab-btn" onclick="showAddTab('dokumen')">Dokumen</button>
                         <button type="button" class="tab-btn" onclick="showAddTab('asesmen')">Metode Asesmen</button>
                         <button type="button" class="tab-btn" onclick="showAddTab('pemeliharaan')">Pemeliharaan</button>
+                        <button type="button" class="tab-btn" onclick="showAddTab('metode_pengujian')">Metode Pengujian</button>
                     </div>
 
                     <!-- Unit Kompetensi Tab -->
@@ -380,6 +381,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <h4>Pemeliharaan Sertifikasi</h4>
                         <div class="form-group">
                             <textarea name="pemeliharaan" placeholder="Masukkan deskripsi pemeliharaan sertifikasi..." style="width: 100%; height: 100px;"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Metode Pengujian Tab -->
+                    <div id="add-tab-metode_pengujian" class="tab-content">
+                        <h4>Metode Pengujian Skema</h4>
+                        <div class="form-group">
+                            <label for="add_metode_pengujian_skema">Pilih Metode Pengujian</label>
+                            <select id="add_metode_pengujian_skema" name="metode_pengujian_skema" class="form-control">
+                                <option value="">-- Pilih Metode --</option>
+                                <option value="Sertifikasi Jarak Jauh (SJJ)">Sertifikasi Jarak Jauh (SJJ)</option>
+                                <option value="Metode Paperless (non-kertas)">Metode Paperless (non-kertas)</option>
+                                <option value="Paper-based (berbasis kertas)">Paper-based (berbasis kertas)</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -460,6 +475,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <button type="button" class="tab-btn" onclick="showEditTab('dokumen')">Dokumen</button>
                         <button type="button" class="tab-btn" onclick="showEditTab('asesmen')">Metode Asesmen</button>
                         <button type="button" class="tab-btn" onclick="showEditTab('pemeliharaan')">Pemeliharaan</button>
+                        <button type="button" class="tab-btn" onclick="showEditTab('metode_pengujian')">Metode Pengujian</button>
                     </div>
 
                     <div id="edit-tab-unit" class="tab-content active">
@@ -491,6 +507,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <h4>Pemeliharaan Sertifikasi</h4>
                         <div class="form-group">
                             <textarea id="edit_pemeliharaan" name="pemeliharaan" placeholder="Masukkan deskripsi pemeliharaan sertifikasi..." style="width: 100%; height: 100px;"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Metode Pengujian Tab for Edit -->
+                    <div id="edit-tab-metode_pengujian" class="tab-content">
+                        <h4>Metode Pengujian Skema</h4>
+                        <div class="form-group">
+                            <label for="edit_metode_pengujian_skema">Pilih Metode Pengujian</label>
+                            <select id="edit_metode_pengujian_skema" name="metode_pengujian_skema" class="form-control">
+                                <option value="">-- Pilih Metode --</option>
+                                <option value="Sertifikasi Jarak Jauh (SJJ)">Sertifikasi Jarak Jauh (SJJ)</option>
+                                <option value="Metode Paperless (non-kertas)">Metode Paperless (non-kertas)</option>
+                                <option value="Paper-based (berbasis kertas)">Paper-based (berbasis kertas)</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -982,6 +1012,12 @@ function populateEditForm(data) {
         populateEditPersyaratan(data.persyaratan || []);
         populateEditDokumen(data.dokumen || data.dokumen_persyaratan || []);
         populateEditAsesmen(data.asesmen || data.metode_asesmen || []);
+        // Populate Metode Pengujian
+        if (data.skema && data.skema.metode_pengujian) {
+            safeSetValue('edit_metode_pengujian_skema', data.skema.metode_pengujian);
+        } else if (data.metode_pengujian_skema) { // Fallback if it's a direct property
+             safeSetValue('edit_metode_pengujian_skema', data.metode_pengujian_skema);
+        }
         
         console.log('Edit form populated successfully');
         
@@ -1344,9 +1380,11 @@ function resetForm(formType) {
         
         // Reset tabs to first tab
         if (formType === 'add') {
-            showAddTab('unit');
+            showAddTab('unit'); // Default to 'unit' or any other first tab
+            document.getElementById('add_metode_pengujian_skema').value = ""; // Reset dropdown
         } else {
-            showEditTab('unit');
+            showEditTab('unit'); // Default to 'unit' for edit
+            document.getElementById('edit_metode_pengujian_skema').value = ""; // Reset dropdown
         }
         
         console.log(`${formType} form reset successfully`);
