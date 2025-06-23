@@ -1,0 +1,72 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.berita-detail-section {
+  padding: 120px 20px 60px; /* sebelumnya: 80px 20px 60px */
+  background-color: #ffffff;
+}
+
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.judul-berita {
+  text-align: center;
+  color: #343a40;
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.berita-meta {
+  text-align: center;
+  color: #6c757d;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.berita-meta i {
+  margin-right: 5px;
+  color: #6c757d;
+}
+
+.gambar-berita {
+  display: block;
+  width: 100%;
+  max-width: 500px; /* tambahkan ini */
+  height: auto;
+  margin: 0 auto 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.isi-berita {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #212529;
+  text-align: justify;
+  padding: 0 10px;
+}
+
+.btn-kembali {
+  display: inline-block;
+  margin-top: 40px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-kembali:hover {
+  background-color: #0056b3;
+}

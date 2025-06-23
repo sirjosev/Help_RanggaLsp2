@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding-top: 40px; 
+  }  
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.skema-section {
+    padding: 30px;
+    border: 1px solid #000;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+
+.skema-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.skema-detail {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.skema-detail p {
+    border-bottom: 1px solid #000;
+    margin: 10px 0;
+    padding-bottom: 5px;
+}
+
+.tab-section {
+    padding: 30px;
+    text-align: center;
+}
+
+.tab-scroll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.tabs {
+    display: flex;
+    overflow-x: auto;
+    max-width: 80%;
+    gap: 10px;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    padding: 10px 20px;
+    background-color: #ddd;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.scroll-left,
+.scroll-right {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.tab-content {
+    margin: 20px auto;
+    padding: 30px;
+    border: 1px solid #333;
+    width: 300px;
+}

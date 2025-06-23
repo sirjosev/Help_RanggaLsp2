@@ -1,0 +1,504 @@
+    /* General Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        min-height: 100vh;
+        background-color: #f4f4f4;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+        width: 250px;
+        background-color: #9e9e9e !important;
+        color: rgb(255, 255, 255);
+        padding: 20px;
+    }
+
+    .sidebar .logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .sidebar .logo .logo-img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .sidebar h2 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .sidebar ul {
+        list-style: none;
+    }
+
+    .sidebar ul li {
+        margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .sidebar ul li a:hover {
+        background-color: #555;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+        flex-grow: 1;
+        padding: 20px;
+    }
+
+    header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        margin-bottom: 30px;
+        background-color: #333; /* warna yang kamu mau */
+        padding: 20px; /* biar kontennya gak terlalu mepet */
+        color: white; 
+    }
+
+    header h1 {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    .signout-btn {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px 20px;
+        background-color: #069f3e;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    .signout-btn:hover {
+        background-color: #d32f2f;
+    }
+
+    .stats {
+        display: flex;
+        gap: 20px;
+    }
+
+    .card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        text-align: center;
+    }
+
+    .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    /* Blog Section */
+    .blog-section {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .blog-section h2 {
+        margin-bottom: 10px; /* Menambahkan jarak antara judul dan card */
+    }
+    
+
+    .blog-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .blog-card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 30%;
+    }
+
+    .blog-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .blog-summary {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .blog-card a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+
+    .blog-card a:hover {
+        text-decoration: underline;
+    }
+
+    /* Schema Section */
+    .schema-section {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .schema-section h2 {
+        margin-bottom: 10px; /* Menambahkan jarak antara judul dan card */
+    }
+    
+    .schema-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: flex-start;
+    }
+
+    .schema-card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: calc(33.333% - 20px);
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .schema-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .schema-card p {
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+   
+    /* Form Tambah Skema */
+
+/* Form Section */
+.form-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f4f4f4;
+    border-radius: 10px;
+}
+
+.form-section input,
+.form-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-section button {
+    padding: 10px 20px;
+    background-color: #4b0082;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-section button:hover {
+    background-color: #360061;
+}
+
+/* Schema Section */
+.schema-section {
+    margin-top: 30px;
+}
+
+.schema-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.schema-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan efek shadow agar terlihat seperti kartu */
+    width: calc(33.333% - 20px); /* Ukuran kartu */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+.schema-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.schema-card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sidebar .logo .logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #555;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    margin-bottom: 30px;
+    background-color: #333;
+    padding: 20px;
+    color: white;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.signout-btn {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    background-color: #069f3e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.signout-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Blog Page Styles */
+.blog-actions {
+    margin-bottom: 30px;
+}
+
+.create-blog-btn {
+    padding: 10px 20px;
+    background-color: #4b0082;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.create-blog-btn:hover {
+    background-color: #360061;
+}
+
+.blog-list-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.blog-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.blog-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    box-sizing: border-box;
+}
+
+.blog-card h3 {
+    font-size: 1.5rem;
+}
+
+.blog-summary {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.blog-card a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.blog-card a:hover {
+    text-decoration: underline;
+}
+
+.edit-btn, .delete-btn {
+    padding: 8px 16px;
+    background-color: #069f3e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #d32f2f;
+}
+
+.delete-btn:hover {
+    background-color: #c2185b;
+}
+
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .header-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .signout-btn {
+            position: static;
+            transform: none;
+            margin-top: 10px;
+        }
+    }
+
+
+    /* Media Query untuk perangkat dengan lebar layar lebih dari 768px */
+    @media (min-width: 768px) {
+
+        .sidebar {
+            width: 300px;
+            /* Mengubah lebar sidebar di layar lebih besar */
+        }
+
+        .card {
+            width: 22%;
+            /* Mengubah ukuran card pada layar lebih besar */
+        }
+
+        .blog-card {
+            width: 22%;
+            /* Mengubah ukuran blog card pada layar lebih besar */
+        }
+
+        .schema-card {
+            width: calc(33.333% - 20px);
+            /* Lebar schema card di layar besar */
+        }
+    }
+
+    /* Media Query untuk perangkat dengan lebar layar kurang dari atau sama dengan 768px */
+    @media (max-width: 768px) {
+
+        .sidebar {
+            width: 100%;
+            /* Sidebar akan menjadi penuh di layar kecil */
+        }
+
+        .card {
+            width: 100%;
+            /* Card akan mengambil 100% lebar pada layar kecil */
+        }
+
+        .blog-card {
+            width: 100%;
+            /* Blog card akan mengambil 100% lebar pada layar kecil */
+        }
+
+        .schema-card {
+            width: 100%;
+            /* Schema card akan mengambil 100% lebar pada layar kecil */
+        }
+    }
