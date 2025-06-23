@@ -1555,6 +1555,5 @@ window.adminSkemaJS = {
 console.log('Admin Skema JavaScript module loaded');
 </script>
 
-console.log('Admin Skema JavaScript loaded successfully');
 </body>
 </html>
