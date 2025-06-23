@@ -43,6 +43,10 @@ if ($search_term) {
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* text-align: left; /* Diterapkan di css/sertifikasi.css */
+            display: flex; /* Memastikan flexbox diterapkan dari sini jika override */
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
@@ -54,34 +58,43 @@ if ($search_term) {
             margin-bottom: 1rem;
         }
 
+        .card-header {
+            text-align: left; /* Pastikan header card rata kiri */
+        }
+
         .card-title {
             font-size: 1.2rem;
             font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem; /* Kurangi margin bawah sedikit */
+            word-break: break-word; /* Cegah overflow kata panjang */
         }
 
         .card-code {
-            font-size: 0.9rem;
+            font-size: 0.85rem; /* Sedikit lebih kecil */
             color: #7f8c8d;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem; /* Kurangi margin bawah */
+            text-align: left; /* Pastikan rata kiri */
         }
 
         .card-info {
             display: flex;
             justify-content: space-between;
             margin-bottom: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem; /* Sesuaikan ukuran font info */
+            text-align: left; /* Info item rata kiri secara default */
         }
 
         .info-item {
-            text-align: center;
+             /* text-align: center; /* Dihapus, default ke left dari .card-info */
+             /* Jika ingin per item bisa diatur terpisah, tapi left lebih umum */
         }
 
         .info-label {
             color: #7f8c8d;
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* Sedikit lebih kecil */
             display: block;
+            margin-bottom: 0.1rem;
         }
 
         .info-value {
@@ -91,13 +104,17 @@ if ($search_term) {
 
         .price {
             color: #e74c3c;
-            font-size: 1.1rem;
+            font-size: 1rem; /* Sesuaikan ukuran harga */
         }
 
         .card-description {
-            color: #7f8c8d;
-            line-height: 1.5;
+            color: #555; /* Sedikit lebih gelap untuk keterbacaan */
+            line-height: 1.6; /* Sedikit lebih lega */
             margin-bottom: 1.5rem;
+            text-align: left; /* Pastikan deskripsi rata kiri */
+            font-size: 0.88rem; /* Sesuaikan ukuran font deskripsi */
+            word-break: break-word; /* Cegah overflow kata panjang */
+            flex-grow: 1; /* Biarkan deskripsi mengambil ruang tersedia */
         }
 
         .card button {
@@ -151,7 +168,13 @@ if ($search_term) {
             }
             
             .info-item {
+                text-align: left; /* Sudah diatur di atas, ini untuk mobile override jika perlu */
+            }
+             .card-info .info-item { /* Pastikan info item di mobile juga rata kiri */
                 text-align: left;
+            }
+            .card-title, .card-code, .card-description {
+                text-align: left; /* Pastikan rata kiri di mobile juga */
             }
         }
     </style>
