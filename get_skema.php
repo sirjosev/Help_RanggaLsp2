@@ -64,6 +64,7 @@ try {
     $dokumen = $skemaManager->getDokumenPersyaratanBySkemaId($skema_id);
     $asesmen = $skemaManager->getMetodeAsesmenBySkemaId($skema_id);
     $pemeliharaan = $skemaManager->getPemeliharaanBySkemaId($skema_id);
+    $metode_pengujian = $skemaManager->getMetodePengujianBySkemaId($skema_id); // Ambil data metode pengujian
     
     // Debug logging
     error_log("get_skema.php - Skema data: " . print_r($skema, true));
@@ -149,6 +150,11 @@ try {
     
     // Set pemeliharaan in skema
     $response['skema']['pemeliharaan'] = $pemeliharaanValue;
+
+    // Set metode_pengujian in skema if $skema is not null
+    if ($response['skema']) {
+        $response['skema']['metode_pengujian'] = $metode_pengujian;
+    }
     
     // Additional debugging info if requested
     if (isset($_GET['debug']) && $_GET['debug']) {
@@ -160,6 +166,7 @@ try {
             'raw_asesmen' => $asesmen,
             'raw_pemeliharaan' => $pemeliharaan,
             'pemeliharaan_value' => $pemeliharaanValue,
+            'raw_metode_pengujian' => $metode_pengujian, // Tambahkan untuk debug
             'server_time' => date('Y-m-d H:i:s'),
             'php_version' => PHP_VERSION
         ];

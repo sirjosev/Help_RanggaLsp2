@@ -125,8 +125,16 @@ class SkemaManager {
                 'persyaratan' => $this->getPersyaratanBySkemaId($id),
                 'dokumen' => $this->getDokumenPersyaratanBySkemaId($id),
                 'metode_asesmen' => $this->getMetodeAsesmenBySkemaId($id),
-                'pemeliharaan' => $this->getPemeliharaanBySkemaId($id)
+                'pemeliharaan' => $this->getPemeliharaanBySkemaId($id),
+                // Mengambil dan menambahkan metode_pengujian_skema ke hasil
+                'metode_pengujian_skema' => $this->getMetodePengujianBySkemaId($id)
             ];
+
+            // Memastikan metode_pengujian juga ada di dalam array 'skema' untuk kompatibilitas JS yang ada
+            // dan untuk pengisian form edit.
+            if ($result['skema']) { // Pastikan $skema tidak null
+                $result['skema']['metode_pengujian'] = $result['metode_pengujian_skema'];
+            }
             
             return $result;
             
@@ -391,10 +399,15 @@ class SkemaManager {
         if (isset($data['pemeliharaan']) && !empty($data['pemeliharaan'])) {
             $this->insertPemeliharaan($skema_id, $data['pemeliharaan']);
         }
+
+        // Insert metode pengujian
+        if (isset($data['metode_pengujian_skema']) && !empty($data['metode_pengujian_skema'])) {
+            $this->insertMetodePengujian($skema_id, $data['metode_pengujian_skema']);
+        }
     }
     
     private function deleteRelatedData($skema_id) {
-        $tables = ['unit_kompetensi', 'persyaratan', 'dokumen_persyaratan', 'metode_asesmen', 'pemeliharaan'];
+        $tables = ['unit_kompetensi', 'persyaratan', 'dokumen_persyaratan', 'metode_asesmen', 'pemeliharaan', 'skema_metode_pengujian'];
         
         foreach ($tables as $table) {
             $stmt = $this->db->prepare("DELETE FROM {$table} WHERE skema_id = ?");
@@ -465,6 +478,25 @@ class SkemaManager {
         if (!empty($deskripsi)) {
             $stmt = $this->db->prepare("INSERT INTO pemeliharaan (skema_id, deskripsi) VALUES (?, ?)");
             $stmt->execute([$skema_id, $deskripsi]);
+        }
+    }
+
+    private function insertMetodePengujian($skema_id, $metode_pengujian) {
+        if (!empty($metode_pengujian)) {
+            $stmt = $this->db->prepare("INSERT INTO skema_metode_pengujian (skema_id, metode_pengujian) VALUES (?, ?)");
+            $stmt->execute([$skema_id, $metode_pengujian]);
+        }
+    }
+
+    public function getMetodePengujianBySkemaId($skema_id) {
+        try {
+            $stmt = $this->db->prepare("SELECT metode_pengujian FROM skema_metode_pengujian WHERE skema_id = ?");
+            $stmt->execute([$skema_id]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['metode_pengujian'] : null;
+        } catch (PDOException $e) {
+            error_log("Error getting metode pengujian by skema ID: " . $e->getMessage());
+            return null;
         }
     }
 
