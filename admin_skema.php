@@ -180,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="sidebar">
         <div class="logo">
-            <h2>LSP-DKS</h2>
+            <img class="img-fluid" src="assets/img/logo.png" alt="logo" style="width: 200px; height: auto;" />
         </div>
         <ul>
             <li><a href="admin_blog.php">Blog</a></li>
