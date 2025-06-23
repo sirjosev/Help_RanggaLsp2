@@ -186,13 +186,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="admin_blog.php">Blog</a></li>
             <li><a href="admin_skema.php" class="active">Skema</a></li>
         </ul>
+        <div class="sidebar-signout">
+            <button class="btn btn-danger signout-btn-sidebar" onclick="window.location.href='login.php';">Sign Out</button>
+        </div>
     </div>
 
     <div class="main-content">
         <header>
             <div class="header-content">
                 <h1>Manajemen Skema</h1>
-                <button class="signout-btn" onclick="window.location.href='login.php';">Sign Out</button>
+                <!-- Tombol Sign Out dihapus dari header -->
             </div>
         </header>
 

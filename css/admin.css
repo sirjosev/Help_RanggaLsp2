@@ -61,6 +61,20 @@
         background-color: #34495e; /* Warna hover/active dari admin_skema */
     }
 
+    .sidebar-signout {
+        padding: 0 20px 20px 20px; /* Padding atas 0, samping dan bawah 20px */
+        margin-top: auto; /* Mendorong ke bawah */
+    }
+
+    .signout-btn-sidebar {
+        display: block;
+        width: 100%;
+        text-align: center;
+        /* Menggunakan style .btn .btn-danger yang sudah ada,
+           jadi tidak perlu banyak duplikasi di sini kecuali ada override.
+           Pastikan kelas .btn dan .btn-danger sudah sesuai. */
+    }
+
     /* Main Content Styles - Dikonsolidasikan */
     .main-content {
         flex-grow: 1;
