@@ -481,10 +481,17 @@ class SkemaManager {
         }
     }
 
-    private function insertMetodePengujian($skema_id, $metode_pengujian) {
-        if (!empty($metode_pengujian)) {
+    private function insertMetodePengujian($skema_id, $metode_pengujian_array) {
+        if (is_array($metode_pengujian_array)) {
             $stmt = $this->db->prepare("INSERT INTO skema_metode_pengujian (skema_id, metode_pengujian) VALUES (?, ?)");
-            $stmt->execute([$skema_id, $metode_pengujian]);
+            foreach ($metode_pengujian_array as $metode) {
+                if (!empty($metode)) {
+                    $stmt->execute([$skema_id, $metode]);
+                }
+            }
+        } elseif (!empty($metode_pengujian_array)) { // Fallback jika hanya satu string yang dikirim
+             $stmt = $this->db->prepare("INSERT INTO skema_metode_pengujian (skema_id, metode_pengujian) VALUES (?, ?)");
+             $stmt->execute([$skema_id, $metode_pengujian_array]);
         }
     }
 
@@ -492,11 +499,11 @@ class SkemaManager {
         try {
             $stmt = $this->db->prepare("SELECT metode_pengujian FROM skema_metode_pengujian WHERE skema_id = ?");
             $stmt->execute([$skema_id]);
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $result ? $result['metode_pengujian'] : null;
+            // Mengembalikan semua metode sebagai array string
+            return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
         } catch (PDOException $e) {
             error_log("Error getting metode pengujian by skema ID: " . $e->getMessage());
-            return null;
+            return []; // Kembalikan array kosong jika error atau tidak ada data
         }
     }
 
