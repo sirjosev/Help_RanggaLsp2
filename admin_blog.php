@@ -244,139 +244,13 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
     <title>Blog Management</title>
     <link rel="stylesheet" href="css/admin.css" />
     <script src="https://cdn.tiny.cloud/1/z879h2vkvp2801s702gci1i4gvps4263c2xwb6t06fa91302/tinymce/6/tinymce.min.js"></script>
-    <style>
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-        
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 8px;
-        }
-        
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .close:hover,
-        .close:focus {
-            color: black;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        
-        .btn {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-        
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        
-        .btn-danger {
-            background-color: #dc3545;
-        }
-        
-        .btn-danger:hover {
-            background-color: #c82333;
-        }
-        
-        .blog-card {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        
-        .blog-card h3 {
-            margin-top: 0;
-        }
-        
-        .blog-meta {
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-        
-        .blog-image {
-            max-width: 100px;
-            height: auto;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-        
-        .status-badge {
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-        
-        .status-draft {
-            background-color: #ffc107;
-            color: #856404;
-        }
-        
-        .status-published {
-            background-color: #28a745;
-            color: white;
-        }
-        
-        .image-preview {
-            max-width: 200px;
-            height: auto;
-            margin-top: 10px;
-            border-radius: 4px;
-        }
-    </style>
+    <!-- Blok <style> dihapus, styling akan dikelola oleh css/admin.css -->
 </head>
 
 <body>
     <div class="sidebar">
         <div class="logo">
+            <!-- Menyamakan struktur logo dengan admin_skema.php jika diperlukan, atau pastikan styling logo di admin.css berlaku untuk keduanya -->
             <img class="img-fluid" src="assets/img/logo.png" alt="logo" style="width: 200px; height: auto;" />
         </div>
         <ul>
@@ -393,20 +267,21 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
             </div>
         </header>
 
-        <section class="blog-actions">
-            <button class="create-blog-btn" onclick="showCreateForm()">Create New Blog</button>
+        <!-- Menggunakan kelas 'form-section' seperti di admin_skema.php untuk konsistensi tombol aksi utama -->
+        <section class="form-section">
+            <button class="btn" onclick="showCreateForm()">Create New Blog</button> <!-- Menggunakan kelas 'btn' umum -->
         </section>
 
-        <section class="blog-list-section">
+        <section class="blog-list-section"> <!-- Bisa juga dinamakan schema-section jika ingin lebih generik -->
             <h2>All Blogs (<?= count($blogs) ?> total)</h2>
-            <div class="blog-list">
+            <div class="blog-list"> <!-- Bisa juga dinamakan schema-container jika ingin lebih generik -->
                 <?php if (empty($blogs)): ?>
-                    <div class="blog-card">
+                    <div class="blog-card"> <!-- Akan di-style agar mirip schema-card via admin.css -->
                         <p>No blogs found. Create your first blog!</p>
                     </div>
                 <?php else: ?>
                     <?php foreach ($blogs as $blog): ?>
-                    <div class="blog-card">
+                    <div class="blog-card"> <!-- Akan di-style agar mirip schema-card via admin.css -->
                         <?php if (!empty($blog['featured_image'])): ?>
                             <img src="<?= htmlspecialchars($blog['featured_image']) ?>" alt="Featured Image" class="blog-image">
                         <?php endif; ?>
@@ -419,7 +294,7 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
                             <strong>Created:</strong> <?= date('Y-m-d H:i', strtotime($blog['created_at'])) ?>
                             <br>
                             <strong>Status:</strong> 
-                            <span class="status-badge status-<?= $blog['status'] ?>">
+                            <span class="status-badge status-<?= $blog['status'] ?>"> <!-- Style untuk status badge akan dipastikan ada di admin.css -->
                                 <?= ucfirst($blog['status']) ?>
                             </span>
                         </div>
@@ -428,12 +303,12 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
                             <?= substr(strip_tags($blog['content']), 0, 150) ?>...
                         </p>
                         
-                        <div class="blog-actions">
-                            <a href="#" onclick="viewBlog(<?= $blog['id'] ?>)">Read more</a>
-                            <button class="edit-btn" onclick="editBlog(<?= $blog['id'] ?>)">Edit</button>
-                            <button class="delete-btn" onclick="deleteBlog(<?= $blog['id'] ?>)">Delete</button>
+                        <div class="card-actions"> <!-- Menggunakan 'card-actions' seperti di admin_skema.php -->
+                            <a href="#" onclick="viewBlog(<?= $blog['id'] ?>)" class="btn btn-small">Read more</a> <!-- Menambahkan kelas btn & btn-small -->
+                            <button class="btn btn-small" onclick="editBlog(<?= $blog['id'] ?>)">Edit</button> <!-- Menggunakan kelas btn & btn-small -->
+                            <button class="btn btn-danger btn-small" onclick="deleteBlog(<?= $blog['id'] ?>)">Delete</button> <!-- Menggunakan kelas btn, btn-danger & btn-small -->
                             
-                            <select onchange="updateStatus(<?= $blog['id'] ?>, this.value)" style="margin-left: 10px;">
+                            <select onchange="updateStatus(<?= $blog['id'] ?>, this.value)" style="margin-left: 10px;" class="form-control-small"> <!-- Menambahkan kelas untuk styling jika perlu -->
                                 <option value="draft" <?= $blog['status'] == 'draft' ? 'selected' : '' ?>>Draft</option>
                                 <option value="published" <?= $blog['status'] == 'published' ? 'selected' : '' ?>>Published</option>
                             </select>

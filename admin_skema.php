@@ -46,279 +46,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skema - Admin Dashboard</title>
-<style>
-    * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-    /* Tambahkan di bagian CSS */
-    .form-group input[type="file"] {
-    padding: 8px;
-    border: 2px dashed #ddd;
-    border-radius: 4px;
-    background-color: #fafafa;
-    }
+    <link rel="stylesheet" href="css/admin.css" />
+    <!-- Blok <style> akan dikosongkan atau dihapus karena style dipindahkan ke admin.css -->
+    <style>
+        /* Style yang sangat spesifik untuk admin_skema.php yang tidak umum bisa tetap di sini,
+           atau idealnya diminimalkan. Untuk contoh ini, kita akan mengasumsikan sebagian besar
+           telah dipindahkan ke admin.css atau akan ditangani olehnya. */
 
-    .form-group input[type="file"]:hover {
-        border-color: #3498db;
-        background-color: #f0f8ff;
-    }
-
-    .schema-card img {
-        transition: transform 0.3s ease;
-    }
-
-    .schema-card img:hover {
-        transform: scale(1.05);
-        cursor: pointer;
-    }
-
-    #current_image_preview img,
-    #add_image_preview img {
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f5f5f5;
-            }
-
-            .sidebar {
-                width: 250px;
-                height: 100vh;
-                background-color: #2c3e50;
-                position: fixed;
-                left: 0;
-                top: 0;
-                color: white;
-                padding: 20px 0;
-            }
-
-            .logo {
-                text-align: center;
-                padding: 20px;
-                border-bottom: 1px solid #34495e;
-            }
-
-            .sidebar ul {
-                list-style: none;
-                padding: 20px 0;
-            }
-
-            .sidebar ul li {
-                margin: 10px 0;
-            }
-
-            .sidebar ul li a {
-                color: white;
-                text-decoration: none;
-                padding: 15px 20px;
-                display: block;
-                transition: background-color 0.3s;
-            }
-
-            .sidebar ul li a:hover,
-            .sidebar ul li a.active {
-                background-color: #34495e;
-            }
-
-            .main-content {
-                margin-left: 250px;
-                padding: 20px;
-            }
-
-            header {
-                background-color: white;
-                padding: 20px;
-                margin-bottom: 30px;
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-
-            .header-content {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .signout-btn {
-                background-color: #e74c3c;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-
-            .form-section {
-                background-color: white;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .form-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            flex: 1;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        .btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-        }
-
-        .btn-danger {
-            background-color: #e74c3c;
-        }
-
-        .btn-danger:hover {
-            background-color: #c0392b;
-        }
-
-        .btn-success {
-            background-color: #27ae60;
-        }
-
-        .btn-success:hover {
-            background-color: #219a52;
-        }
-
-        .schema-section {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .schema-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .schema-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        .schema-card h3 {
-            color: #2c3e50;
+        /* Contoh style yang mungkin spesifik dan tidak ada di admin_blog.php sebelumnya */
+        .schema-card img {
+            transition: transform 0.3s ease;
+            max-width: 100%; /* Pastikan gambar responsif di dalam card */
+            height: auto;
             margin-bottom: 10px;
         }
 
-        .schema-card p {
-            color: #7f8c8d;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .schema-info {
-            font-size: 12px;
-            color: #95a5a6;
-            margin-bottom: 15px;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-small {
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 2% auto;
-            padding: 30px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
+        .schema-card img:hover {
+            transform: scale(1.05);
             cursor: pointer;
         }
 
-        .close:hover {
-            color: black;
+        #current_image_preview img,
+        #add_image_preview img {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 200px;
+            max-height: 150px;
+            display: block;
+            margin-top: 10px;
         }
 
+        /* Style untuk tab, dynamic field, dll. yang spesifik untuk form skema
+           Jika tidak digunakan di admin_blog.php, bisa tetap di sini atau dipindahkan
+           ke admin.css dengan selector yang lebih spesifik jika ada potensi penggunaan ulang.
+           Untuk saat ini, kita biarkan beberapa di sini untuk menunjukkan pemisahan.
+        */
         .tab-container {
             margin-top: 20px;
         }
@@ -364,32 +125,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .dynamic-field input,
-        .dynamic-field select {
+        .dynamic-field select { /* Termasuk select di sini */
             flex: 1;
-            padding: 8px;
+            padding: 8px; /* Menyamakan padding dengan input lain */
             border: 1px solid #ddd;
             border-radius: 4px;
+            /* font-size: 14px; /* Dihapus agar mewarisi dari .form-group input */
         }
 
-        .remove-btn {
+        .dynamic-field input[type="number"] { /* Penyesuaian untuk input number agar tidak terlalu lebar */
+             flex: 0 0 70px;
+        }
+
+        .remove-btn { /* Style tombol hapus field dinamis */
             background-color: #e74c3c;
             color: white;
             border: none;
-            padding: 8px 12px;
+            padding: 8px 12px; /* Sedikit lebih besar dari btn-small */
             border-radius: 4px;
             cursor: pointer;
             font-size: 12px;
         }
+         .remove-btn:hover {
+            background-color: #c0392b;
+        }
 
-        .add-btn {
+        .add-btn { /* Style tombol tambah field dinamis */
             background-color: #27ae60;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 16px; /* Sedikit lebih besar dari btn-small */
             border-radius: 4px;
             cursor: pointer;
             font-size: 12px;
             margin-top: 10px;
+        }
+        .add-btn:hover {
+            background-color: #219a52;
         }
 
         .checkbox-field {
@@ -399,9 +171,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .checkbox-field input[type="checkbox"] {
-            width: auto;
+            width: auto; /* Checkbox tidak perlu full width */
+            margin-right: 5px;
         }
-</style>
+    </style>
 </head>
 
 <body>
