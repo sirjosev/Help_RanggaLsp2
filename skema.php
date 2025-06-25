@@ -303,7 +303,8 @@ $metode_asesmen = $skemaManager->getMetodeAsesmenBySkemaId($skema_id);
                     <div class="tab tab-active" onclick="showTab(event, 'unit')">Unit Kompetensi</div>
                     <div class="tab" onclick="showTab(event, 'persyaratan')">Persyaratan</div>
                     <div class="tab" onclick="showTab(event, 'dokumen')">Dokumen Persyaratan</div>
-                    <div class="tab" onclick="showTab(event, 'asesmen')">Metode Asesmen</div>
+                    <div class="tab" onclick="showTab(event, 'asesmen_lama')">Info Asesmen Lama</div> <!-- ID diubah untuk menghindari konflik -->
+                    <div class="tab" onclick="showTab(event, 'metode_asesmen_baru')">Metode Asesmen</div> <!-- Tab baru -->
                     <div class="tab" onclick="showTab(event, 'pemeliharaan')">Pemeliharaan</div>
                 </div>
             </div>
@@ -371,35 +372,38 @@ $metode_asesmen = $skemaManager->getMetodeAsesmenBySkemaId($skema_id);
                     <?php endif; ?>
                 </div>
 
-                <!-- Metode Asesmen -->
-                <div class="tab-content-box" id="tab-asesmen">
+                <!-- Info Asesmen Lama (Konten dari tab Metode Asesmen yang lama) -->
+                <div class="tab-content-box" id="tab-asesmen_lama">
+                    <p><em>Konten untuk "Info Asesmen Lama" (jika masih diperlukan atau sebagai placeholder). Jika tidak, bagian ini bisa dihapus.</em></p>
+                    <p>Atau, jika data `$metode_asesmen` yang diambil sebelumnya memang untuk tab ini, tampilkan di sini.</p>
+                </div>
+
+                <!-- Metode Asesmen Baru (Konten dari tabel metode_asesmen) -->
+                <div class="tab-content-box" id="tab-metode_asesmen_baru">
+                    <h3>Metode Asesmen Skema</h3>
                     <?php if (!empty($metode_asesmen)): ?>
                         <?php 
-                        $grouped_methods = [];
-                        foreach ($metode_asesmen as $metode) {
-                            $grouped_methods[$metode['jenis_peserta']][] = $metode;
+                        // Mengelompokkan metode asesmen berdasarkan jenis peserta
+                        $grouped_asesmen = [];
+                        foreach ($metode_asesmen as $ma) {
+                            $grouped_asesmen[$ma['jenis_peserta']][] = $ma;
                         }
                         ?>
-                        <?php foreach ($grouped_methods as $kategori => $methods): ?>
-                        <div class="method-section">
-                            <h4><?php echo htmlspecialchars($kategori); ?></h4>
-                            <?php foreach ($methods as $method): ?>
-                            <p><strong>Metode:</strong> <?php echo htmlspecialchars($method['metode']); ?></p>
-                            <?php if ($method['deskripsi']): ?>
-                            <p><?php echo nl2br(htmlspecialchars($method['deskripsi'])); ?></p>
-                            <?php endif; ?>
-                            <?php endforeach; ?>
-                        </div>
+                        <?php foreach ($grouped_asesmen as $jenis_peserta => $asesmens): ?>
+                            <div class="method-section">
+                                <h4>Untuk Peserta: <?php echo htmlspecialchars($jenis_peserta); ?></h4>
+                                <?php foreach ($asesmens as $item_asesmen): ?>
+                                    <p>
+                                        <strong>Metode:</strong> <?php echo htmlspecialchars($item_asesmen['metode']); ?><br>
+                                        <?php if (!empty($item_asesmen['deskripsi'])): ?>
+                                            <em>Deskripsi: <?php echo nl2br(htmlspecialchars($item_asesmen['deskripsi'])); ?></em>
+                                        <?php endif; ?>
+                                    </p>
+                                <?php endforeach; ?>
+                            </div>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <div class="method-section">
-                            <h4>Berpengalaman</h4>
-                            <p><strong>Metode:</strong> Asesmen Portofolio dan Wawancara</p>
-                        </div>
-                        <div class="method-section">
-                            <h4>Belum Berpengalaman</h4>
-                            <p><strong>Metode:</strong> Observasi Demonstrasi dan Tes Lisan</p>
-                        </div>
+                        <p>Informasi metode asesmen belum tersedia untuk skema ini.</p>
                     <?php endif; ?>
                 </div>
 
