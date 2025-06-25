@@ -115,6 +115,14 @@ if ($search_term) {
             font-size: 0.88rem; /* Sesuaikan ukuran font deskripsi */
             word-break: break-word; /* Cegah overflow kata panjang */
             flex-grow: 1; /* Biarkan deskripsi mengambil ruang tersedia */
+
+            /* Properti untuk membatasi 2 baris dengan elipsis */
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            /* Pertimbangkan max-height sebagai fallback jika diperlukan, berdasarkan line-height * 2 */
+             max-height: 2.816rem; /* (0.88rem * 1.6 line-height) * 2 baris */
         }
 
         .card button {
