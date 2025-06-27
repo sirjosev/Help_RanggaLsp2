@@ -468,7 +468,7 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
 
     <!-- Footer -->
     <footer class="footer text-center">
-        <div class="container">
+        <div class="container mb2rem">
             <div class="row">
                 <!-- Footer Location -->
                 <div class="col-lg-4 mb-5 mb-lg-0">

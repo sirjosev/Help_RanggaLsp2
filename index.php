@@ -283,7 +283,7 @@
 
 
     <footer class="footer"> <!-- Kelas text-center mungkin akan dihapus atau di-override oleh CSS custom -->
-            <div class="container">
+            <div class="container mb2rem">
                 <div class="row">
                     <!-- Kolom 1: Alamat (Location) -->
                     <div class="col-lg-4 footer-col">
