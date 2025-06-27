@@ -11112,26 +11112,21 @@ html {
   margin-right: 0.5rem;
 }
 
+footer .copyright { /* Increased specificity */
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 .copyright {
-<<<<<<< HEAD
-  padding-top: 2rem;
-  padding-bottom: 2rem; /* Tambahkan padding bawah juga */
-  margin-top: 3rem; /* Jarak dari konten footer di atasnya */
-  background-color: #1a252f; /* Warna background baris copyright dari tema */
-  border-top: 1px solid #3e5269; /* Garis pemisah */
-=======
   padding-top: 1.5rem; /* Sedikit dikurangi dari 2rem */
   padding-bottom: 1.5rem; /* Diubah dari 2rem menjadi 1.5rem agar tidak terlalu banyak space bawah */
   margin-top: 2rem;
   background-color: #1a252f;
   border-top: 1px solid #3e5269;
->>>>>>> origin/jules/standardize-admin-styles
   font-size: 0.875rem;
   color: #adb5bd;
   text-align: center;
 }
 
-.copyright .container small {
+footer .copyright .container small { /* Increased specificity */
     color: #adb5bd;
 }
 
