@@ -11112,10 +11112,10 @@ html {
   margin-right: 0.5rem;
 }
 
-.copyright {
+footer .copyright { /* Increased specificity */
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 
-  padding-top: 1.5rem; /* Sedikit dikurangi dari 2rem */
-  padding-bottom: 1.5rem; /* Diubah dari 2rem menjadi 1.5rem agar tidak terlalu banyak space bawah */
   margin-top: 2rem;
   background-color: #1a252f;
   border-top: 1px solid #3e5269;
