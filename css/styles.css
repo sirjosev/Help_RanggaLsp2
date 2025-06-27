@@ -11038,19 +11038,10 @@ html {
   }
 }
 
-.footer {
-<<<<<<< HEAD
-  padding-top: 5rem;
-  padding-bottom: 0rem;
-  background-color: #2c3e50;
-  color: #fff;
-}
 
 .footer {
-=======
   /* padding-top: 5rem; */ /* Original, akan diganti */
   /* padding-bottom: 5rem; */ /* Original, akan diganti */
->>>>>>> origin/jules/standardize-admin-styles
   padding-top: 3.5rem; /* Disesuaikan */
   padding-bottom: 0; /* Copyright akan menangani padding bawah sendiri */
   background-color: #2c3e50;
