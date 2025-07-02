@@ -10904,6 +10904,15 @@ html {
 #mainNav .navbar-brand {
   color: #fff;
 }
+/* Styles for the new dual logos in navbar */
+#mainNav .navbar-brand-logos img {
+  height: 35px; /* Default height */
+  vertical-align: middle; /* Aligns images nicely with any potential text or each other */
+}
+#mainNav .navbar-brand-logos img:first-of-type {
+  margin-right: 10px; /* Space between the two logos */
+}
+
 #mainNav .navbar-nav {
   margin-top: 1rem;
 }
