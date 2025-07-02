@@ -21,7 +21,10 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top">lsp-dks</a>
+            <a class="navbar-brand navbar-brand-logos" href="#page-top">
+                <img src="assets/img/logo-bnsp.png" alt="BNSP Logo">
+                <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
+            </a>
 
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
