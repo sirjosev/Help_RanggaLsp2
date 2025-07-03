@@ -46,45 +46,69 @@
         </div>
     </nav>
 
-    <body>
-        <div class="profil-container">
-            <h1>Profil</h1>
-
-            <h2>Sejarah Singkat</h2>
-            <p>
-                LSP Digital Kreatif Solusi (LSP DKS) Memiliki Surat Dukungan B-6/BPSDM/HM.03.04/01/2024 dan dibentuk
-                atas
-                inisiasi dari Perkumpulan Ahli Digital TIK Modern (PERDITIKOM) yang didukung juga oleh Ikatan Ahli
-                Informatika Indonesia (IAII) dan Perkumpulan Trainer Digital Marketing Indonesia dengan Surat Keputusan
-                Nomor: 01/ PERDITIKOM/KEP/VII/2023 tanggal 21 Juli 2023 tentang Pembentukan Lembaga Sertifikasi Profesi
-                (LSP)
-                Digital Kreatif Solusi.
-                <br><br>
-                Adapun dukungan dari instansi pembina sektor TIK dalam hal ini KOMINFO RI sedang dalam proses pengajuan
-                (draft surat dan lampirannya sdh kami siapkan).
-            </p>
-
-            <h2>Tujuan Dan Sasaran Mutu</h2>
-            <p>
-                LSP DKS (Lembaga Sertifikasi Profesi Digital Kreatif Solusi) melaksanakan kegiatan sesuai tugas pokok
-                dan
-                fungsi (tupoksi) yang ditetapkan Badan Nasional Sertifikasi Profesi (BNSP). Tupoksi yang dilaksanakan
-                LSP
-                DKS antara lain:
-            </p>
-            <p>
-                1. Penyusunan dan pengembangan skema sertifikasi.<br>
-                2. Penyusunan perangkat asesmen dan materi uji kompetensi.<br>
-                3. Penyediaan tenaga asesor.<br>
-                4. Pelaksanaan dan pemeliharaan sertifikasi.<br>
-                5. Penetapan persyaratan, verifikasi dan penetapan Tempat Uji Kompetensi (TUK).<br>
-                6. Pemeliharaan kinerja asesor dan TUK.<br>
-                7. Pengembangan pelayanan sertifikasi.
-            </p>
+    <!-- Sejarah Singkat Section -->
+    <section class="page-section bg-light" id="sejarah">
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Profil & Sejarah Singkat</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <p class="lead text-muted" style="text-align: left;">
+                        LSP Digital Kreatif Solusi (LSP DKS) Memiliki Surat Dukungan B-6/BPSDM/HM.03.04/01/2024 dan dibentuk
+                        atas
+                        inisiasi dari Perkumpulan Ahli Digital TIK Modern (PERDITIKOM) yang didukung juga oleh Ikatan Ahli
+                        Informatika Indonesia (IAII) dan Perkumpulan Trainer Digital Marketing Indonesia dengan Surat Keputusan
+                        Nomor: 01/ PERDITIKOM/KEP/VII/2023 tanggal 21 Juli 2023 tentang Pembentukan Lembaga Sertifikasi Profesi
+                        (LSP)
+                        Digital Kreatif Solusi.
+                    </p>
+                    <p class="lead text-muted" style="text-align: left;">
+                        Adapun dukungan dari instansi pembina sektor TIK dalam hal ini KOMINFO RI sedang dalam proses pengajuan
+                        (draft surat dan lampirannya sdh kami siapkan).
+                    </p>
+                </div>
+            </div>
         </div>
-   
+    </section>
+
+    <!-- Tujuan dan Sasaran Mutu Section -->
+    <section class="page-section" id="tujuan-sasaran">
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Tujuan Dan Sasaran Mutu</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <p class="lead text-muted" style="text-align: left;">
+                        LSP DKS (Lembaga Sertifikasi Profesi Digital Kreatif Solusi) melaksanakan kegiatan sesuai tugas pokok
+                        dan
+                        fungsi (tupoksi) yang ditetapkan Badan Nasional Sertifikasi Profesi (BNSP). Tupoksi yang dilaksanakan
+                        LSP
+                        DKS antara lain:
+                    </p>
+                    <ul class="lead text-muted" style="text-align: left; list-style-position: inside;">
+                        <li>Penyusunan dan pengembangan skema sertifikasi.</li>
+                        <li>Penyusunan perangkat asesmen dan materi uji kompetensi.</li>
+                        <li>Penyediaan tenaga asesor.</li>
+                        <li>Pelaksanaan dan pemeliharaan sertifikasi.</li>
+                        <li>Penetapan persyaratan, verifikasi dan penetapan Tempat Uji Kompetensi (TUK).</li>
+                        <li>Pemeliharaan kinerja asesor dan TUK.</li>
+                        <li>Pengembangan pelayanan sertifikasi.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="footer"> <!-- Kelas text-center mungkin akan dihapus atau di-override oleh CSS custom -->
+    <footer class="footer">
             <div class="container">
                 <div class="row">
                     <!-- Kolom 1: Alamat (Location) -->
