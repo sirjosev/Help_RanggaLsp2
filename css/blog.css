@@ -36,9 +36,11 @@ body {
 .konten-berita {
     padding: 15px;
     flex: 1;
+    display: flex; /* Added for flex layout */
+    flex-direction: column; /* Stack items vertically */
 }
 
-.judul { /* This class is applied to h2 elements in blog.php cards */
+.judul { /* This class is applied to h3 elements in blog.php cards */
     /* font-size: 20px; */ /* Use h2 default from styles.css or Bootstrap fs-* classes */
     color: #333; /* Retaining color for now, can be standardized later if needed */
     margin: 0 0 10px 0;
