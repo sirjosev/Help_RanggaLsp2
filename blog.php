@@ -94,14 +94,9 @@
             <?php endif; ?>
 
         </div>
-<<<<<<< HEAD
-        <footer class="footer"> <!-- Kelas text-center mungkin akan dihapus atau di-override oleh CSS custom -->
-            <div class="container mb2rem">
-=======
     </div>
         <footer class="footer">
             <div class="container">
->>>>>>> repo/jules/standardize-admin-styles
                 <div class="row">
                     <!-- Kolom 1: Alamat (Location) -->
                     <div class="col-lg-4 footer-col">
