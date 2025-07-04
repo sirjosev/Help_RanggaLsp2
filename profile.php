@@ -47,7 +47,7 @@
     </nav>
 
     <!-- Sejarah Singkat Section -->
-    <section class="page-section bg-light" id="sejarah">
+    <section class="page-section bg-light first-page-section-after-nav" id="sejarah">
         <div class="container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Profil & Sejarah Singkat</h2>
             <div class="divider-custom">
@@ -57,7 +57,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <p class="lead text-muted" style="text-align: left;">
+                    <p class="lead text-muted">
                         LSP Digital Kreatif Solusi (LSP DKS) Memiliki Surat Dukungan B-6/BPSDM/HM.03.04/01/2024 dan dibentuk
                         atas
                         inisiasi dari Perkumpulan Ahli Digital TIK Modern (PERDITIKOM) yang didukung juga oleh Ikatan Ahli
@@ -66,7 +66,7 @@
                         (LSP)
                         Digital Kreatif Solusi.
                     </p>
-                    <p class="lead text-muted" style="text-align: left;">
+                    <p class="lead text-muted">
                         Adapun dukungan dari instansi pembina sektor TIK dalam hal ini KOMINFO RI sedang dalam proses pengajuan
                         (draft surat dan lampirannya sdh kami siapkan).
                     </p>
@@ -86,14 +86,14 @@
             </div>
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <p class="lead text-muted" style="text-align: left;">
+                    <p class="lead text-muted">
                         LSP DKS (Lembaga Sertifikasi Profesi Digital Kreatif Solusi) melaksanakan kegiatan sesuai tugas pokok
                         dan
                         fungsi (tupoksi) yang ditetapkan Badan Nasional Sertifikasi Profesi (BNSP). Tupoksi yang dilaksanakan
                         LSP
                         DKS antara lain:
                     </p>
-                    <ul class="lead text-muted" style="text-align: left; list-style-position: inside;">
+                    <ul class="lead text-muted" style="list-style-position: inside;">
                         <li>Penyusunan dan pengembangan skema sertifikasi.</li>
                         <li>Penyusunan perangkat asesmen dan materi uji kompetensi.</li>
                         <li>Penyediaan tenaga asesor.</li>
@@ -153,5 +153,11 @@
                 </div>
             </div>
         </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- SB Forms JS -->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

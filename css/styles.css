@@ -10906,12 +10906,68 @@ html {
 }
 /* Styles for the new dual logos in navbar */
 #mainNav .navbar-brand-logos img {
-  height: 35px; /* Default height */
+  height: 45px; /* Updated height */
   vertical-align: middle; /* Aligns images nicely with any potential text or each other */
 }
 #mainNav .navbar-brand-logos img:first-of-type {
   margin-right: 10px; /* Space between the two logos */
 }
+
+/* Styles for navbar when scrolled to the top */
+#mainNav.navbar-at-top {
+  background-color: #ffffff !important;
+  padding-top: 1rem; /* Match non-shrink padding */
+  padding-bottom: 1rem; /* Match non-shrink padding */
+  border-bottom: 1px solid #dee2e6; /* Optional: add a subtle border when white */
+}
+
+#mainNav.navbar-at-top .navbar-brand {
+  color: var(--bs-secondary) !important; /* Darker color for brand text/icons if any */
+  font-size: 1.75em; /* Match non-shrink font size */
+}
+
+#mainNav.navbar-at-top .navbar-brand-logos img {
+  /* Logos should be fine as they are, unless they need filter for white bg */
+}
+
+#mainNav.navbar-at-top .nav-link {
+  color: var(--bs-secondary) !important;
+}
+
+#mainNav.navbar-at-top .nav-link:hover,
+#mainNav.navbar-at-top .nav-link.active {
+  color: var(--bs-primary) !important;
+}
+
+#mainNav.navbar-at-top .navbar-toggler {
+  color: var(--bs-secondary) !important; /* Ensure toggler text "Menu" is dark */
+  border-color: rgba(44, 62, 80, 0.25) !important;
+  /* Override the SVG icon to be dark */
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(44, 62, 80, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+#mainNav.navbar-at-top .btn-outline-light {
+  color: var(--bs-secondary) !important;
+  border-color: var(--bs-secondary) !important;
+}
+
+#mainNav.navbar-at-top .btn-outline-light:hover,
+#mainNav.navbar-at-top .btn-outline-light:focus {
+  color: #fff !important;
+  background-color: var(--bs-secondary) !important;
+  border-color: var(--bs-secondary) !important;
+}
+
+/* Add a white stroke effect to navbar logos when on dark background */
+#mainNav:not(.navbar-at-top) .navbar-brand-logos img {
+  filter:
+    drop-shadow(1px 1px 0 white)
+    drop-shadow(-1px -1px 0 white)
+    drop-shadow(1px -1px 0 white)
+    drop-shadow(-1px 1px 0 white);
+  /* This creates a 1px stroke. For a thicker stroke, you might need more layers or larger offsets, but that can get less crisp. */
+}
+
 
 #mainNav .navbar-nav {
   margin-top: 1rem;
@@ -11138,3 +11194,7 @@ footer .copyright { /* Increased specificity */
 }
 
 
+/* Added to give more space for the first section after a fixed navbar on pages without a masthead */
+.first-page-section-after-nav {
+  padding-top: calc(4rem + 90px) !important; /* Overrides .page-section's 6rem. Adjust 90px based on actual navbar height. */
+}

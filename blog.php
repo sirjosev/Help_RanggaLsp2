@@ -54,7 +54,7 @@
                 <img src="https://via.placeholder.com/200x130" alt="Gambar Berita 1" class="gambar-berita">
                 <div class="konten-berita">
                     <h2 class="judul">LSP DKS Resmi Dibentuk</h2>
-                    <p class="tanggal">21 April 2025</p>
+                    <p class="tanggal"><small>21 April 2025</small></p>
                     <p class="deskripsi">
                         LSP Digital Kreatif Solusi resmi dibentuk untuk meningkatkan kualitas SDM di sektor digital.
                         Didukung oleh PERDITIKOM, IAII, dan KOMINFO.
@@ -66,7 +66,7 @@
                 <img src="https://via.placeholder.com/200x130" alt="Gambar Berita 2" class="gambar-berita">
                 <div class="konten-berita">
                     <h2 class="judul">Pelatihan Digital Marketing</h2>
-                    <p class="tanggal">20 April 2025</p>
+                    <p class="tanggal"><small>20 April 2025</small></p>
                     <p class="deskripsi">
                         Pelatihan bersertifikasi untuk digital marketing kini tersedia bagi publik.
                         Diselenggarakan oleh LSP DKS bekerja sama dengan praktisi industri.
@@ -121,6 +121,12 @@
             </div>
         </footer>
         </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- SB Forms JS -->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 
 </html>
