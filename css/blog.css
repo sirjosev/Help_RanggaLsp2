@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */ /* Removed to inherit from css/styles.css */
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
@@ -36,23 +36,25 @@ body {
 .konten-berita {
     padding: 15px;
     flex: 1;
+    display: flex; /* Added for flex layout */
+    flex-direction: column; /* Stack items vertically */
 }
 
-.judul {
-    font-size: 20px;
-    color: #333;
+.judul { /* This class is applied to h3 elements in blog.php cards */
+    /* font-size: 20px; */ /* Use h2 default from styles.css or Bootstrap fs-* classes */
+    color: #333; /* Retaining color for now, can be standardized later if needed */
     margin: 0 0 10px 0;
 }
 
-.tanggal {
-    font-size: 14px;
-    color: #888;
+.tanggal { /* This class is applied to p elements for dates */
+    /* font-size: 14px; */ /* Suggest using <small> tag in HTML for this */
+    color: #888; /* Retaining color for now */
     margin-bottom: 10px;
 }
 
-.deskripsi {
-    font-size: 16px;
-    color: #444;
-    line-height: 1.6;
-    text-align: justify;
+.deskripsi { /* This class is applied to p elements for descriptions */
+    /* font-size: 16px; */ /* Should inherit base body font size (1rem) */
+    color: #444; /* Retaining color for now */
+    /* line-height: 1.6; */ /* Should inherit base line-height (1.5) or be slightly adjusted if necessary */
+    /* text-align: justify; */ /* Removed to allow default left-alignment */
 }

@@ -192,7 +192,10 @@ if ($search_term) {
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top">lsp-dks</a>
+            <a class="navbar-brand navbar-brand-logos" href="#page-top">
+                <img src="assets/img/logo-bnsp.png" alt="BNSP Logo">
+                <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
+            </a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -381,7 +384,12 @@ if ($search_term) {
             }
         });
     </script>
-
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- SB Forms JS -->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 
 </html>
