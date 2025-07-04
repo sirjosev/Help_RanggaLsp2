@@ -31,6 +31,9 @@ $dokumen_persyaratan = $skemaManager->getDokumenPersyaratanBySkemaId($skema_id);
 
 // Get metode asesmen
 $metode_asesmen = $skemaManager->getMetodeAsesmenBySkemaId($skema_id);
+
+// Get metode pengujian (dari tabel skema_metode_pengujian)
+$metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
 ?>
 
 <!DOCTYPE html>
@@ -304,6 +307,7 @@ $metode_asesmen = $skemaManager->getMetodeAsesmenBySkemaId($skema_id);
                     <div class="tab" onclick="showTab(event, 'persyaratan')">Persyaratan</div>
                     <div class="tab" onclick="showTab(event, 'dokumen')">Dokumen Persyaratan</div>
                     <div class="tab" onclick="showTab(event, 'asesmen')">Metode Asesmen</div>
+                    <div class="tab" onclick="showTab(event, 'metode_pengujian')">Metode Pengujian</div>
                     <div class="tab" onclick="showTab(event, 'pemeliharaan')">Pemeliharaan</div>
                 </div>
             </div>
@@ -430,6 +434,20 @@ $metode_asesmen = $skemaManager->getMetodeAsesmenBySkemaId($skema_id);
         </div>
     <?php endif; ?>
 </div>
+
+                <!-- Metode Pengujian Tab Content -->
+                <div class="tab-content-box" id="tab-metode_pengujian">
+                    <h3>Metode Pengujian yang Dapat Dipilih</h3>
+                    <?php if (!empty($metode_pengujian_list)): ?>
+                        <ul class="requirement-list">
+                            <?php foreach ($metode_pengujian_list as $metode_uji): ?>
+                            <li><?php echo htmlspecialchars($metode_uji); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <p>Informasi metode pengujian belum ditentukan untuk skema ini.</p>
+                    <?php endif; ?>
+                </div>
             </div>
         </section>
     </div>
