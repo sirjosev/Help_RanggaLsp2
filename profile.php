@@ -47,7 +47,7 @@
     </nav>
 
     <!-- Sejarah Singkat Section -->
-    <section class="page-section bg-light" id="sejarah">
+    <section class="page-section bg-light first-page-section-after-nav" id="sejarah">
         <div class="container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Profil & Sejarah Singkat</h2>
             <div class="divider-custom">
@@ -153,5 +153,11 @@
                 </div>
             </div>
         </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- SB Forms JS -->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

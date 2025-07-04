@@ -15,18 +15,21 @@ window.addEventListener('DOMContentLoaded', event => {
         if (!navbarCollapsible) {
             return;
         }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
+        // Add navbar-at-top class when scrollY is 0, remove navbar-shrink
+        // Otherwise, remove navbar-at-top and add navbar-shrink
+        if (window.scrollY < 10) { // Using a small threshold instead of === 0 for robustness
+            navbarCollapsible.classList.add('navbar-at-top');
+            navbarCollapsible.classList.remove('navbar-shrink');
         } else {
-            navbarCollapsible.classList.add('navbar-shrink')
+            navbarCollapsible.classList.remove('navbar-at-top');
+            navbarCollapsible.classList.add('navbar-shrink');
         }
-
     };
 
-    // Shrink the navbar 
+    // Apply dynamic styles on page load
     navbarShrink();
 
-    // Shrink the navbar when page is scrolled
+    // Apply dynamic styles when page is scrolled
     document.addEventListener('scroll', navbarShrink);
 
     // Activate Bootstrap scrollspy on the main nav element
