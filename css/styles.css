@@ -10954,11 +10954,14 @@ html {
   border-color: var(--bs-secondary) !important;
 }
 
-/* Add a white glow/outline to navbar logos when on dark background */
+/* Add a white stroke effect to navbar logos when on dark background */
 #mainNav:not(.navbar-at-top) .navbar-brand-logos img {
-  filter: drop-shadow(0px 0px 1.5px rgba(255, 255, 255, 0.7))
-          drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.5));
-  /* Adjust blur (1.5px, 3px) and opacity (0.7, 0.5) as needed */
+  filter:
+    drop-shadow(1px 1px 0 white)
+    drop-shadow(-1px -1px 0 white)
+    drop-shadow(1px -1px 0 white)
+    drop-shadow(-1px 1px 0 white);
+  /* This creates a 1px stroke. For a thicker stroke, you might need more layers or larger offsets, but that can get less crisp. */
 }
 
 
