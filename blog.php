@@ -46,37 +46,57 @@
         </div>
     </nav>
 
-    <body>
-        <div class="berita-container">
-            <h1>Berita & Artikel Terbaru</h1>
+    <?php
+    require_once 'config.php'; // For $conn
+    require_once 'includes/blog_functions.php'; // For blog data functions
 
-            <div class="card-berita">
-                <img src="https://via.placeholder.com/200x130" alt="Gambar Berita 1" class="gambar-berita">
-                <div class="konten-berita">
-                    <h2 class="judul">LSP DKS Resmi Dibentuk</h2>
-                    <p class="tanggal"><small>21 April 2025</small></p>
-                    <p class="deskripsi">
-                        LSP Digital Kreatif Solusi resmi dibentuk untuk meningkatkan kualitas SDM di sektor digital.
-                        Didukung oleh PERDITIKOM, IAII, dan KOMINFO.
-                    </p>
-                </div>
+    $allBlogs = getAllBlogs($conn); // Fetch all blogs
+    ?>
+
+    <div class="page-section"> <!-- Using page-section for consistent padding -->
+        <div class="container berita-container"> <!-- berita-container for specific blog layout if needed -->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Berita & Artikel Terbaru</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
             </div>
 
-            <div class="card-berita">
-                <img src="https://via.placeholder.com/200x130" alt="Gambar Berita 2" class="gambar-berita">
-                <div class="konten-berita">
-                    <h2 class="judul">Pelatihan Digital Marketing</h2>
-                    <p class="tanggal"><small>20 April 2025</small></p>
-                    <p class="deskripsi">
-                        Pelatihan bersertifikasi untuk digital marketing kini tersedia bagi publik.
-                        Diselenggarakan oleh LSP DKS bekerja sama dengan praktisi industri.
-                    </p>
+            <?php if (empty($allBlogs)): ?>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p class="lead">Belum ada berita atau artikel yang dipublikasikan.</p>
+                    </div>
                 </div>
-            </div>
+            <?php else: ?>
+                <?php foreach ($allBlogs as $blog): ?>
+                    <div class="card-berita">
+                        <?php
+                        $imagePath = htmlspecialchars($blog['featured_image']);
+                        // Prepend 'http' or 'https' if it's an external URL, otherwise assume it's a local path
+                        if (strpos($imagePath, 'http') !== 0 && !empty($imagePath)) {
+                            // No specific prefix needed as path is assets/img/....jpg
+                        } elseif (empty($imagePath)) {
+                            $imagePath = 'https://via.placeholder.com/200x130?text=No+Image'; // Placeholder if no image
+                        }
+                        ?>
+                        <img src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($blog['title']); ?>" class="gambar-berita">
+                        <div class="konten-berita">
+                            <h3 class="judul"><a href="blog_detail.php?id=<?php echo $blog['id']; ?>"><?php echo htmlspecialchars($blog['title']); ?></a></h3>
+                            <p class="tanggal"><small><?php echo formatBlogDate($blog['publish_date']); ?></small></p>
+                            <p class="deskripsi">
+                                <?php echo generateSummary($blog['content'], 50); // Show a summary of ~50 words ?>
+                            </p>
+                            <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-primary btn-sm mt-auto">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
 
         </div>
-        <footer class="footer"> <!-- Kelas text-center mungkin akan dihapus atau di-override oleh CSS custom -->
-            <div class="container mb2rem">
+    </div>
+        <footer class="footer">
+            <div class="container">
                 <div class="row">
                     <!-- Kolom 1: Alamat (Location) -->
                     <div class="col-lg-4 footer-col">

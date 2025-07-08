@@ -215,7 +215,7 @@
     </section>
 
     <!-- berita & artikel Section-->
-   <section class="page-section portfolio">
+   <section class="page-section portfolio" id="berita-artikel">
     <div class="container">
         <!-- Portfolio Section Heading -->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">BERITA & ARTIKEL</h2>
@@ -229,64 +229,54 @@
 
         <!-- Portfolio Grid Items -->
         <div class="row justify-content-center">
-            <!-- Portfolio Item 1 -->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
-                </div>
-                <div class="text-center mt-3">
-                    <h5>Judul Berita 1</h5>
-                    <p class="text-muted">Deskripsi singkat berita ini. Memberikan gambaran awal kepada pembaca.</p>
-                    <a href="blog_detail.php" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
-                </div>
-            </div>
+            <?php
+            // config.php should already be included if we are here after the navbar.
+            // If not, uncomment: require_once 'config.php';
+            if (!function_exists('getAllBlogs')) { // Ensure functions are only included once
+                require_once 'includes/blog_functions.php';
+            }
 
-            <!-- Portfolio Item 2 -->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
-                </div>
-                <div class="text-center mt-3">
-                    <h5>Judul Berita 2</h5>
-                    <p class="text-muted">Deskripsi singkat artikel ini untuk menarik perhatian pembaca.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
-                </div>
-            </div>
+            $latestBlogs = getAllBlogs($conn, 'publish_date DESC', 3); // Get latest 3 blogs
 
-            <!-- Portfolio Item 3 -->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">
-                            <i class="fas fa-plus fa-3x"></i>
+            if (empty($latestBlogs)): ?>
+                <div class="col-lg-12 text-center">
+                    <p class="lead text-muted">Belum ada berita atau artikel yang dipublikasikan.</p>
+                </div>
+            <?php else: ?>
+                <?php foreach ($latestBlogs as $blog): ?>
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item-wrapper"> {/* New wrapper for consistent styling */}
+                            <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="portfolio-item-link">
+                                <div class="portfolio-item mx-auto">
+                                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div> {/* Changed icon */}
+                                    </div>
+                                    <?php
+                                    $imagePath = htmlspecialchars($blog['featured_image']);
+                                    if (strpos($imagePath, 'http') !== 0 && !empty($imagePath)) {
+                                        // Path is relative like assets/img/...
+                                    } elseif (empty($imagePath)) {
+                                        $imagePath = 'https://via.placeholder.com/700x500?text=No+Image'; // Placeholder
+                                    }
+                                    ?>
+                                    <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($blog['title']); ?>" />
+                                </div>
+                            </a>
+                            <div class="text-center mt-3 portfolio-item-details">
+                                <h5 class="portfolio-item-title"><?php echo htmlspecialchars($blog['title']); ?></h5>
+                                <p class="text-muted portfolio-item-summary"><?php echo generateSummary($blog['content'], 20); // Shorter summary ?></p>
+                                <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
-                    <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
-                </div>
-                <div class="text-center mt-3">
-                    <h5>Judul Berita 3</h5>
-                    <p class="text-muted">Penjelasan singkat mengenai isi berita yang bisa dilihat lebih lanjut.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
-                </div>
-            </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 </section>
 
-
-
-    <footer class="footer"> <!-- Kelas text-center mungkin akan dihapus atau di-override oleh CSS custom -->
-            <div class="container mb2rem">
+    <footer class="footer">
+            <div class="container">
                 <div class="row">
                     <!-- Kolom 1: Alamat (Location) -->
                     <div class="col-lg-4 footer-col">

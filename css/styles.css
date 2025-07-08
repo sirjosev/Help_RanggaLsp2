@@ -11198,3 +11198,66 @@ footer .copyright { /* Increased specificity */
 .first-page-section-after-nav {
   padding-top: calc(4rem + 90px) !important; /* Overrides .page-section's 6rem. Adjust 90px based on actual navbar height. */
 }
+
+/* Styles for Blog items in Index Page Portfolio Section (BERITA & ARTIKEL) */
+.portfolio-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure wrapper takes full height of column for consistent button alignment */
+  background-color: #fff;
+  border-radius: 0.5rem; /* Match portfolio item */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Subtle shadow */
+  overflow: hidden; /* Ensure rounded corners clip content */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+.portfolio-item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit; /* Inherit color to prevent default blue link for wrapper */
+}
+
+.portfolio-item-link .portfolio-item {
+  margin-bottom: 0;
+}
+
+.portfolio-item-details {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left; /* Ensure text within details is left aligned */
+}
+
+.portfolio-item-title {
+  font-size: 1.15rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  color: var(--bs-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-item-summary {
+  font-size: 0.9rem;
+  font-family: var(--bs-font-sans-serif);
+  color: #6c757d; /* text-muted color */
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(1.6em * 3 * 0.9); /* Approx height for 3 lines based on line-height and font-size */
+}
+
+.portfolio-item-details .btn {
+  margin-top: auto;
+  width: 100%;
+}
