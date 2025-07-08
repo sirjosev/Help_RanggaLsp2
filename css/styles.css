@@ -642,6 +642,10 @@ progress {
   margin-left: auto;
 }
 
+.container.mb2rem {
+    margin-bottom: 2rem;
+}
+
 @media (min-width: 576px) {
   .container-sm, .container {
     max-width: 540px;
@@ -11099,6 +11103,7 @@ html {
   }
 }
 
+
 .footer {
   /* padding-top: 5rem; */ /* Original, akan diganti */
   /* padding-bottom: 5rem; */ /* Original, akan diganti */
@@ -11175,6 +11180,7 @@ html {
 footer .copyright { /* Increased specificity */
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+
   margin-top: 2rem;
   background-color: #1a252f;
   border-top: 1px solid #3e5269;
@@ -11183,7 +11189,7 @@ footer .copyright { /* Increased specificity */
   text-align: center;
 }
 
-footer .copyright .container small { /* Increased specificity */
+.copyright .container small {
     color: #adb5bd;
 }
 
