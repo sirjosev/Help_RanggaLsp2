@@ -193,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="admin_skema.php" class="active">Skema</a></li>
         </ul>
         <div class="sidebar-signout">
-            <button class="btn btn-danger signout-btn-sidebar" onclick="window.location.href='login.php';">Sign Out</button>
+            <a href="logout.php" class="btn btn-danger signout-btn-sidebar">Sign Out</a>
         </div>
     </div>
 

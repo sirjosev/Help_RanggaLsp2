@@ -1,3 +1,9 @@
+<?php
+// Start the session if it hasn't been started yet
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -230,8 +236,7 @@
         <!-- Portfolio Grid Items -->
         <div class="row justify-content-center">
             <?php
-            // config.php should already be included if we are here after the navbar.
-            // If not, uncomment: require_once 'config.php';
+            require_once 'config.php'; // Ensure database connection is available
             if (!function_exists('getAllBlogs')) { // Ensure functions are only included once
                 require_once 'includes/blog_functions.php';
             }
@@ -245,7 +250,7 @@
             <?php else: ?>
                 <?php foreach ($latestBlogs as $blog): ?>
                     <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item-wrapper"> {/* New wrapper for consistent styling */}
+                        <div class="portfolio-item-wrapper">
                             <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="portfolio-item-link">
                                 <div class="portfolio-item mx-auto">
                                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
@@ -276,6 +281,7 @@
 </section>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
     <footer class="footer"> <!-- Kelas text-center mungkin akan dihapus atau di-override oleh CSS custom -->
@@ -284,6 +290,10 @@
     <footer class="footer">
             <div class="container">
 >>>>>>> repo/jules/standardize-admin-styles
+=======
+    <footer class="footer">
+            <div class="container">
+>>>>>>> repo/master
                 <div class="row">
                     <!-- Kolom 1: Alamat (Location) -->
                     <div class="col-lg-4 footer-col">
