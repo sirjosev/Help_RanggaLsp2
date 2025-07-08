@@ -25,7 +25,7 @@
         <header>
             <div class="header-content">
                 <h1>Welcome to Admin Dashboard</h1>
-                <button class="signout-btn">Sign Out</button>
+                <a href="logout.php" class="signout-btn">Sign Out</a>
             </div>
         </header>
 
