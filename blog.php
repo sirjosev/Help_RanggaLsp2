@@ -1,3 +1,9 @@
+<?php
+// Start the session if it hasn't been started yet
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -140,7 +146,6 @@
                 </div>
             </div>
         </footer>
-        </div>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
