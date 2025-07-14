@@ -5,26 +5,49 @@ $error = '';
 $success = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $email    = mysqli_real_escape_string($conn, $_POST['email']);
+    $username = $_POST['username'];
+    $email    = $_POST['email'];
     $pass     = $_POST['pass'];
     $confirm  = $_POST['confirm-pass'];
 
-    if ($pass !== $confirm) {
+    if (empty($username) || empty($email) || empty($pass)) {
+        $error = "Semua field wajib diisi.";
+    } elseif ($pass !== $confirm) {
         $error = "Password dan konfirmasi tidak cocok!";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Format email tidak valid.";
     } else {
-        $check = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
-        if (mysqli_num_rows($check) > 0) {
-            $error = "Email sudah terdaftar!";
-        } else {
-            // Tanpa hashing password, langsung simpan password yang diinput
-            $insert = mysqli_query($conn, "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$pass')");
-            if ($insert) {
-                header("Location: login.php?register=success");
-                exit();
+        try {
+            // 1. Cek apakah email sudah ada menggunakan PDO
+            $sql_check = "SELECT id FROM users WHERE email = :email";
+            $stmt_check = $conn->prepare($sql_check);
+            $stmt_check->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt_check->execute();
+
+            if ($stmt_check->fetch()) {
+                $error = "Email sudah terdaftar!";
             } else {
-                $error = "Gagal mendaftar. Silakan coba lagi.";
+                // 2. Hash password
+                $hashed_pass = password_hash($pass, PASSWORD_DEFAULT);
+
+                // 3. Insert user baru dengan password yang sudah di-hash
+                $sql_insert = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+                $stmt_insert = $conn->prepare($sql_insert);
+                $stmt_insert->bindParam(':username', $username, PDO::PARAM_STR);
+                $stmt_insert->bindParam(':email', $email, PDO::PARAM_STR);
+                $stmt_insert->bindParam(':password', $hashed_pass, PDO::PARAM_STR);
+
+                if ($stmt_insert->execute()) {
+                    // Redirect ke login dengan pesan sukses
+                    header("Location: login.php?status=register_success");
+                    exit();
+                } else {
+                    $error = "Gagal mendaftar. Silakan coba lagi.";
+                }
             }
+        } catch (PDOException $e) {
+            // error_log("Registration PDOException: " . $e->getMessage());
+            $error = "Terjadi kesalahan pada sistem. Silakan coba lagi nanti.";
         }
     }
 }

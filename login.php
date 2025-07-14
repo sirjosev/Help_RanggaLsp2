@@ -5,43 +5,31 @@ include 'config.php';
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Tidak perlu mysqli_real_escape_string dengan prepared statements PDO
     $email = $_POST['email'];
-    $pass = $_POST['pass']; // Password masih plain text untuk saat ini
+    $pass = $_POST['pass'];
 
-    // Menggunakan PDO dan prepared statement
-    // TODO: Ganti pengecekan password plain text dengan password_verify() setelah password di-hash
-    $sql = "SELECT * FROM users WHERE email = :email AND password = :password";
+    // Menggunakan PDO dan prepared statement dengan verifikasi password yang di-hash
+    $sql = "SELECT * FROM users WHERE email = :email";
     $stmt = $conn->prepare($sql);
 
     try {
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':password', $pass, PDO::PARAM_STR); // Asumsi password di DB belum di-hash
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user) {
-            // Jika menggunakan password_hash:
-            // if (password_verify($pass, $user['password'])) {
-            //     $_SESSION['user_id'] = $user['id']; // Simpan user ID atau info lain yang relevan
-            //     $_SESSION['email'] = $user['email'];
-            //     header("Location: admin_blog.php"); // Atau ke admin.php sebagai dashboard utama
-            //     exit();
-            // } else {
-            //     $error = "Email atau password salah!";
-            // }
-
-            // Untuk sementara karena password belum di-hash:
+        if ($user && password_verify($pass, $user['password'])) {
+            // Password cocok, buat session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
-            header("Location: admin_blog.php");
+            header("Location: admin.php"); // Arahkan ke dashboard utama
             exit();
         } else {
+            // Email tidak ditemukan atau password salah
             $error = "Email atau password salah!";
         }
     } catch (PDOException $e) {
-        // error_log("Login PDOException: " . $e->getMessage()); // Sebaiknya di-log ke file
+        // error_log("Login PDOException: " . $e->getMessage());
         $error = "Terjadi kesalahan pada sistem. Silakan coba lagi nanti.";
     }
 }
@@ -67,13 +55,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="login100-form-title">Welcome</span>
 
                     <?php
-                    if (isset($_GET['status']) && $_GET['status'] == 'logout_success'): ?>
-                        <p style="color:green;">Anda telah berhasil logout.</p>
-                    <?php endif; ?>
-
-                    <?php if ($error): ?>
-                        <p style="color:red;"><?= $error ?></p>
-                    <?php endif; ?>
+                    // Menampilkan pesan sukses registrasi atau error login
+                    if (isset($_GET['status']) && $_GET['status'] == 'register_success') {
+                        echo '<p style="color:green; text-align:center;">Registrasi berhasil! Silakan login.</p>';
+                    } elseif ($error) {
+                        echo '<p style="color:red; text-align:center;">' . $error . '</p>';
+                    }
+                    ?>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required">
                         <input class="input100" type="text" name="email" placeholder="Email" required>
@@ -101,5 +89,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
+
+    <?php
+    // Cek untuk status logout dan tampilkan pop-up jika ada
+    if (isset($_GET['status']) && $_GET['status'] == 'logout_success') {
+        echo "<script>alert('Anda telah berhasil logout.');</script>";
+    }
+    ?>
 </body>
 </html>
