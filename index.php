@@ -254,7 +254,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="portfolio-item-link">
                                 <div class="portfolio-item mx-auto">
                                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div> {/* Changed icon */}
+                                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
                                     </div>
                                     <?php
                                     $imagePath = htmlspecialchars($blog['featured_image']);
