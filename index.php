@@ -3,6 +3,29 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+// 1. Include all necessary files once at the top
+require_once 'config.php';
+require_once 'includes/blog_functions.php';
+require_once 'skema_functions.php';
+
+// 2. Fetch all data needed for the page
+$skemaManager = new SkemaManager();
+$skema_list = [];
+$latestBlogs = [];
+$db_error = '';
+
+try {
+    // Fetch skema data
+    $skema_list = array_slice($skemaManager->getAllSkema(), 0, 6); // Get first 6 skema
+
+    // Fetch blog data
+    $latestBlogs = getAllBlogs($conn, 'publish_date DESC', 3); // Get latest 3 blogs
+} catch (PDOException $e) {
+    $db_error = "Error accessing database: " . $e->getMessage();
+    // Log the error for admin, don't show to public
+    error_log($db_error);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,37 +173,30 @@ if (session_status() == PHP_SESSION_NONE) {
             </div>
             <!-- Portfolio Grid Items-->
             <div class="row justify-content-center">
-                <?php
-                // Include skema functions and get data
-                require_once 'skema_functions.php';
-                $skemaManager = new SkemaManager();
-                $skema_list = array_slice($skemaManager->getAllSkema(), 0, 6); // Ambil 6 skema pertama
-
-                if (empty($skema_list)) {
-                    echo '<div class="col-lg-12 text-center"><p class="lead text-muted">Belum ada skema sertifikasi yang tersedia.</p></div>';
-                } else {
-                    foreach ($skema_list as $skema) {
-                ?>
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <a href="skema.php?id=<?php echo $skema['id']; ?>" class="portfolio-item-link">
-                        <div class="portfolio-item mx-auto">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                <?php if (!empty($db_error)): ?>
+                    <div class="col-lg-12 text-center"><p class="text-danger">Gagal memuat data skema. Silakan coba lagi nanti.</p></div>
+                <?php elseif (empty($skema_list)): ?>
+                    <div class="col-lg-12 text-center"><p class="lead text-muted">Belum ada skema sertifikasi yang tersedia.</p></div>
+                <?php else: ?>
+                    <?php foreach ($skema_list as $skema): ?>
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <a href="skema.php?id=<?php echo $skema['id']; ?>" class="portfolio-item-link">
+                            <div class="portfolio-item mx-auto">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <?php
+                                    $imagePath = !empty($skema['gambar']) ? $skemaManager->getGambarPath($skema['gambar']) : 'assets/img/portfolio/game.png';
+                                ?>
+                                <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($skema['nama']); ?>" />
                             </div>
-                            <?php
-                                $imagePath = !empty($skema['gambar']) ? $skemaManager->getGambarPath($skema['gambar']) : 'assets/img/portfolio/game.png';
-                            ?>
-                            <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($skema['nama']); ?>" />
+                        </a>
+                        <div class="text-center mt-3">
+                            <h5><?php echo htmlspecialchars($skema['nama']); ?></h5>
                         </div>
-                    </a>
-                    <div class="text-center mt-3">
-                        <h5><?php echo htmlspecialchars($skema['nama']); ?></h5>
                     </div>
-                </div>
-                <?php
-                    } // end foreach
-                } // end else
-                ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -200,21 +216,9 @@ if (session_status() == PHP_SESSION_NONE) {
 
         <!-- Portfolio Grid Items -->
         <div class="row justify-content-center">
-            <?php
-            require_once 'config.php'; // Ensure database connection is available
-            if (!function_exists('getAllBlogs')) { // Ensure functions are only included once
-                require_once 'includes/blog_functions.php';
-            }
-
-            try {
-                $latestBlogs = getAllBlogs($conn, 'publish_date DESC', 3); // Get latest 3 blogs
-                // var_dump($latestBlogs); // Uncomment for debugging
-            } catch (PDOException $e) {
-                echo "<div class='col-lg-12 text-center'><p class='text-danger'>Error accessing database: " . $e->getMessage() . "</p></div>";
-                $latestBlogs = []; // Ensure variable exists to prevent further errors
-            }
-
-            if (empty($latestBlogs)): ?>
+            <?php if (!empty($db_error)): ?>
+                <div class="col-lg-12 text-center"><p class="text-danger">Gagal memuat data artikel. Silakan coba lagi nanti.</p></div>
+            <?php elseif (empty($latestBlogs)): ?>
                 <div class="col-lg-12 text-center">
                     <p class="lead text-muted">Belum ada berita atau artikel yang dipublikasikan.</p>
                 </div>
