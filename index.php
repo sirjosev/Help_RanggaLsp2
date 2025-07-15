@@ -280,10 +280,6 @@ if (session_status() == PHP_SESSION_NONE) {
     </div>
 </section>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
     <footer class="footer"> <!-- Kelas text-center mungkin akan dihapus atau di-override oleh CSS custom -->
             <div class="container mb2rem">
     <footer class="footer">
