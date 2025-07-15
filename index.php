@@ -25,7 +25,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand navbar-brand-logos" href="#page-top">
                 <img src="assets/img/logo-bnsp.png" alt="BNSP Logo">
@@ -241,7 +241,13 @@ if (session_status() == PHP_SESSION_NONE) {
                 require_once 'includes/blog_functions.php';
             }
 
-            $latestBlogs = getAllBlogs($conn, 'publish_date DESC', 3); // Get latest 3 blogs
+            try {
+                $latestBlogs = getAllBlogs($conn, 'publish_date DESC', 3); // Get latest 3 blogs
+                // var_dump($latestBlogs); // Uncomment for debugging
+            } catch (PDOException $e) {
+                echo "<div class='col-lg-12 text-center'><p class='text-danger'>Error accessing database: " . $e->getMessage() . "</p></div>";
+                $latestBlogs = []; // Ensure variable exists to prevent further errors
+            }
 
             if (empty($latestBlogs)): ?>
                 <div class="col-lg-12 text-center">
