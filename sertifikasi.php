@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 require_once 'config.php';
 require_once 'skema_functions.php';
 
-$skemaManager = new SkemaManager();
+$skemaManager = new SkemaManager($conn);
 
 // Get all skema for listing
 $skema_list = $skemaManager->getAllSkema();

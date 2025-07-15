@@ -2,7 +2,7 @@
 require_once 'config.php';
 require_once 'skema_functions.php';
 
-$skemaManager = new SkemaManager();
+$skemaManager = new SkemaManager($conn);
 $skema_list = $skemaManager->getAllSkema();
 
 // Handle form submissions
