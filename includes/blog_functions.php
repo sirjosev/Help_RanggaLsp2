@@ -10,7 +10,7 @@
  * @return array An array of blog posts.
  */
 function getAllBlogs(PDO $conn, string $orderBy = 'publish_date DESC', ?int $limit = null): array {
-    $sql = "SELECT id, title, content, featured_image, publish_date, status FROM blogs WHERE status = 'published' ORDER BY " . $orderBy;
+    $sql = "SELECT id, title, content, featured_image, publish_date FROM blog ORDER BY " . $orderBy;
     if ($limit !== null && $limit > 0) {
         $sql .= " LIMIT " . $limit;
     }
@@ -34,7 +34,7 @@ function getAllBlogs(PDO $conn, string $orderBy = 'publish_date DESC', ?int $lim
  * @return array|false The blog post as an associative array, or false if not found or on error.
  */
 function getBlogById(PDO $conn, int $id) {
-    $sql = "SELECT id, title, content, featured_image, publish_date FROM blogs WHERE id = :id AND status = 'published'";
+    $sql = "SELECT id, title, content, featured_image, publish_date FROM blog WHERE id = :id";
     try {
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
