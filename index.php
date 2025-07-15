@@ -138,7 +138,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <div style="margin-bottom: 50px;"></div>
 
     <!-- SKEMA SERIFIKASI Section-->
-    <section class="page-section bg-light">
+    <section class="page-section bg-light" id="skema-sertifikasi">
         <div class="container">
             <!-- Portfolio Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">SKEMA SERTIFIKASI</h2>
@@ -150,72 +150,37 @@ if (session_status() == PHP_SESSION_NONE) {
             </div>
             <!-- Portfolio Grid Items-->
             <div class="row justify-content-center">
-                <!-- Portfolio Item 1-->
+                <?php
+                // Include skema functions and get data
+                require_once 'skema_functions.php';
+                $skemaManager = new SkemaManager();
+                $skema_list = array_slice($skemaManager->getAllSkema(), 0, 6); // Ambil 6 skema pertama
+
+                if (empty($skema_list)) {
+                    echo '<div class="col-lg-12 text-center"><p class="lead text-muted">Belum ada skema sertifikasi yang tersedia.</p></div>';
+                } else {
+                    foreach ($skema_list as $skema) {
+                ?>
                 <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
+                    <a href="skema.php?id=<?php echo $skema['id']; ?>" class="portfolio-item-link">
+                        <div class="portfolio-item mx-auto">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <?php
+                                $imagePath = !empty($skema['gambar']) ? $skemaManager->getGambarPath($skema['gambar']) : 'assets/img/portfolio/game.png';
+                            ?>
+                            <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($skema['nama']); ?>" />
                         </div>
-                        <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
+                    </a>
+                    <div class="text-center mt-3">
+                        <h5><?php echo htmlspecialchars($skema['nama']); ?></h5>
                     </div>
                 </div>
-                <!-- Portfolio Item 2-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="..." />
-                    </div>
-                </div>
-                <!-- Portfolio Item 3-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="..." />
-                    </div>
-                </div>
-                <!-- Portfolio Item 4-->
-                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/game.png" alt="..." />
-                    </div>
-                </div>
-                <!-- Portfolio Item 5-->
-                <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="..." />
-                    </div>
-                </div>
-                <!-- Portfolio Item 6-->
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                        <div
-                            class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i
-                                    class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="..." />
-                    </div>
-                </div>
+                <?php
+                    } // end foreach
+                } // end else
+                ?>
             </div>
         </div>
     </section>
