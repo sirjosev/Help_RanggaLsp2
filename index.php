@@ -286,14 +286,10 @@ if (session_status() == PHP_SESSION_NONE) {
 
     <footer class="footer"> <!-- Kelas text-center mungkin akan dihapus atau di-override oleh CSS custom -->
             <div class="container mb2rem">
-=======
     <footer class="footer">
             <div class="container">
->>>>>>> repo/jules/standardize-admin-styles
-=======
     <footer class="footer">
             <div class="container">
->>>>>>> repo/master
                 <div class="row">
                     <!-- Kolom 1: Alamat (Location) -->
                     <div class="col-lg-4 footer-col">
