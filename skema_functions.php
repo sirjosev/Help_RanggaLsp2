@@ -5,13 +5,8 @@ require_once 'config.php';
 class SkemaManager {
     private $db;
     
-    public function __construct($pdo = null) {
-        global $conn;
-        $this->db = $pdo ?: $conn;
-        
-        if (!$this->db) {
-            throw new Exception("Database connection is required");
-        }
+    public function __construct(PDO $pdo) {
+        $this->db = $pdo;
     }
     
     private function uploadGambar($file, $existingFile = null) {

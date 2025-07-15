@@ -10,7 +10,7 @@ require_once 'includes/blog_functions.php';
 require_once 'skema_functions.php';
 
 // 2. Fetch all data needed for the page
-$skemaManager = new SkemaManager();
+$skemaManager = new SkemaManager($conn);
 $skema_list = [];
 $latestBlogs = [];
 $db_error = '';
