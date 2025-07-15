@@ -56,7 +56,13 @@ if (session_status() == PHP_SESSION_NONE) {
     require_once 'config.php'; // For $conn
     require_once 'includes/blog_functions.php'; // For blog data functions
 
-    $allBlogs = getAllBlogs($conn); // Fetch all blogs
+    try {
+        $allBlogs = getAllBlogs($conn); // Fetch all blogs
+        // var_dump($allBlogs); // Uncomment for debugging
+    } catch (PDOException $e) {
+        echo "<div class='container text-center'><p class='text-danger'>Error accessing database: " . $e->getMessage() . "</p></div>";
+        $allBlogs = []; // Ensure variable exists to prevent further errors
+    }
     ?>
 
     <div class="page-section"> <!-- Using page-section for consistent padding -->
