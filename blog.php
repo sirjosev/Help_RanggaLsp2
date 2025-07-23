@@ -78,7 +78,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <?php if (empty($allBlogs)): ?>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <p class="lead">Belum ada berita atau artikel yang dipublikasikan.</p>
+                        <p class="lead">Tidak ada berita atau artikel yang ditemukan. Silakan periksa koneksi database dan pastikan tabel 'blog' berisi data.</p>
                     </div>
                 </div>
             <?php else: ?>
