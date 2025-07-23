@@ -1,0 +1,23 @@
+/* Custom CSS for lsp-dks */
+
+/* Blog page layout improvements */
+.card-berita {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.konten-berita {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.konten-berita .btn {
+    margin-top: auto;
+}
+
+/* Index page layout improvements */
+.portfolio-item .img-fluid {
+    border-radius: 50%;
+}
