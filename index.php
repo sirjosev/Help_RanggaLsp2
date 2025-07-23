@@ -221,7 +221,7 @@ try {
                 <div class="col-lg-12 text-center"><p class="text-danger">Gagal memuat data artikel. Silakan coba lagi nanti.</p></div>
             <?php elseif (empty($latestBlogs)): ?>
                 <div class="col-lg-12 text-center">
-                    <p class="lead text-muted">Belum ada berita atau artikel yang dipublikasikan.</p>
+                    <p class="lead text-muted">Tidak ada berita atau artikel yang ditemukan. Silakan periksa koneosi database dan pastikan tabel 'blog' berisi data.</p>
                 </div>
             <?php else: ?>
                 <?php foreach ($latestBlogs as $blog): ?>
