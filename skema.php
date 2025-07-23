@@ -2,7 +2,7 @@
 require_once 'config.php';
 require_once 'skema_functions.php';
 
-$skemaManager = new SkemaManager();
+$skemaManager = new SkemaManager($conn);
 
 // Get skema ID from URL parameter
 $skema_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
