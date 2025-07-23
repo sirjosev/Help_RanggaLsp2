@@ -13,6 +13,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <title>blog</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/blog.css" />
+    <link rel="stylesheet" href="css/custom.css" />
 </head>
 
 <body id="page-top">
