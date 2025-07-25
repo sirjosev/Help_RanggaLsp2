@@ -47,20 +47,9 @@ class SkemaManager {
         $filename = uniqid('skema_') . '.' . strtolower($extension);
         $targetPath = $uploadDir . $filename;
         
-        // Debug: Tampilkan path untuk debugging
-        error_log("Target upload path: " . $targetPath);
-        error_log("File temp name: " . $file['tmp_name']);
-        
-        // Pindahkan file ke folder upload
-        if (!move_uploaded_file($file['tmp_name'], $targetPath)) {
-            throw new Exception("Gagal menyimpan file ke: " . $targetPath);
-        }
-        
-        // Cek apakah file benar-benar tersimpan
-        if (!file_exists($targetPath)) {
-            throw new Exception("File tidak ditemukan setelah upload: " . $targetPath);
-        }
-        
+        // Crop image to 1:1 ratio
+        $this->cropImageToSquare($file['tmp_name'], $targetPath, 500);
+
         // Hapus file lama jika ada
         if ($existingFile && file_exists($uploadDir . $existingFile)) {
             unlink($uploadDir . $existingFile);
@@ -68,6 +57,46 @@ class SkemaManager {
         
         // Return hanya nama file (bukan path lengkap) untuk disimpan ke database
         return $filename;
+    }
+
+    private function cropImageToSquare($sourcePath, $destPath, $size) {
+        list($width, $height, $type) = getimagesize($sourcePath);
+        $src_img = null;
+        switch ($type) {
+            case IMAGETYPE_JPEG:
+                $src_img = imagecreatefromjpeg($sourcePath);
+                break;
+            case IMAGETYPE_PNG:
+                $src_img = imagecreatefrompng($sourcePath);
+                break;
+            case IMAGETYPE_GIF:
+                $src_img = imagecreatefromgif($sourcePath);
+                break;
+            default:
+                throw new Exception("Unsupported image type");
+        }
+
+        $new_dim = min($width, $height);
+        $src_x = ($width > $new_dim) ? ($width - $new_dim) / 2 : 0;
+        $src_y = ($height > $new_dim) ? ($height - $new_dim) / 2 : 0;
+
+        $dst_img = imagecreatetruecolor($size, $size);
+        imagecopyresampled($dst_img, $src_img, 0, 0, $src_x, $src_y, $size, $size, $new_dim, $new_dim);
+
+        switch ($type) {
+            case IMAGETYPE_JPEG:
+                imagejpeg($dst_img, $destPath);
+                break;
+            case IMAGETYPE_PNG:
+                imagepng($dst_img, $destPath);
+                break;
+            case IMAGETYPE_GIF:
+                imagegif($dst_img, $destPath);
+                break;
+        }
+
+        imagedestroy($src_img);
+        imagedestroy($dst_img);
     }
     
     
