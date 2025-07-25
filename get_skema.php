@@ -49,7 +49,7 @@ try {
     }
     
     // Initialize SkemaManager
-    $skemaManager = new SkemaManager();
+    $skemaManager = new SkemaManager($conn);
     
     // Get skema data
     $skema = $skemaManager->getSkemaById($skema_id);
