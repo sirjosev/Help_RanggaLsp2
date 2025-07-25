@@ -264,6 +264,9 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
         
         <!-- Section Skema -->
         <section class="skema-section">
+            <div class="text-center mb-4">
+                <img src="<?php echo $skemaManager->getGambarPath($skema['gambar']); ?>" alt="<?php echo htmlspecialchars($skema['nama']); ?>" class="img-fluid rounded" style="max-height: 300px;">
+            </div>
             <h2 class="skema-title"><?php echo htmlspecialchars($skema['nama']); ?></h2>
             <table class="skema-info-table">
                 <tr>
