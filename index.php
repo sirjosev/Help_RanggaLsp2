@@ -124,7 +124,7 @@ try {
                 </div>
             </div>
         </div>
-    </section>
+    </section> 
 
     <!-- Visi & Misi Section -->
     <section class="page-section">
