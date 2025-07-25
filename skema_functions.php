@@ -255,16 +255,20 @@ class SkemaManager {
     }
     
     public function updateSkemaComplete($data) {
+        error_log("Updating skema with data: " . print_r($data, true));
         try {
             $this->db->beginTransaction();
             
             // Handle file upload
             $gambar = $data['existing_gambar'] ?? null;
             if (!empty($_FILES['gambar']['name'])) {
+                error_log("Uploading new image...");
                 $gambar = $this->uploadGambar($_FILES['gambar'], $gambar);
+                error_log("New image name: " . $gambar);
             }
             
             // Update main skema record
+            error_log("Updating main skema record...");
             $stmt = $this->db->prepare("
                 UPDATE skema 
                 SET nama = ?, kode = ?, jenis = ?, harga = ?, unit_kompetensi = ?, 
@@ -285,19 +289,26 @@ class SkemaManager {
             ]);
             
             $skema_id = $data['skema_id'];
+            error_log("Main skema record updated for ID: " . $skema_id);
             
             // Delete existing related data
+            error_log("Deleting related data for skema ID: " . $skema_id);
             $this->deleteRelatedData($skema_id);
+            error_log("Related data deleted.");
             
             // Insert new related data
+            error_log("Inserting new related data...");
             $this->insertRelatedData($skema_id, $data);
+            error_log("New related data inserted.");
             
             $this->db->commit();
+            error_log("Skema update committed successfully.");
             return true;
             
         } catch (Exception $e) {
             $this->db->rollBack();
             error_log("Error updating skema: " . $e->getMessage());
+            error_log("Stack trace: " . $e->getTraceAsString());
             throw $e;
         }
     }
