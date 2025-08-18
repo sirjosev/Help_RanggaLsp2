@@ -52,13 +52,14 @@
         text-decoration: none;
         display: block;
         padding: 12px 20px; /* Padding link menu */
-        transition: background-color 0.3s;
+        transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
         font-size: 0.95rem;
     }
 
     .sidebar ul li a:hover,
     .sidebar ul li a.active {
-        background-color: #34495e; /* Warna hover/active dari admin_skema */
+        background-color: #3498db; /* Warna biru utama */
+        transform: translateX(5px);
     }
 
     .sidebar-signout {
@@ -161,6 +162,12 @@
         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         display: flex;
         flex-direction: column;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .blog-card:hover, .schema-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .blog-card h3, .schema-card h3 {
@@ -268,7 +275,7 @@
         text-decoration: none;
         display: inline-block;
         text-align: center;
-        transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
         margin-right: 8px; /* Jarak default antar tombol */
         box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
@@ -277,7 +284,8 @@
     }
     .btn:hover {
         background-color: #2980b9;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        transform: translateY(-2px);
     }
     .btn:active {
         background-color: #2573a7;
