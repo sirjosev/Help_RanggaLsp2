@@ -31,55 +31,17 @@ $total_skema = $total_skema_stmt->fetchColumn();
         </header>
 
         <section class="stats">
-            <div class="card">
+            <div class="schema-card">
                 <h3>Total Blogs</h3>
                 <p><?= $total_blogs ?></p>
             </div>
-            <div class="card">
+            <div class="schema-card">
                 <h3>Total Skema</h3>
                 <p><?= $total_skema ?></p>
             </div>
         </section>
 
-        <section class="blog-section">
-            <h2>Latest Blogs</h2>
-            <div class="blog-list">
-                <div class="blog-card">
-                    <h3>Blog Title 1</h3>
-                    <p class="blog-summary">This is a summary of the first blog...</p>
-                    <a href="#">Read more</a>
-                </div>
-                <div class="blog-card">
-                    <h3>Blog Title 2</h3>
-                    <p class="blog-summary">This is a summary of the second blog...</p>
-                    <a href="#">Read more</a>
-                </div>
-                <!-- Tambahkan lebih banyak blog di sini -->
-            </div>
-        </section>
-
-        <section class="schema-section">
-            <h2>Skema yang Tersedia</h2>
-            <div class="schema-container">
-                <div class="schema-card">
-                    <h3>Web Development</h3>
-                    <p>Skema untuk pengembangan front-end dan back-end.</p>
-                </div>
-                <div class="schema-card">
-                    <h3>UI/UX Design</h3>
-                    <p>Skema untuk perancangan antarmuka pengguna dan pengalaman.</p>
-                </div>
-                <div class="schema-card">
-                    <h3>Data Analysis</h3>
-                    <p>Skema analisis data dan visualisasi.</p>
-                </div>
-                <div class="schema-card">
-                    <h3>Data Analysis</h3>
-                    <p>Skema analisis data dan visualisasi.</p>
-                </div>
-            </div>
-        </section>
-
+    </div>
 
 </body>
 
