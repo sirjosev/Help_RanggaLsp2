@@ -184,18 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="logo">
-            <img class="img-fluid" src="assets/img/logo.png" alt="logo" style="width: 200px; height: auto;" />
-        </div>
-        <ul>
-            <li><a href="admin_blog.php">Blog</a></li>
-            <li><a href="admin_skema.php" class="active">Skema</a></li>
-        </ul>
-        <div class="sidebar-signout">
-            <a href="logout.php" class="btn btn-danger signout-btn-sidebar">Sign Out</a>
-        </div>
-    </div>
+    <?php require_once 'includes/sidebar.php'; ?>
 
     <div class="main-content">
         <header>
