@@ -1,3 +1,14 @@
+<?php
+require_once 'config.php';
+
+// Fetch total blogs
+$total_blogs_stmt = $conn->query("SELECT COUNT(*) FROM blogs");
+$total_blogs = $total_blogs_stmt->fetchColumn();
+
+// Fetch total skema
+$total_skema_stmt = $conn->query("SELECT COUNT(*) FROM skema");
+$total_skema = $total_skema_stmt->fetchColumn();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,17 +20,7 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="logo">
-            <img class="img-fluid" src="assets/img/portfolio/logo.png" alt="logo" />
-
-        </div>
-        <ul>
-            <li><a href="admin.php">Dashboard</a></li>
-            <li><a href="admin_blog.php">Blog</a></li> 
-            <li><a href="admin_skema.php">Skema</a></li> 
-        </ul>
-    </div>
+    <?php require_once 'includes/sidebar.php'; ?>
 
     <div class="main-content">
         <header>
@@ -32,11 +33,11 @@
         <section class="stats">
             <div class="card">
                 <h3>Total Blogs</h3>
-                <p>0</p>
+                <p><?= $total_blogs ?></p>
             </div>
             <div class="card">
                 <h3>Total Skema</h3>
-                <p>0</p>
+                <p><?= $total_skema ?></p>
             </div>
         </section>
 

@@ -248,19 +248,7 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="logo">
-            <!-- Menyamakan struktur logo dengan admin_skema.php jika diperlukan, atau pastikan styling logo di admin.css berlaku untuk keduanya -->
-            <img class="img-fluid" src="assets/img/logo.png" alt="logo" style="width: 200px; height: auto;" />
-        </div>
-        <ul>
-            <li><a href="admin_blog.php" class="active">Blog</a></li>
-            <li><a href="admin_skema.php">Skema</a></li>
-        </ul>
-        <div class="sidebar-signout">
-            <a href="logout.php" class="btn btn-danger signout-btn-sidebar">Sign Out</a>
-        </div>
-    </div>
+    <?php require_once 'includes/sidebar.php'; ?>
 
     <div class="main-content">
         <header>
