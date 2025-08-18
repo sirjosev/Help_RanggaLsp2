@@ -34,7 +34,6 @@ $latest_skema = $latest_skema_stmt->fetchAll();
         <header>
             <div class="header-content">
                 <h1>Welcome to Admin Dashboard</h1>
-                <a href="logout.php" class="signout-btn">Sign Out</a>
             </div>
         </header>
 
