@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
     $id = (int)$_GET['id'];
     
     try {
-        $stmt = $pdo->prepare("SELECT * FROM blogs WHERE id = ?");
+    $stmt = $conn->prepare("SELECT * FROM blogs WHERE id = ?");
         $stmt->execute([$id]);
         $blog = $stmt->fetch(PDO::FETCH_ASSOC);
         
