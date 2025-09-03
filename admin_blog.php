@@ -295,7 +295,7 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
                         </p>
                         
                         <div class="card-actions"> <!-- Menggunakan 'card-actions' seperti di admin_skema.php -->
-                            <a href="#" onclick="viewBlog(<?= $blog['id'] ?>)" class="btn btn-small">Read more</a> <!-- Menambahkan kelas btn & btn-small -->
+                            <a href="blog_detail.php?id=<?= $blog['id'] ?>" target="_blank" class="btn btn-small">Read more</a> <!-- Menambahkan kelas btn & btn-small -->
                             <button class="btn btn-small" onclick="editBlog(<?= $blog['id'] ?>)">Edit</button> <!-- Menggunakan kelas btn & btn-small -->
                             <button class="btn btn-danger btn-small" onclick="deleteBlog(<?= $blog['id'] ?>)">Delete</button> <!-- Menggunakan kelas btn, btn-danger & btn-small -->
                             
@@ -461,12 +461,6 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
                 console.error('Error updating status:', error);
                 alert('Failed to update status. Please try again.');
             }
-        }
-
-        function viewBlog(id) {
-            // You can implement a view blog function here
-            // For now, just show an alert
-            alert('View blog functionality - you can implement this to show blog details');
         }
 
         // Image preview functionality
