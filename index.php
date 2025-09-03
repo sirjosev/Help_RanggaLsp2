@@ -13,6 +13,7 @@ require_once 'skema_functions.php';
 $skemaManager = new SkemaManager($conn);
 $skema_list = [];
 $latestBlogs = [];
+$header_photos = []; // Initialize photos array
 $db_error = '';
 
 try {
@@ -21,6 +22,11 @@ try {
 
     // Fetch blog data
     $latestBlogs = getAllBlogs($conn, 'publish_date DESC', 3); // Get latest 3 blogs
+
+    // Fetch published photos for the header carousel
+    $photo_stmt = $conn->query("SELECT * FROM photos WHERE status = 'published' ORDER BY uploaded_at DESC");
+    $header_photos = $photo_stmt->fetchAll();
+
 } catch (PDOException $e) {
     $db_error = "Error accessing database: " . $e->getMessage();
     // Log the error for admin, don't show to public
@@ -86,19 +92,41 @@ try {
 
     <!-- Masthead-->
     <header class="masthead bg-primary text-white text-center">
-        <div class="container d-flex align-items-center flex-column">
-            <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
-            <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">LSP-DKS</h1>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+        <div id="headerCarousel" class="carousel slide" data-bs-ride="carousel">
+            <?php if (!empty($header_photos)): ?>
+                <div class="carousel-indicators">
+                    <?php foreach ($header_photos as $i => $photo): ?>
+                        <button type="button" data-bs-target="#headerCarousel" data-bs-slide-to="<?= $i ?>" class="<?= $i == 0 ? 'active' : '' ?>" aria-current="true" aria-label="Slide <?= $i + 1 ?>"></button>
+                    <?php endforeach; ?>
+                </div>
+                <div class="carousel-inner">
+                    <?php foreach ($header_photos as $i => $photo): ?>
+                        <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
+                            <img src="<?= htmlspecialchars($photo['file_path']) ?>" class="d-block w-100" alt="<?= htmlspecialchars($photo['alt_text']) ?>">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#headerCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#headerCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            <?php else: ?>
+                <!-- Fallback to original content if no photos -->
+                <div class="container d-flex align-items-center flex-column">
+                    <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
+                    <h1 class="masthead-heading text-uppercase mb-0">LSP-DKS</h1>
+                    <div class="divider-custom divider-light">
+                        <div class="divider-custom-line"></div>
+                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                        <div class="divider-custom-line"></div>
+                    </div>
+                    <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+                </div>
+            <?php endif; ?>
         </div>
     </header>
 
