@@ -26,13 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
     }
 
     // Buat nama file yang unik
-    $filename = uniqid() . '-' . basename($file['name']);
-    $filepath = $upload_dir . $filename;
+    $filename = basename($file['name']);
+    $unique_filename = uniqid() . '-' . $filename;
+    $file_path = $upload_dir . $unique_filename;
 
-    if (move_uploaded_file($file['tmp_name'], $filepath)) {
+    if (move_uploaded_file($file['tmp_name'], $file_path)) {
         try {
-            $stmt = $conn->prepare("INSERT INTO photos (filename, filepath, status) VALUES (?, ?, 'draft')");
-            $stmt->execute([$filename, $filepath]);
+            $stmt = $conn->prepare("INSERT INTO photos (title, alt_text, file_path, status) VALUES (?, ?, ?, 'draft')");
+            $stmt->execute([$filename, $filename, $file_path]);
             $new_id = $conn->lastInsertId();
 
             echo json_encode([
@@ -40,12 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
                 'message' => 'Draft saved successfully.',
                 'photo' => [
                     'id' => $new_id,
-                    'filepath' => $filepath
+                    'title' => $filename,
+                    'file_path' => $file_path
                 ]
             ]);
             exit;
         } catch (PDOException $e) {
-            unlink($filepath);
+            unlink($file_path);
             echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
             exit;
         }
