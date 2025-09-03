@@ -43,6 +43,8 @@ try {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Upload Foto Halaman Depan</title>
   <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.js"></script>
   <style>
   :root {
     --card-width: 250px;
@@ -83,6 +85,42 @@ try {
   .confirm-btn { padding: 8px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
   .confirm-yes { background: #e11d48; color: white; }
   .confirm-no { background: #4b5563; color: white; }
+</style>
+<style>
+  /* Cropper Modal Styles */
+  .cropper-modal {
+    display: none;
+    position: fixed;
+    z-index: 3000; /* Higher than other modals */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cropper-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+  }
+
+  .cropper-container {
+    width: 100%;
+    height: 500px; /* Adjust as needed */
+    margin-bottom: 15px;
+  }
+
+  .cropper-container img {
+    max-width: 100%;
+  }
   </style>
 </head>
 <body>
@@ -159,36 +197,145 @@ try {
   </div>
 
   <script>
+    // --- Element References ---
     const fileInput = document.getElementById('foto');
-    const preview = document.getElementById('preview');
-    const draftBtn = document.getElementById('draft-btn');
+    const uploadForm = document.getElementById('upload-form');
 
-    fileInput.addEventListener('change', function() {
-      preview.innerHTML = '';
-      const file = this.files[0];
-      if (file) {
-        const img = document.createElement('img');
-        img.src = URL.createObjectURL(file);
-        preview.appendChild(img);
+    // Cropper Elements
+    const cropperModal = document.getElementById('cropperModal');
+    const imageToCrop = document.getElementById('imageToCrop');
+    const cropBtn = document.getElementById('crop-btn');
+
+    // Other Modals
+    const previewModal = document.getElementById('previewModal');
+    const modalImg = document.getElementById('modalImage');
+    const confirmModal = document.getElementById('confirmModal');
+
+    let cropper;
+    let originalFile;
+    let uploadStatus; // 'draft' or 'published'
+
+    // --- Cropper Logic ---
+
+    // 1. Open cropper modal when a file is selected
+    fileInput.addEventListener('change', (e) => {
+      const files = e.target.files;
+      if (files && files.length > 0) {
+        originalFile = files[0];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          imageToCrop.src = event.target.result;
+          cropperModal.style.display = 'flex';
+
+          if (cropper) {
+            cropper.destroy();
+          }
+
+          cropper = new Cropper(imageToCrop, {
+            aspectRatio: 1200 / 673,
+            viewMode: 1,
+            background: false,
+          });
+        };
+        reader.readAsDataURL(originalFile);
       }
     });
 
+    // 2. Handle main Upload/Draft button clicks
+    uploadForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent default form submission
+      uploadStatus = 'published';
+      openCropperForSelectedFile();
+    });
+
+    document.getElementById('draft-btn').addEventListener('click', () => {
+      uploadStatus = 'draft';
+      openCropperForSelectedFile();
+    });
+
+    function openCropperForSelectedFile() {
+      if (!fileInput.files || fileInput.files.length === 0) {
+        alert("Pilih file terlebih dahulu!");
+        return;
+      }
+      // The 'change' event listener on fileInput will handle opening the modal
+      // This function just sets the status and ensures a file is selected.
+      // If a file is already selected, we might need to re-trigger the modal opening logic.
+      const event = new Event('change');
+      fileInput.dispatchEvent(event);
+    }
+
+    // 3. Handle the final crop and upload
+    cropBtn.addEventListener('click', () => {
+      if (!cropper) {
+        return;
+      }
+
+      // Get cropped canvas
+      const canvas = cropper.getCroppedCanvas({
+        width: 1200,
+        height: 673,
+      });
+
+      canvas.toBlob((blob) => {
+        const formData = new FormData();
+        // Append the cropped image as a file
+        formData.append('foto', blob, originalFile.name);
+
+        const endpoint = uploadStatus === 'draft' ? 'proses_draft.php' : 'proses_upload.php';
+
+        // Disable button to prevent multiple clicks
+        cropBtn.disabled = true;
+        cropBtn.innerText = 'Uploading...';
+
+        fetch(endpoint, {
+          method: 'POST',
+          body: formData,
+        })
+        .then(response => {
+            // For published status, the backend redirects, so we check for that.
+            if (response.redirected) {
+                window.location.href = response.url;
+                return;
+            }
+            return response.json();
+        })
+        .then(data => {
+          if (data && data.success) {
+            if (uploadStatus === 'draft') {
+              addCardToGallery(data.photo, 'draft');
+            }
+          } else if (data) {
+            alert('Gagal mengupload foto: ' + data.message);
+          }
+        })
+        .catch(error => console.error('Error:', error))
+        .finally(() => {
+          // Clean up
+          cropperModal.style.display = 'none';
+          fileInput.value = '';
+          cropBtn.disabled = false;
+          cropBtn.innerText = 'Crop and Save';
+        });
+      }, originalFile.type);
+    });
+
+    // --- All other functions remain, but the main upload/draft are now handled by the cropper ---
+
     // Modal Preview
-    const modal = document.getElementById('previewModal');
-    const modalImg = document.getElementById('modalImage');
     function openPreview(src) {
-      modal.style.display = "flex";
+      previewModal.style.display = "flex";
       modalImg.src = src;
     }
     function closePreview() {
-      modal.style.display = "none";
+      previewModal.style.display = "none";
     }
 
     // Modal Konfirmasi
     let pendingAction = null;
     function askConfirm(message, action) {
       document.getElementById("confirmMessage").innerText = message;
-      document.getElementById("confirmModal").style.display = "flex";
+      confirmModal.style.display = "flex";
       pendingAction = action;
     }
     function confirmAction() {
@@ -196,90 +343,51 @@ try {
       closeConfirm();
     }
     function closeConfirm() {
-      document.getElementById("confirmModal").style.display = "none";
+      confirmModal.style.display = "none";
       pendingAction = null;
     }
 
     // --- AJAX Functions ---
 
-    // 1. Save as Draft
-    draftBtn.addEventListener('click', function() {
-      const file = fileInput.files[0];
-      if (!file) {
-        alert("Pilih file terlebih dahulu!");
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append('foto', file);
-
-      fetch('proses_draft.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          addCardToGallery(data.photo, 'draft');
-          fileInput.value = ''; // Reset input file
-          preview.innerHTML = ''; // Clear preview
-        } else {
-          alert('Gagal menyimpan draft: ' + data.message);
-        }
-      })
-      .catch(error => console.error('Error:', error));
-    });
-
-    // 2. Delete Photo
+    // Delete Photo (remains the same)
     function deletePhoto(btn) {
       const card = btn.closest('.card');
       const photoId = card.dataset.id;
-
       askConfirm("Yakin mau hapus foto ini?", function() {
         const formData = new FormData();
         formData.append('id', photoId);
-
-        fetch('proses_delete_photo.php', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            card.remove();
-          } else {
-            alert('Gagal menghapus foto: ' + data.message);
-          }
-        })
-        .catch(error => console.error('Error:', error));
+        fetch('proses_delete_photo.php', { method: 'POST', body: formData })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              card.remove();
+            } else {
+              alert('Gagal menghapus foto: ' + data.message);
+            }
+          })
+          .catch(error => console.error('Error:', error));
       });
     }
 
-    // 3. Publish a Draft
+    // Publish a Draft (remains the same)
     function publishDraft(btn) {
       const card = btn.closest('.card');
       const photoId = card.dataset.id;
-
       askConfirm("Yakin mau upload foto ini?", function() {
         const formData = new FormData();
         formData.append('id', photoId);
-
-        fetch('proses_publish_draft.php', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            // Pindahkan card ke galeri published
-            const publishedGallery = document.getElementById('published-gallery');
-            btn.remove(); // Hapus tombol upload dari card
-            publishedGallery.prepend(card);
-          } else {
-            alert('Gagal mempublish foto: ' + data.message);
-          }
-        })
-        .catch(error => console.error('Error:', error));
+        fetch('proses_publish_draft.php', { method: 'POST', body: formData })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              const publishedGallery = document.getElementById('published-gallery');
+              btn.remove();
+              publishedGallery.prepend(card);
+            } else {
+              alert('Gagal mempublish foto: ' + data.message);
+            }
+          })
+          .catch(error => console.error('Error:', error));
       });
     }
 
@@ -304,7 +412,6 @@ try {
             ${buttons}
         `;
 
-        // Remove placeholder if it exists
         const placeholder = gallery.querySelector('p');
         if (placeholder && placeholder.innerText.startsWith('Tidak ada foto')) {
             placeholder.remove();
@@ -313,5 +420,18 @@ try {
         gallery.prepend(card);
     }
   </script>
+
+  <!-- Cropper Modal -->
+  <div id="cropperModal" class="cropper-modal">
+    <div class="cropper-content">
+      <h3>Crop Your Image</h3>
+      <div class="cropper-container">
+        <img id="imageToCrop" src="">
+      </div>
+      <button id="crop-btn" class="btn-upload">Crop and Save</button>
+      <button type="button" onclick="document.getElementById('cropperModal').style.display='none'" class="btn-draft">Cancel</button>
+    </div>
+  </div>
+
 </body>
 </html>
