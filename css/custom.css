@@ -23,13 +23,19 @@
 }
 
 /* Header Carousel Styles */
-.masthead .carousel,
+.masthead .carousel {
+    width: 100%;
+    aspect-ratio: 1200 / 673;
+    background: #2c3e50; /* Fallback color in case of image loading issues */
+}
+
 .masthead .carousel-inner,
 .masthead .carousel-item {
     height: 100%;
 }
 
 .masthead .carousel-item img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
