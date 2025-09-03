@@ -1,0 +1,43 @@
+<?php
+require_once 'config.php';
+
+header('Content-Type: application/json');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    $photo_id = $_POST['id'];
+
+    if (empty($photo_id)) {
+        echo json_encode(['success' => false, 'message' => 'Invalid Photo ID.']);
+        exit;
+    }
+
+    try {
+        // 1. Dapatkan filepath sebelum menghapus record
+        $stmt = $conn->prepare("SELECT filepath FROM photos WHERE id = ?");
+        $stmt->execute([$photo_id]);
+        $photo = $stmt->fetch();
+
+        if ($photo) {
+            // 2. Hapus record dari database
+            $stmt = $conn->prepare("DELETE FROM photos WHERE id = ?");
+            $deleted = $stmt->execute([$photo_id]);
+
+            if ($deleted) {
+                // 3. Hapus file dari server
+                if (file_exists($photo['filepath'])) {
+                    unlink($photo['filepath']);
+                }
+                echo json_encode(['success' => true, 'message' => 'Photo deleted successfully.']);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Failed to delete photo from database.']);
+            }
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Photo not found.']);
+        }
+    } catch (PDOException $e) {
+        echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
+    }
+} else {
+    echo json_encode(['success' => false, 'message' => 'Invalid request.']);
+}
+?>
