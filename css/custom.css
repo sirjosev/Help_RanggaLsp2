@@ -21,3 +21,16 @@
 .portfolio-item .img-fluid {
     border-radius: 50%;
 }
+
+/* Header Carousel Styles */
+.masthead .carousel,
+.masthead .carousel-inner,
+.masthead .carousel-item {
+    height: 100%;
+}
+
+.masthead .carousel-item img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
