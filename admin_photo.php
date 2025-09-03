@@ -2,17 +2,26 @@
 require_once 'config.php';
 
 try {
-    // Cek jika tabel photos sudah ada
+    // Check if the 'photos' table exists
     $stmt = $conn->query("SHOW TABLES LIKE 'photos'");
     if ($stmt->rowCount() == 0) {
-        // Buat tabel photos jika belum ada
+        // If not, create it with the user's schema + status column
         $conn->exec("CREATE TABLE `photos` (
-            `id` INT AUTO_INCREMENT PRIMARY KEY,
-            `filename` VARCHAR(255) NOT NULL,
-            `filepath` VARCHAR(255) NOT NULL,
+            `id` INT(11) NOT NULL AUTO_INCREMENT,
+            `title` VARCHAR(255) DEFAULT NULL,
+            `file_path` VARCHAR(255) NOT NULL,
+            `alt_text` VARCHAR(255) DEFAULT NULL,
             `status` ENUM('draft', 'published') NOT NULL DEFAULT 'draft',
-            `uploaded_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            `uploaded_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+            PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+    } else {
+        // If the table exists, check for the 'status' column
+        $stmt = $conn->query("SHOW COLUMNS FROM `photos` LIKE 'status'");
+        if ($stmt->rowCount() == 0) {
+            // If the 'status' column doesn't exist, add it
+            $conn->exec("ALTER TABLE `photos` ADD COLUMN `status` ENUM('draft', 'published') NOT NULL DEFAULT 'draft';");
+        }
     }
 
     // Ambil semua foto dari database
@@ -103,8 +112,8 @@ try {
         <?php foreach ($draft_photos as $photo): ?>
           <div class="card" data-id="<?= $photo['id'] ?>">
             <button class="btn-delete" onclick="deletePhoto(this)">×</button>
-            <img src="<?= htmlspecialchars($photo['filepath']) ?>" alt="<?= htmlspecialchars($photo['filename']) ?>">
-            <p class="preview-link" onclick="openPreview('<?= htmlspecialchars($photo['filepath']) ?>')">Preview</p>
+            <img src="<?= htmlspecialchars($photo['file_path']) ?>" alt="<?= htmlspecialchars($photo['alt_text']) ?>">
+            <p class="preview-link" onclick="openPreview('<?= htmlspecialchars($photo['file_path']) ?>')">Preview</p>
             <button class="btn-upload-small" onclick="publishDraft(this)">Upload</button>
           </div>
         <?php endforeach; ?>
@@ -121,8 +130,8 @@ try {
         <?php foreach ($published_photos as $photo): ?>
           <div class="card" data-id="<?= $photo['id'] ?>">
             <button class="btn-delete" onclick="deletePhoto(this)">×</button>
-            <img src="<?= htmlspecialchars($photo['filepath']) ?>" alt="<?= htmlspecialchars($photo['filename']) ?>">
-            <p class="preview-link" onclick="openPreview('<?= htmlspecialchars($photo['filepath']) ?>')">Preview</p>
+            <img src="<?= htmlspecialchars($photo['file_path']) ?>" alt="<?= htmlspecialchars($photo['alt_text']) ?>">
+            <p class="preview-link" onclick="openPreview('<?= htmlspecialchars($photo['file_path']) ?>')">Preview</p>
           </div>
         <?php endforeach; ?>
          <?php if (empty($published_photos)): ?>
@@ -290,10 +299,16 @@ try {
 
         card.innerHTML = `
             <button class="btn-delete" onclick="deletePhoto(this)">×</button>
-            <img src="${photo.filepath}" alt="New Photo">
-            <p class="preview-link" onclick="openPreview('${photo.filepath}')">Preview</p>
+            <img src="${photo.file_path}" alt="${photo.title}">
+            <p class="preview-link" onclick="openPreview('${photo.file_path}')">Preview</p>
             ${buttons}
         `;
+
+        // Remove placeholder if it exists
+        const placeholder = gallery.querySelector('p');
+        if (placeholder && placeholder.innerText.startsWith('Tidak ada foto')) {
+            placeholder.remove();
+        }
 
         gallery.prepend(card);
     }

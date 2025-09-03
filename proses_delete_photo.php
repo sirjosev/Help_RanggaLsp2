@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     }
 
     try {
-        // 1. Dapatkan filepath sebelum menghapus record
-        $stmt = $conn->prepare("SELECT filepath FROM photos WHERE id = ?");
+        // 1. Dapatkan file_path sebelum menghapus record
+        $stmt = $conn->prepare("SELECT file_path FROM photos WHERE id = ?");
         $stmt->execute([$photo_id]);
         $photo = $stmt->fetch();
 
@@ -24,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
 
             if ($deleted) {
                 // 3. Hapus file dari server
-                if (file_exists($photo['filepath'])) {
-                    unlink($photo['filepath']);
+                if (file_exists($photo['file_path'])) {
+                    unlink($photo['file_path']);
                 }
                 echo json_encode(['success' => true, 'message' => 'Photo deleted successfully.']);
             } else {

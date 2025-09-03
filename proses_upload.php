@@ -22,22 +22,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
     }
 
     // Buat nama file yang unik
-    $filename = uniqid() . '-' . basename($file['name']);
-    $filepath = $upload_dir . $filename;
+    $filename = basename($file['name']);
+    $unique_filename = uniqid() . '-' . $filename;
+    $file_path = $upload_dir . $unique_filename;
 
     // Pindahkan file ke direktori tujuan
-    if (move_uploaded_file($file['tmp_name'], $filepath)) {
+    if (move_uploaded_file($file['tmp_name'], $file_path)) {
         // Simpan ke database
         try {
-            $stmt = $conn->prepare("INSERT INTO photos (filename, filepath, status) VALUES (?, ?, 'published')");
-            $stmt->execute([$filename, $filepath]);
+            $stmt = $conn->prepare("INSERT INTO photos (title, alt_text, file_path, status) VALUES (?, ?, ?, 'published')");
+            $stmt->execute([$filename, $filename, $file_path]);
 
             // Redirect kembali ke halaman admin
             header("Location: admin_photo.php?success=1");
             exit();
         } catch (PDOException $e) {
             // Hapus file jika insert DB gagal
-            unlink($filepath);
+            unlink($file_path);
             die("Database error: " . $e->getMessage());
         }
     } else {
