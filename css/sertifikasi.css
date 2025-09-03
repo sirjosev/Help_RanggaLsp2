@@ -12,12 +12,12 @@
   
   /* Navbar */
   #mainNav {
-    background-color: #2F3A4D !important;
+    background-color: #ffffff !important;
     padding: 15px 0;
   }
   
   #mainNav .nav-link {
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
     transition: background-color 0.3s;
   }
   

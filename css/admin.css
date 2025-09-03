@@ -9,16 +9,16 @@
         font-family: Arial, sans-serif;
         display: flex;
         min-height: 100vh;
-        background-color: #f5f5f5; /* Warna background body dari admin_skema */
+        background-color: #f5f5f5; 
     }
 
-    /* Sidebar Styles - Dikonsolidasikan dari kedua file */
+    
     .sidebar {
-        width: 250px; /* Lebar standar sidebar */
-        background-color: #2c3e50; /* Warna bg sidebar dari admin_skema */
+        width: 250px; 
+        background-color: #d5d5d5; 
         color: white;
-        padding: 20px 0; /* Padding atas bawah, tanpa padding samping karena link akan punya padding */
-        position: fixed; /* Sidebar tetap saat scroll */
+        padding: 20px 0; 
+        position: fixed;
         left: 0;
         top: 0;
         height: 100vh;
@@ -27,15 +27,15 @@
     }
 
     .sidebar .logo {
-        padding: 20px; /* Padding untuk logo */
-        text-align: center; /* Logo di tengah */
-        border-bottom: 1px solid #34495e; /* Garis bawah logo dari admin_skema */
+        padding: 20px; 
+        text-align: center; 
+        border-bottom: 1px solid #34495e; 
     }
-    .sidebar .logo img { /* Untuk logo gambar di admin_blog */
-        max-width: 80%; /* Batasi lebar logo gambar */
+    .sidebar .logo img { 
+        max-width: 80%; 
         height: auto;
     }
-    .sidebar .logo h2 { /* Untuk logo teks di admin_skema */
+    .sidebar .logo h2 { 
         font-size: 1.6rem;
         margin: 0;
         color: white;
@@ -48,7 +48,7 @@
     }
 
     .sidebar ul li a {
-        color: white;
+        color: rgb(0, 0, 0);
         text-decoration: none;
         display: block;
         padding: 12px 20px; /* Padding link menu */
@@ -58,7 +58,7 @@
 
     .sidebar ul li a:hover,
     .sidebar ul li a.active {
-        background-color: #3498db; /* Warna biru utama */
+        background-color: #ffffff; /* Warna biru utama */
         transform: translateX(5px);
     }
 
@@ -71,21 +71,18 @@
         display: block;
         width: 100%;
         text-align: center;
-        /* Menggunakan style .btn .btn-danger yang sudah ada,
-           jadi tidak perlu banyak duplikasi di sini kecuali ada override.
-           Pastikan kelas .btn dan .btn-danger sudah sesuai. */
     }
 
-    /* Main Content Styles - Dikonsolidasikan */
+    
     .main-content {
         flex-grow: 1;
-        padding: 25px; /* Padding utama konten */
-        margin-left: 250px; /* Sesuaikan dengan lebar sidebar */
-        background-color: #f5f5f5; /* Pastikan background jika body tidak ter-cover */
+        padding: 25px; 
+        margin-left: 250px; 
+        background-color: #f5f5f5;; 
     }
 
     header {
-        background-color: #ffffff; /* Warna header dari admin_skema */
+        background-color: #ffffff; 
         padding: 20px 25px; /* Padding header */
         margin-bottom: 25px; /* Jarak bawah header */
         border-radius: 8px;
@@ -293,13 +290,13 @@
     }
 
     .btn-danger {
-        background-color: #e74c3c;
+        background-color:  #e41500;
     }
     .btn-danger:hover {
-        background-color: #c0392b;
+        background-color:  #e41500;
     }
     .btn-danger:active {
-        background-color: #ad3427;
+        background-color:  #e41500;
     }
     
     .btn-success {
@@ -529,3 +526,5 @@
         .modal-content h2 { font-size: 1.4rem; }
         .close { top: 15px; right: 20px; font-size: 28px;}
     }
+
+    

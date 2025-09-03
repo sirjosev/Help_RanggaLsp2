@@ -9,6 +9,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <li><a href="admin.php" class="<?= $current_page == 'admin.php' ? 'active' : '' ?>">Dashboard</a></li>
         <li><a href="admin_blog.php" class="<?= $current_page == 'admin_blog.php' ? 'active' : '' ?>">Blog</a></li>
         <li><a href="admin_skema.php" class="<?= $current_page == 'admin_skema.php' ? 'active' : '' ?>">Skema</a></li>
+        <li><a href="admin_photo.php" class="<?= $current_page == 'admin_photo.php' ? 'active' : '' ?>">Photo</a></li>
     </ul>
     <div class="sidebar-signout">
         <a href="logout.php" class="btn btn-danger signout-btn-sidebar">Sign Out</a>

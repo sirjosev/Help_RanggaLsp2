@@ -153,6 +153,9 @@ if ($search_term) {
             border-radius: 5px;
             font-size: 1rem;
         }
+        body {
+             padding-top: 140px; /* tinggi navbar (120px) + extra ruang */
+        }
 
         .filter-section {
             margin-bottom: 2rem;
@@ -194,10 +197,9 @@ if ($search_term) {
 
 <body id="page-top">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+     <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand navbar-brand-logos" href="#page-top">
-                <img src="assets/img/logo-bnsp.png" alt="BNSP Logo">
                 <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
             </a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
@@ -222,7 +224,7 @@ if ($search_term) {
                         <a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog.php">Blog</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="btn btn-outline-light ms-3" href="#register">Register</a>
+                        <a class="btn btn-outline-light ms-3" href="https://sertifikasi.lspdks.co.id" target="_blank">Register</a>
                     </li>
                 </ul>
             </div>
@@ -336,15 +338,10 @@ if ($search_term) {
                             <br />
                             Kode Pos 1243
                         </p>
-                    </div>
-
-                    <!-- Kolom 2: Peta -->
-                    <div class="col-lg-4 footer-col">
-                        <h4 class="text-uppercase mb-4">Our Location on Map</h4>
                         <div class="map-responsive">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d966.3195365153447!2d106.80471588299955!3d-6.2909179536907365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1f275c8afc3%3A0x7a3084e60947f99a!2sAlamanda%20Tower%2C%20Building%20Management.!5e0!3m2!1sid!2sid!4v1744843896947!5m2!1sid!2sid"
-                                width="100%" height="250" style="border:0; border-radius: 0.5rem;" allowfullscreen="" loading="lazy"
+                                width="100%" height="100" style="border:0; border-radius: 0.5rem;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
@@ -358,7 +355,7 @@ if ($search_term) {
                         </p>
                         <p class="lead mb-0">
                             <i class="fas fa-phone me-2"></i> <!-- Contoh ikon jika FontAwesome tersedia -->
-                            Phone: <a href="tel:+6281188809565">081188809565</a>
+                            Phone: <a href="https://wa.me/+6281188809565">081188809565</a>
                         </p>
                     </div>
                 </div>
