@@ -91,7 +91,7 @@ try {
     </nav>
 
     <!-- Masthead-->
-    <header class="masthead bg-primary text-white text-center">
+    <header class="masthead text-white text-center">
         <div id="headerCarousel" class="carousel slide" data-bs-ride="carousel">
             <?php if (!empty($header_photos)): ?>
                 <div class="carousel-indicators">
