@@ -209,6 +209,7 @@ try {
   </div>
 
   <script>
+  document.addEventListener('DOMContentLoaded', function() {
     // --- Element References ---
     const fileInput = document.getElementById('foto');
     const uploadForm = document.getElementById('upload-form');
@@ -346,7 +347,7 @@ try {
     }
 
     // Modal Konfirmasi
-    let pendingAction = null;
+    var pendingAction = null;
     function askConfirm(message, action) {
       document.getElementById("confirmMessage").innerText = message;
       confirmModal.style.display = "flex";
@@ -433,6 +434,7 @@ try {
 
         gallery.prepend(card);
     }
+  });
   </script>
 
 </body>
