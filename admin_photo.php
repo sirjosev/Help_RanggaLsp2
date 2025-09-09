@@ -11,8 +11,8 @@ try {
             `title` VARCHAR(255) DEFAULT NULL,
             `file_path` VARCHAR(255) NOT NULL,
             `alt_text` VARCHAR(255) DEFAULT NULL,
-            `status` ENUM('draft', 'published') NOT NULL DEFAULT 'draft',
             `uploaded_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+            `status` ENUM('draft', 'published') NOT NULL DEFAULT 'draft',
             PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
     } else {
