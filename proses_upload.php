@@ -1,24 +1,40 @@
 <?php
 require_once 'config.php';
 
+header('Content-Type: application/json');
+
+// Helper function to send JSON response and exit
+function json_response($success, $message = '', $data = []) {
+    $response = ['success' => $success, 'message' => $message];
+    if (!empty($data)) {
+        $response = array_merge($response, $data);
+    }
+    echo json_encode($response);
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
     $upload_dir = 'assets/img/gallery/';
 
     // Buat direktori jika belum ada
     if (!is_dir($upload_dir)) {
+        // Check if parent directory is writable, otherwise mkdir might fail silently
+        if (!is_writable(dirname($upload_dir))) {
+             json_response(false, 'Server error: Directory is not writable.');
+        }
         mkdir($upload_dir, 0777, true);
     }
 
     $file = $_FILES['foto'];
 
-    // Validasi sederhana
+    // Validasi
     if ($file['error'] !== UPLOAD_ERR_OK) {
-        die("Error during file upload.");
+        json_response(false, 'Error during file upload. Code: ' . $file['error']);
     }
 
     $image_info = getimagesize($file['tmp_name']);
     if ($image_info === false) {
-        die("Invalid image file.");
+        json_response(false, 'Invalid image file.');
     }
 
     // Buat nama file yang unik
@@ -33,20 +49,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
             $stmt = $conn->prepare("INSERT INTO photos (title, alt_text, file_path, status) VALUES (?, ?, ?, 'published')");
             $stmt->execute([$filename, $filename, $file_path]);
 
-            // Redirect kembali ke halaman admin
-            header("Location: admin_photo.php?success=1");
-            exit();
+            json_response(true, 'Photo uploaded successfully.');
+
         } catch (PDOException $e) {
             // Hapus file jika insert DB gagal
-            unlink($file_path);
-            die("Database error: " . $e->getMessage());
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+            json_response(false, 'Database error: ' . $e->getMessage());
         }
     } else {
-        die("Failed to move uploaded file.");
+        json_response(false, 'Failed to move uploaded file. Check server permissions.');
     }
 } else {
-    // Jika bukan POST request, redirect ke halaman utama
-    header("Location: admin_photo.php");
-    exit();
+    json_response(false, 'Invalid request method.');
 }
 ?>

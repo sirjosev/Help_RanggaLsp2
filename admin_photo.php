@@ -292,24 +292,26 @@ try {
           method: 'POST',
           body: formData,
         })
-        .then(response => {
-            // For published status, the backend redirects, so we check for that.
-            if (response.redirected) {
-                window.location.href = response.url;
-                return;
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-          if (data && data.success) {
+          if (data.success) {
             if (uploadStatus === 'draft') {
+              // If it's a draft, add it to the gallery dynamically
               addCardToGallery(data.photo, 'draft');
+            } else {
+              // If it's a published photo, show a success message and reload
+              alert(data.message || 'Foto berhasil diupload!');
+              window.location.href = 'admin_photo.php';
             }
-          } else if (data) {
-            alert('Gagal mengupload foto: ' + data.message);
+          } else {
+            // If the upload failed for any reason, show the error message
+            alert('Gagal mengupload foto: ' + (data.message || 'Unknown error'));
           }
         })
-        .catch(error => console.error('Error:', error))
+        .catch(error => {
+            console.error('Upload Error:', error);
+            alert('Terjadi kesalahan teknis saat mengupload. Periksa konsol untuk detail.');
+        })
         .finally(() => {
           // Clean up
           cropperModal.style.display = 'none';
