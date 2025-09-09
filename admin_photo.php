@@ -196,6 +196,18 @@ try {
     </div>
   </div>
 
+  <!-- Cropper Modal -->
+  <div id="cropperModal" class="cropper-modal">
+    <div class="cropper-content">
+      <h3>Crop Your Image</h3>
+      <div class="cropper-container">
+        <img id="imageToCrop" src="">
+      </div>
+      <button id="crop-btn" class="btn-upload">Crop and Save</button>
+      <button type="button" onclick="document.getElementById('cropperModal').style.display='none'" class="btn-draft">Cancel</button>
+    </div>
+  </div>
+
   <script>
     // --- Element References ---
     const fileInput = document.getElementById('foto');
@@ -422,18 +434,6 @@ try {
         gallery.prepend(card);
     }
   </script>
-
-  <!-- Cropper Modal -->
-  <div id="cropperModal" class="cropper-modal">
-    <div class="cropper-content">
-      <h3>Crop Your Image</h3>
-      <div class="cropper-container">
-        <img id="imageToCrop" src="">
-      </div>
-      <button id="crop-btn" class="btn-upload">Crop and Save</button>
-      <button type="button" onclick="document.getElementById('cropperModal').style.display='none'" class="btn-draft">Cancel</button>
-    </div>
-  </div>
 
 </body>
 </html>
