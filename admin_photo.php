@@ -230,53 +230,51 @@ try {
 
     // --- Cropper Logic ---
 
-    // 1. Open cropper modal when a file is selected
+    // 1. Store the file when selected, but don't open the cropper yet.
     fileInput.addEventListener('change', (e) => {
       const files = e.target.files;
       if (files && files.length > 0) {
         originalFile = files[0];
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          imageToCrop.src = event.target.result;
-          cropperModal.style.display = 'flex';
-
-          if (cropper) {
-            cropper.destroy();
-          }
-
-          cropper = new Cropper(imageToCrop, {
-            aspectRatio: 1200 / 673,
-            viewMode: 1,
-            background: false,
-          });
-        };
-        reader.readAsDataURL(originalFile);
+        // Optional: show a preview or file name on the main page
+        const previewContainer = document.getElementById('preview');
+        previewContainer.innerHTML = `<p>File selected: <strong>${originalFile.name}</strong>. Now choose Upload or Draft.</p>`;
       }
     });
 
-    // 2. Handle main Upload/Draft button clicks
+    // 2. Function to open the cropper modal with the stored file.
+    function openCropper() {
+      if (!originalFile) {
+        alert("Please select a file first!");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        imageToCrop.src = event.target.result;
+        cropperModal.style.display = 'flex';
+
+        if (cropper) {
+          cropper.destroy();
+        }
+        cropper = new Cropper(imageToCrop, {
+          aspectRatio: 1200 / 673,
+          viewMode: 1,
+          background: false,
+        });
+      };
+      reader.readAsDataURL(originalFile);
+    }
+
+    // 3. Set status and open cropper when Upload/Draft buttons are clicked.
     uploadForm.addEventListener('submit', (e) => {
-      e.preventDefault(); // Prevent default form submission
+      e.preventDefault();
       uploadStatus = 'published';
-      openCropperForSelectedFile();
+      openCropper();
     });
 
     document.getElementById('draft-btn').addEventListener('click', () => {
       uploadStatus = 'draft';
-      openCropperForSelectedFile();
+      openCropper();
     });
-
-    function openCropperForSelectedFile() {
-      if (!fileInput.files || fileInput.files.length === 0) {
-        alert("Pilih file terlebih dahulu!");
-        return;
-      }
-      // The 'change' event listener on fileInput will handle opening the modal
-      // This function just sets the status and ensures a file is selected.
-      // If a file is already selected, we might need to re-trigger the modal opening logic.
-      const event = new Event('change');
-      fileInput.dispatchEvent(event);
-    }
 
     // 3. Handle the final crop and upload
     cropBtn.addEventListener('click', () => {
