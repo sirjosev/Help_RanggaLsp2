@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
             ]);
             exit;
         } catch (PDOException $e) {
+            // Hapus file jika insert DB gagal
             unlink($file_path);
             echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
             exit;
