@@ -49,3 +49,8 @@
     object-fit: cover;
     object-position: center;
 }
+
+.masthead.masthead-with-carousel {
+    padding-top: 0;
+    padding-bottom: 0;
+}
