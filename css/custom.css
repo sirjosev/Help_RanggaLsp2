@@ -51,6 +51,12 @@
 }
 
 .masthead.masthead-with-carousel {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
+    height: 100vh; /* Set masthead to full viewport height */
+}
+
+/* Override aspect-ratio sizing when carousel is active */
+.masthead.masthead-with-carousel .carousel {
+    height: 100%; /* Make carousel fill the masthead */
+    padding-bottom: 0; /* Remove aspect ratio padding */
 }
