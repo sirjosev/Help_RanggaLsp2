@@ -10,6 +10,11 @@ body {
   background-color: #ffffff;
 }
 
+/* Remove underline from blog detail title */
+.berita-detail-section .page-section-heading {
+  text-decoration: none;
+}
+
 
 .container {
   max-width: 800px;
