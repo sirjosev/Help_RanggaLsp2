@@ -93,7 +93,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         ?>
                         <img src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($blog['title']); ?>" class="gambar-berita">
                         <div class="konten-berita">
-                            <h3 class="judul"><a href="blog_detail.php?id=<?php echo $blog['id']; ?>"><?php echo htmlspecialchars($blog['title']); ?></a></h3>
+                            <h3 class="judul"><a href="blog_detail.php?id=<?php echo $blog['id']; ?>" style="text-decoration: none;"><?php echo htmlspecialchars($blog['title']); ?></a></h3>
                             <p class="tanggal"><small><?php echo formatBlogDate($blog['publish_date']); ?></small></p>
                             <p class="deskripsi">
                                 <?php echo generateSummary($blog['content'], 50); // Show a summary of ~50 words ?>
