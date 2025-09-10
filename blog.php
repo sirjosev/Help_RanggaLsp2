@@ -80,28 +80,35 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
                 </div>
             <?php else: ?>
-                <?php foreach ($allBlogs as $blog): ?>
-                    <div class="card-berita">
-                        <?php
-                        $imagePath = htmlspecialchars($blog['featured_image']);
-                        // Prepend 'http' or 'https' if it's an external URL, otherwise assume it's a local path
-                        if (strpos($imagePath, 'http') !== 0 && !empty($imagePath)) {
-                            // No specific prefix needed as path is assets/img/....jpg
-                        } elseif (empty($imagePath)) {
-                            $imagePath = 'https://via.placeholder.com/200x130?text=No+Image'; // Placeholder if no image
-                        }
-                        ?>
-                        <img src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($blog['title']); ?>" class="gambar-berita">
-                        <div class="konten-berita">
-                            <h3 class="judul"><a href="blog_detail.php?id=<?php echo $blog['id']; ?>" style="text-decoration: none;"><?php echo htmlspecialchars($blog['title']); ?></a></h3>
-                            <p class="tanggal"><small><?php echo formatBlogDate($blog['publish_date']); ?></small></p>
-                            <p class="deskripsi">
-                                <?php echo generateSummary($blog['content'], 50); // Show a summary of ~50 words ?>
-                            </p>
-                            <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-primary btn-sm mt-auto">Baca Selengkapnya</a>
+                <div class="row justify-content-center">
+                    <?php foreach ($allBlogs as $blog): ?>
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="portfolio-item-wrapper">
+                                <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="portfolio-item-link">
+                                    <div class="portfolio-item mx-auto">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
+                                        </div>
+                                        <?php
+                                        $imagePath = htmlspecialchars($blog['featured_image']);
+                                        if (empty($imagePath)) {
+                                            $imagePath = 'https://via.placeholder.com/400x300?text=No+Image'; // Placeholder
+                                        }
+                                        ?>
+                                        <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($blog['title']); ?>">
+                                    </div>
+                                </a>
+                                <div class="text-center mt-3 portfolio-item-details">
+                                    <h5 class="portfolio-item-title"><?php echo htmlspecialchars($blog['title']); ?></h5>
+                                    <p class="text-muted portfolio-item-summary">
+                                        <?php echo generateSummary($blog['content'], 20); // Shorter summary for card layout ?>
+                                    </p>
+                                    <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
 
         </div>
