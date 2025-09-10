@@ -12,7 +12,7 @@ body {
 
 
 .container {
-  max-width: 800px;
+  max-width: 960px; /* Increased from 800px for wider content */
   margin: 0 auto;
 }
 
@@ -53,7 +53,7 @@ body {
   line-height: 1.8;
   color: #212529;
   text-align: justify;
-  padding: 0 10px;
+  padding: 0; /* Removed horizontal padding */
 }
 
 .btn-kembali {
