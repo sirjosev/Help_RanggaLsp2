@@ -6,34 +6,33 @@ body {
 }
 
 .berita-container {
-    /* max-width: 1000px; */ /* Using Bootstrap's .container class should handle this */
-    /* margin: 40px 0 40px 60px; */ /* Replaced with standard Bootstrap container behavior */
-    /* padding: 0 20px; */ /* Replaced with standard Bootstrap container behavior */
-    padding-top: 2rem; /* Add some space from the header/divider */
-    padding-bottom: 2rem; /* Add some space before the footer */
+    display: grid;
+    grid-template-columns: 1fr; /* Default to one column */
+    gap: 20px; /* Spacing between cards */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
-/* .berita-container h1 is not used, page-section-heading is used in blog.php */
-/* If a specific h1 style for blog page is needed, it can be added back */
-/* For example:
-.berita-container > h1 {
-    text-align: center;
-    color: #4b0082;
-    margin-bottom: 30px;
+/* On wider screens, create a two-column layout */
+@media (min-width: 768px) {
+    .berita-container {
+        grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    }
 }
-*/
+
 
 /* The h2 inside .page-section already has styling from styles.css */
 /* No need to override .page-section-heading unless for specific blog page changes */
 
 .card-berita {
     display: flex;
+    flex-direction: row; /* Side-by-side layout */
     background-color: #fff;
-    margin-bottom: 20px; /* Consider using Bootstrap's mb-* classes in HTML if consistent spacing is desired */
-    border-radius: 10px; /* Bootstrap's .rounded class can also be used */
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Bootstrap's .shadow-sm or .shadow can be used */
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
 }
 
 .card-berita:hover {
@@ -41,18 +40,10 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
 }
 
-.card-berita {
-    display: flex;
-    background-color: #fff;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
 .gambar-berita {
-    width: 200px;
-    height: 130px;
+    width: 200px; /* Fixed width for the image */
+    flex-shrink: 0; /* Prevent image from shrinking */
+    height: 100%;
     object-fit: cover;
 }
 
