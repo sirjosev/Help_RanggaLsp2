@@ -208,19 +208,22 @@ try {
                 <?php else: ?>
                     <?php foreach ($skema_list as $skema): ?>
                     <div class="col-md-6 col-lg-4 mb-5">
-                        <a href="skema.php?id=<?php echo $skema['id']; ?>" class="portfolio-item-link">
-                            <div class="portfolio-item mx-auto">
-                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                        <div class="portfolio-item-wrapper">
+                            <a href="skema.php?id=<?php echo $skema['id']; ?>" class="portfolio-item-link">
+                                <div class="portfolio-item mx-auto">
+                                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
+                                    </div>
+                                    <?php
+                                        $imagePath = !empty($skema['gambar']) ? $skemaManager->getGambarPath($skema['gambar']) : 'assets/img/portfolio/game.png';
+                                    ?>
+                                    <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($skema['nama']); ?>" />
                                 </div>
-                                <?php
-                                    $imagePath = !empty($skema['gambar']) ? $skemaManager->getGambarPath($skema['gambar']) : 'assets/img/portfolio/game.png';
-                                ?>
-                                <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($skema['nama']); ?>" />
+                            </a>
+                            <div class="text-center mt-3 portfolio-item-details">
+                                <h5 class="portfolio-item-title"><?php echo htmlspecialchars($skema['nama']); ?></h5>
+                                <a href="skema.php?id=<?php echo $skema['id']; ?>" class="btn btn-sm btn-primary">Lihat Detail</a>
                             </div>
-                        </a>
-                        <div class="text-center mt-3">
-                            <h5><?php echo htmlspecialchars($skema['nama']); ?></h5>
                         </div>
                     </div>
                     <?php endforeach; ?>
