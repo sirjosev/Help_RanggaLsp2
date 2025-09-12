@@ -192,6 +192,10 @@ if ($search_term) {
                 text-align: left; /* Pastikan rata kiri di mobile juga */
             }
         }
+
+        .bold-item {
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -246,10 +250,10 @@ if ($search_term) {
                 </select>
             </div>
             <ul>
-                <li><a href="sertifikasi.php" style="text-decoration: none; color: inherit;">Semua Skema</a></li>
-                <li><a href="sertifikasi.php?jenis=Klaster" style="text-decoration: none; color: inherit;">Skema Klaster</a></li>
-                <li><a href="sertifikasi.php?jenis=Okupasi" style="text-decoration: none; color: inherit;">Skema Okupasi</a></li>
-                <li><a href="sertifikasi.php?jenis=Mandiri" style="text-decoration: none; color: inherit;">Skema Mandiri</a></li>
+                <li class="bold-item"><a href="sertifikasi.php" style="text-decoration: none; color: inherit;">Semua Skema:</a></li>
+                <li ><a href="sertifikasi.php?jenis=Klaster" style="text-decoration: none; color: inherit;">Skema Klaster</a></li>
+                <li ><a href="sertifikasi.php?jenis=Okupasi" style="text-decoration: none; color: inherit;">Skema Okupasi</a></li>
+                <li ><a href="sertifikasi.php?jenis=Mandiri" style="text-decoration: none; color: inherit;">Skema Mandiri</a></li>
             </ul>
         </aside>
 
@@ -324,5 +328,18 @@ if ($search_term) {
             <?php endif; ?>
         </main>
     </div>
+
+    <script>
+        function filterByJenis(jenis) {
+            const url = new URL(window.location.href);
+            if (jenis) {
+                url.searchParams.set('jenis', jenis);
+            } else {
+                url.searchParams.delete('jenis');
+            }
+            window.location.href = url.toString();
+        }
+    </script>
+
 
 <?php include 'includes/footer.php'; ?>
