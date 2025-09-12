@@ -174,22 +174,6 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
             margin-bottom: 0.5rem;
         }
 
-        .back-button {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: #6c757d;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            transition: background-color 0.3s;
-        }
-
-        .back-button:hover {
-            background: #5a6268;
-            color: white;
-            text-decoration: none;
-        }
 
         .register-button {
             display: inline-block;

@@ -229,6 +229,9 @@ try {
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
+            <div style="text-align: right;">
+                <a href="sertifikasi.php" class="back-button">Lihat Semua Skema →</a>
+            </div>
         </div>
     </section>
 
@@ -282,6 +285,9 @@ try {
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
+        </div>
+        <div style="text-align: right;">
+            <a href="blog.php" class="back-button">Lihat Semua Blog →</a>
         </div>
     </div>
 </section>

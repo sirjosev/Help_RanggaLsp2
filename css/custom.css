@@ -67,3 +67,21 @@
     height: 100%; /* Make carousel fill the masthead */
     padding-bottom: 0; /* Remove aspect ratio padding */
 }
+
+/* Reusable Back/View All Button */
+.back-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem; /* Changed from margin-bottom to margin-top for spacing */
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background: #5a6268;
+    color: white;
+    text-decoration: none;
+}
