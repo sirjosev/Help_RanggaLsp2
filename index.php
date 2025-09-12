@@ -189,7 +189,7 @@ try {
     <div style="margin-bottom: 50px;"></div>
 
     <!-- SKEMA SERIFIKASI Section-->
-    <section class="page-section bg-light" id="skema-sertifikasi">
+    <section class="page-section portfolio bg-light" id="skema-sertifikasi">
         <div class="container">
             <!-- Portfolio Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">SKEMA SERTIFIKASI</h2>
