@@ -325,4 +325,16 @@ if ($search_term) {
         </main>
     </div>
 
+    <script>
+        function filterByJenis(jenis) {
+            const url = new URL(window.location.href);
+            if (jenis) {
+                url.searchParams.set('jenis', jenis);
+            } else {
+                url.searchParams.delete('jenis');
+            }
+            window.location.href = url.toString();
+        }
+    </script>
+
 <?php include 'includes/footer.php'; ?>
