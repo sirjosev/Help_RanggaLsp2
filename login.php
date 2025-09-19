@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Password cocok, buat session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
+            $_SESSION['is_super_admin'] = ($user['email'] === SUPER_ADMIN_EMAIL);
             header("Location: admin.php"); // Arahkan ke dashboard utama
             exit();
         } else {

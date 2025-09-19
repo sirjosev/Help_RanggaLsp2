@@ -1,5 +1,9 @@
 <?php
 // config.php - Make sure this file exists and has proper database connection
+
+// Define the super admin email
+define('SUPER_ADMIN_EMAIL', 'admin@example.com');
+
 try {
     $host = 'localhost';
     $dbname = 'dks';
