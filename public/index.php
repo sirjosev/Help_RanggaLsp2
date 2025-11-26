@@ -5,33 +5,42 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // 1. Include all necessary files once at the top
-require_once 'config.php';
-require_once 'includes/blog_functions.php';
-require_once 'skema_functions.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/config.php';
+
+use App\Model\SkemaManager;
+use App\Model\BlogManager;
 
 // 2. Fetch all data needed for the page
-$skemaManager = new SkemaManager($conn);
+$db_error = '';
 $skema_list = [];
 $latestBlogs = [];
-$header_photos = []; // Initialize photos array
-$db_error = '';
+$header_photos = [];
 
 try {
     // Fetch skema data
+    $skemaManager = new SkemaManager($conn);
     $skema_list = array_slice($skemaManager->getAllSkema(), 0, 6); // Get first 6 skema
 
     // Fetch blog data
-    $latestBlogs = getAllBlogs($conn, 'publish_date DESC', 3); // Get latest 3 blogs
+    $blogManager = new BlogManager($conn);
+    $latestBlogs = $blogManager->getAllBlogs('publish_date DESC', 3); // Get latest 3 blogs
 
     // Fetch published photos for the header carousel
     $photo_stmt = $conn->query("SELECT * FROM photos WHERE status = 'published' ORDER BY uploaded_at DESC");
-    $header_photos = $photo_stmt->fetchAll();
+    if ($photo_stmt) {
+        $header_photos = $photo_stmt->fetchAll();
+    }
 
 } catch (PDOException $e) {
     $db_error = "Error accessing database: " . $e->getMessage();
     // Log the error for admin, don't show to public
     error_log($db_error);
+} catch (Exception $e) {
+    $db_error = "An unexpected error occurred: " . $e->getMessage();
+    error_log($db_error);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -278,7 +287,7 @@ try {
                             </a>
                             <div class="text-center mt-3 portfolio-item-details">
                                 <h5 class="portfolio-item-title"><?php echo htmlspecialchars($blog['title']); ?></h5>
-                                <p class="text-muted portfolio-item-summary"><?php echo generateSummary($blog['content'], 20); // Shorter summary ?></p>
+                                <p class="text-muted portfolio-item-summary"><?php echo BlogManager::generateSummary($blog['content'], 20); // Shorter summary ?></p>
                                 <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
                             </div>
                         </div>
@@ -292,4 +301,4 @@ try {
     </div>
 </section>
 
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/View/partials/footer.php'; ?>
