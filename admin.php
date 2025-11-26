@@ -1,4 +1,15 @@
 <?php
+
+declare(strict_types=1);
+
+session_start();
+
+// Redirect to login page if user is not logged in
+if (!isset($_SESSION['admin_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 require_once 'config.php';
 
 // Fetch total blogs
@@ -53,17 +64,17 @@ $latest_skema = $latest_skema_stmt->fetchAll();
         <section class="blog-list-section">
             <h2>Latest Blogs</h2>
             <div class="blog-list">
-                <?php if (empty($latest_blogs)): ?>
+                <?php if (empty($latest_blogs)) : ?>
                     <div class="blog-card">
                         <p>No blogs found.</p>
                     </div>
-                <?php else: ?>
-                    <?php foreach ($latest_blogs as $blog): ?>
-                    <div class="blog-card">
-                        <h3><?= htmlspecialchars($blog['title']) ?></h3>
-                        <p class="blog-summary"><?= substr(strip_tags($blog['content']), 0, 100) ?>...</p>
-                        <a href="blog_detail.php?id=<?= $blog['id'] ?>" target="_blank">Read more</a>
-                    </div>
+                <?php else : ?>
+                    <?php foreach ($latest_blogs as $blog) : ?>
+                        <div class="blog-card">
+                            <h3><?= htmlspecialchars($blog['title']) ?></h3>
+                            <p class="blog-summary"><?= substr(strip_tags($blog['content']), 0, 100) ?>...</p>
+                            <a href="blog_detail.php?id=<?= $blog['id'] ?>" target="_blank">Read more</a>
+                        </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
@@ -72,22 +83,22 @@ $latest_skema = $latest_skema_stmt->fetchAll();
         <section class="schema-section">
             <h2>Skema yang Tersedia</h2>
             <div class="schema-container">
-                <?php if (empty($latest_skema)): ?>
+                <?php if (empty($latest_skema)) : ?>
                     <div class="schema-card">
                         <p>No skema found.</p>
                     </div>
-                <?php else: ?>
-                    <?php foreach ($latest_skema as $skema): ?>
-                    <div class="schema-card">
-                        <h3><?= htmlspecialchars($skema['nama']) ?></h3>
-                        <p><?= htmlspecialchars(substr($skema['ringkasan'], 0, 100)) ?>...</p>
-                         <a href="skema.php?id=<?= $skema['id'] ?>" target="_blank">Read more</a>
-                    </div>
+                <?php else : ?>
+                    <?php foreach ($latest_skema as $skema) : ?>
+                        <div class="schema-card">
+                            <h3><?= htmlspecialchars($skema['nama']) ?></h3>
+                            <p><?= htmlspecialchars(substr($skema['ringkasan'], 0, 100)) ?>...</p>
+                            <a href="skema.php?id=<?= $skema['id'] ?>" target="_blank">Read more</a>
+                        </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
         </section>
-
+    </div>
 </body>
 
 </html>

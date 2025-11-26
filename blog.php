@@ -1,5 +1,7 @@
 <?php
-// Start the session if it hasn't been started yet
+
+declare(strict_types=1);
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -22,9 +24,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <a class="navbar-brand navbar-brand-logos" href="#page-top">
                 <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
             </a>
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
@@ -57,15 +57,14 @@ if (session_status() == PHP_SESSION_NONE) {
 
     try {
         $allBlogs = getAllBlogs($conn); // Fetch all blogs
-        // var_dump($allBlogs); // Uncomment for debugging
     } catch (PDOException $e) {
         echo "<div class='container text-center'><p class='text-danger'>Error accessing database: " . $e->getMessage() . "</p></div>";
         $allBlogs = []; // Ensure variable exists to prevent further errors
     }
     ?>
 
-    <div class="page-section"> <!-- Using page-section for consistent padding -->
-        <div class="container berita-container"> <!-- berita-container for specific blog layout if needed -->
+    <div class="page-section">
+        <div class="container berita-container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Berita & Artikel Terbaru</h2>
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -73,18 +72,18 @@ if (session_status() == PHP_SESSION_NONE) {
                 <div class="divider-custom-line"></div>
             </div>
 
-            <?php if (empty($allBlogs)): ?>
+            <?php if (empty($allBlogs)) : ?>
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <p class="lead">Belum ada berita atau artikel yang dipublikasikan.</p>
                     </div>
                 </div>
-            <?php else: ?>
+            <?php else : ?>
                 <div class="row justify-content-center">
-                    <?php foreach ($allBlogs as $blog): ?>
+                    <?php foreach ($allBlogs as $blog) : ?>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="portfolio-item-wrapper">
-                                <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="portfolio-item-link">
+                                <a href="blog_detail.php?id=<?= $blog['id']; ?>" class="portfolio-item-link">
                                     <div class="portfolio-item mx-auto">
                                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
@@ -95,15 +94,16 @@ if (session_status() == PHP_SESSION_NONE) {
                                             $imagePath = 'https://via.placeholder.com/400x300?text=No+Image'; // Placeholder
                                         }
                                         ?>
-                                        <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($blog['title']); ?>">
+                                        <img class="img-fluid" src="<?= $imagePath; ?>" alt="<?= htmlspecialchars($blog['title']); ?>">
                                     </div>
                                 </a>
                                 <div class="text-center mt-3 portfolio-item-details">
-                                    <h5 class="portfolio-item-title"><?php echo htmlspecialchars($blog['title']); ?></h5>
+                                    <h5 class="portfolio-item-title"><?= htmlspecialchars($blog['title']); ?></h5>
                                     <p class="text-muted portfolio-item-summary">
-                                        <?php echo generateSummary($blog['content'], 20); // Shorter summary for card layout ?>
+                                        <?= generateSummary($blog['content'], 20); // Shorter summary for card layout
+                                        ?>
                                     </p>
-                                    <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                                    <a href="blog_detail.php?id=<?= $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
@@ -113,4 +113,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
         </div>
     </div>
-<?php include 'includes/footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
+</body>
+
+</html>

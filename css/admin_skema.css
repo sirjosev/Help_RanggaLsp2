@@ -1,0 +1,117 @@
+/* Style yang sangat spesifik untuk admin_skema.php */
+.schema-card img {
+    transition: transform 0.3s ease;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.schema-card img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#current_image_preview img,
+#add_image_preview img {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 200px;
+    max-height: 150px;
+    display: block;
+    margin-top: 10px;
+}
+
+.tab-container {
+    margin-top: 20px;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    background-color: #ecf0f1;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.tab-btn.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.dynamic-field {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.dynamic-field input,
+.dynamic-field select,
+.dynamic-field textarea {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 100px;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+.add-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.add-btn:hover {
+    background-color: #219a52;
+}
+
+.checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.checkbox-field input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}

@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
+
 session_start();
 require_once 'config.php';
 
 // Redirect to login if not authenticated
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['admin_id'])) {
     header('Location: login.php');
-    exit();
+    exit;
 }
 
 // Redirect if not super admin
 if (!isset($_SESSION['is_super_admin']) || !$_SESSION['is_super_admin']) {
     header('Location: admin.php');
-    exit();
+    exit;
 }
 
 // Fetch all users (admins)
@@ -20,12 +23,14 @@ $admins = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Admins</title>
     <link rel="stylesheet" href="css/admin.css">
 </head>
+
 <body>
     <?php require_once 'includes/sidebar.php'; ?>
 
@@ -46,9 +51,9 @@ $admins = $stmt->fetchAll();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($admins as $admin): ?>
+                    <?php foreach ($admins as $admin) : ?>
                         <tr>
-                            <td><?= htmlspecialchars($admin['id']) ?></td>
+                            <td><?= htmlspecialchars((string)$admin['id']) ?></td>
                             <td><?= htmlspecialchars($admin['username']) ?></td>
                             <td><?= htmlspecialchars($admin['email']) ?></td>
                             <td>
@@ -62,4 +67,5 @@ $admins = $stmt->fetchAll();
         </section>
     </div>
 </body>
+
 </html>

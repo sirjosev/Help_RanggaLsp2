@@ -1,35 +1,28 @@
 <?php
-// Start the session if it hasn't been started yet
+
+declare(strict_types=1);
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// 1. Include all necessary files once at the top
 require_once 'config.php';
 require_once 'includes/blog_functions.php';
 require_once 'skema_functions.php';
 
-// 2. Fetch all data needed for the page
 $skemaManager = new SkemaManager($conn);
 $skema_list = [];
 $latestBlogs = [];
-$header_photos = []; // Initialize photos array
+$header_photos = [];
 $db_error = '';
 
 try {
-    // Fetch skema data
-    $skema_list = array_slice($skemaManager->getAllSkema(), 0, 6); // Get first 6 skema
-
-    // Fetch blog data
-    $latestBlogs = getAllBlogs($conn, 'publish_date DESC', 3); // Get latest 3 blogs
-
-    // Fetch published photos for the header carousel
+    $skema_list = array_slice($skemaManager->getAllSkema(), 0, 6);
+    $latestBlogs = getAllBlogs($conn, 'publish_date DESC', 3);
     $photo_stmt = $conn->query("SELECT * FROM photos WHERE status = 'published' ORDER BY uploaded_at DESC");
     $header_photos = $photo_stmt->fetchAll();
-
 } catch (PDOException $e) {
     $db_error = "Error accessing database: " . $e->getMessage();
-    // Log the error for admin, don't show to public
     error_log($db_error);
 }
 ?>
@@ -42,32 +35,24 @@ try {
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>lsp-dks</title>
-    <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
-        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/custom.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
-    <!-- Navigation-->
     <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand navbar-brand-logos" href="#page-top">
                 <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
             </a>
-
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item mx-0 mx-lg-1">
@@ -89,18 +74,18 @@ try {
             </div>
         </div>
     </nav>
-
-    <!-- Masthead-->
-    <header class="masthead text-white text-center <?php if (!empty($header_photos)) echo 'masthead-with-carousel'; ?>">
+    <header class="masthead text-white text-center <?php if (!empty($header_photos)) {
+                                                        echo 'masthead-with-carousel';
+                                                    } ?>">
         <div id="headerCarousel" class="carousel slide" data-bs-ride="carousel">
-            <?php if (!empty($header_photos)): ?>
+            <?php if (!empty($header_photos)) : ?>
                 <div class="carousel-indicators">
-                    <?php foreach ($header_photos as $i => $photo): ?>
+                    <?php foreach ($header_photos as $i => $photo) : ?>
                         <button type="button" data-bs-target="#headerCarousel" data-bs-slide-to="<?= $i ?>" class="<?= $i == 0 ? 'active' : '' ?>" aria-current="true" aria-label="Slide <?= $i + 1 ?>"></button>
                     <?php endforeach; ?>
                 </div>
                 <div class="carousel-inner">
-                    <?php foreach ($header_photos as $i => $photo): ?>
+                    <?php foreach ($header_photos as $i => $photo) : ?>
                         <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
                             <img src="<?= htmlspecialchars($photo['file_path']) ?>" class="d-block w-100" alt="<?= htmlspecialchars($photo['alt_text']) ?>">
                         </div>
@@ -114,8 +99,7 @@ try {
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-            <?php else: ?>
-                <!-- Fallback to original content if no photos -->
+            <?php else : ?>
                 <div class="container d-flex align-items-center flex-column">
                     <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
                     <h1 class="masthead-heading text-uppercase mb-0">LSP-DKS</h1>
@@ -130,7 +114,6 @@ try {
         </div>
     </header>
 
-    <!-- About Us Section -->
     <section class="page-section bg-light">
         <div class="container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">About Us</h2>
@@ -151,9 +134,8 @@ try {
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
 
-    <!-- Visi & Misi Section -->
     <section class="page-section">
         <div class="container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Visi & Misi</h2>
@@ -163,7 +145,6 @@ try {
                 <div class="divider-custom-line"></div>
             </div>
             <div class="row">
-                <!-- Visi -->
                 <div class="col-lg-6 mb-5">
                     <h3 class="text-center text-uppercase">Visi</h3>
                     <p class="text-muted">
@@ -171,7 +152,6 @@ try {
                         kompetensi di berbagai bidang.
                     </p>
                 </div>
-                <!-- Misi -->
                 <div class="col-lg-6 mb-5">
                     <h3 class="text-center text-uppercase">Misi</h3>
                     <ul class="text-muted">
@@ -188,44 +168,44 @@ try {
 
     <div style="margin-bottom: 50px;"></div>
 
-    <!-- SKEMA SERIFIKASI Section-->
     <section class="page-section portfolio bg-light" id="skema-sertifikasi">
         <div class="container">
-            <!-- Portfolio Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">SKEMA SERTIFIKASI</h2>
-            <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <!-- Portfolio Grid Items-->
             <div class="row justify-content-center">
-                <?php if (!empty($db_error)): ?>
-                    <div class="col-lg-12 text-center"><p class="text-danger">Gagal memuat data skema. Silakan coba lagi nanti.</p></div>
-                <?php elseif (empty($skema_list)): ?>
-                    <div class="col-lg-12 text-center"><p class="lead text-muted">Belum ada skema sertifikasi yang tersedia.</p></div>
-                <?php else: ?>
-                    <?php foreach ($skema_list as $skema): ?>
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item-wrapper">
-                            <a href="skema.php?id=<?php echo $skema['id']; ?>" class="portfolio-item-link">
-                                <div class="portfolio-item mx-auto">
-                                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
-                                    </div>
-                                    <?php
+                <?php if (!empty($db_error)) : ?>
+                    <div class="col-lg-12 text-center">
+                        <p class="text-danger">Gagal memuat data skema. Silakan coba lagi nanti.</p>
+                    </div>
+                <?php elseif (empty($skema_list)) : ?>
+                    <div class="col-lg-12 text-center">
+                        <p class="lead text-muted">Belum ada skema sertifikasi yang tersedia.</p>
+                    </div>
+                <?php else : ?>
+                    <?php foreach ($skema_list as $skema) : ?>
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="portfolio-item-wrapper">
+                                <a href="skema.php?id=<?= $skema['id']; ?>" class="portfolio-item-link">
+                                    <div class="portfolio-item mx-auto">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
+                                        </div>
+                                        <?php
                                         $imagePath = !empty($skema['gambar']) ? $skemaManager->getGambarPath($skema['gambar']) : 'assets/img/portfolio/game.png';
-                                    ?>
-                                    <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($skema['nama']); ?>" />
+                                        ?>
+                                        <img class="img-fluid" src="<?= $imagePath; ?>" alt="<?= htmlspecialchars($skema['nama']); ?>" />
+                                    </div>
+                                </a>
+                                <div class="text-center mt-3 portfolio-item-details">
+                                    <h5 class="portfolio-item-title"><?= htmlspecialchars($skema['nama']); ?></h5>
+                                    <a href="skema.php?id=<?= $skema['id']; ?>" class="btn btn-sm btn-primary">Lihat Detail</a>
                                 </div>
-                            </a>
-                            <div class="text-center mt-3 portfolio-item-details">
-                                <h5 class="portfolio-item-title"><?php echo htmlspecialchars($skema['nama']); ?></h5>
-                                <a href="skema.php?id=<?php echo $skema['id']; ?>" class="btn btn-sm btn-primary">Lihat Detail</a>
                             </div>
                         </div>
-                    </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
@@ -235,61 +215,61 @@ try {
         </div>
     </section>
 
-    <!-- berita & artikel Section-->
-   <section class="page-section portfolio" id="berita-artikel">
-    <div class="container">
-        <!-- Portfolio Section Heading -->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">BERITA & ARTIKEL</h2>
-
-        <!-- Icon Divider -->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-
-        <!-- Portfolio Grid Items -->
-        <div class="row justify-content-center">
-            <?php if (!empty($db_error)): ?>
-                <div class="col-lg-12 text-center"><p class="text-danger">Gagal memuat data artikel. Silakan coba lagi nanti.</p></div>
-            <?php elseif (empty($latestBlogs)): ?>
-                <div class="col-lg-12 text-center">
-                    <p class="lead text-muted">Tidak ada berita atau artikel yang ditemukan. Silakan periksa koneosi database dan pastikan tabel 'blog' berisi data.</p>
-                </div>
-            <?php else: ?>
-                <?php foreach ($latestBlogs as $blog): ?>
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item-wrapper">
-                            <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="portfolio-item-link">
-                                <div class="portfolio-item mx-auto">
-                                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
+    <section class="page-section portfolio" id="berita-artikel">
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">BERITA & ARTIKEL</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="row justify-content-center">
+                <?php if (!empty($db_error)) : ?>
+                    <div class="col-lg-12 text-center">
+                        <p class="text-danger">Gagal memuat data artikel. Silakan coba lagi nanti.</p>
+                    </div>
+                <?php elseif (empty($latestBlogs)) : ?>
+                    <div class="col-lg-12 text-center">
+                        <p class="lead text-muted">Tidak ada berita atau artikel yang ditemukan. Silakan periksa koneosi database dan pastikan tabel 'blog' berisi data.</p>
+                    </div>
+                <?php else : ?>
+                    <?php foreach ($latestBlogs as $blog) : ?>
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="portfolio-item-wrapper">
+                                <a href="blog_detail.php?id=<?= $blog['id']; ?>" class="portfolio-item-link">
+                                    <div class="portfolio-item mx-auto">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
+                                        </div>
+                                        <?php
+                                        $imagePath = htmlspecialchars($blog['featured_image']);
+                                        if (strpos($imagePath, 'http') !== 0 && !empty($imagePath)) {
+                                            // Path is relative like assets/img/...
+                                        } elseif (empty($imagePath)) {
+                                            $imagePath = 'https://via.placeholder.com/700x500?text=No+Image'; // Placeholder
+                                        }
+                                        ?>
+                                        <img class="img-fluid" src="<?= $imagePath; ?>" alt="<?= htmlspecialchars($blog['title']); ?>" />
                                     </div>
-                                    <?php
-                                    $imagePath = htmlspecialchars($blog['featured_image']);
-                                    if (strpos($imagePath, 'http') !== 0 && !empty($imagePath)) {
-                                        // Path is relative like assets/img/...
-                                    } elseif (empty($imagePath)) {
-                                        $imagePath = 'https://via.placeholder.com/700x500?text=No+Image'; // Placeholder
-                                    }
-                                    ?>
-                                    <img class="img-fluid" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($blog['title']); ?>" />
+                                </a>
+                                <div class="text-center mt-3 portfolio-item-details">
+                                    <h5 class="portfolio-item-title"><?= htmlspecialchars($blog['title']); ?></h5>
+                                    <p class="text-muted portfolio-item-summary"><?= generateSummary($blog['content'], 20); // Shorter summary
+                                                                                    ?></p>
+                                    <a href="blog_detail.php?id=<?= $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
                                 </div>
-                            </a>
-                            <div class="text-center mt-3 portfolio-item-details">
-                                <h5 class="portfolio-item-title"><?php echo htmlspecialchars($blog['title']); ?></h5>
-                                <p class="text-muted portfolio-item-summary"><?php echo generateSummary($blog['content'], 20); // Shorter summary ?></p>
-                                <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+            <div style="text-align: right;">
+                <a href="blog.php" class="back-button">Lihat Semua Blog →</a>
+            </div>
         </div>
-        <div style="text-align: right;">
-            <a href="blog.php" class="back-button">Lihat Semua Blog →</a>
-        </div>
-    </div>
-</section>
+    </section>
 
-<?php include 'includes/footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
+</body>
+
+</html>

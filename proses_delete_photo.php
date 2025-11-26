@@ -1,4 +1,17 @@
 <?php
+
+declare(strict_types=1);
+
+session_start();
+
+// Redirect to login if not authenticated
+if (!isset($_SESSION['admin_id'])) {
+    header('Content-Type: application/json');
+    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+    exit;
+}
+
+
 require_once 'config.php';
 
 header('Content-Type: application/json');
@@ -40,4 +53,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request.']);
 }
-?>
