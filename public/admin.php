@@ -1,21 +1,26 @@
 <?php
-require_once 'config.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/config.php';
+
+use App\Model\BlogManager;
+use App\Model\SkemaManager;
+
+$blogManager = new BlogManager($conn);
+$skemaManager = new SkemaManager($conn);
 
 // Fetch total blogs
-$total_blogs_stmt = $conn->query("SELECT COUNT(*) FROM blogs");
-$total_blogs = $total_blogs_stmt->fetchColumn();
+$total_blogs = $blogManager->getTotalBlogs();
 
 // Fetch total skema
-$total_skema_stmt = $conn->query("SELECT COUNT(*) FROM skema");
-$total_skema = $total_skema_stmt->fetchColumn();
+$total_skema = $skemaManager->getTotalSkema();
 
 // Fetch latest 5 blogs
-$latest_blogs_stmt = $conn->query("SELECT * FROM blogs ORDER BY publish_date DESC LIMIT 5");
-$latest_blogs = $latest_blogs_stmt->fetchAll();
+$latest_blogs = $blogManager->getAllBlogs('publish_date DESC', 5);
 
 // Fetch latest 5 skema
-$latest_skema_stmt = $conn->query("SELECT * FROM skema ORDER BY id DESC LIMIT 5");
-$latest_skema = $latest_skema_stmt->fetchAll();
+$latest_skema = $skemaManager->getAllSkema(); // Assuming getAllSkema is ordered by latest first, and we can slice it. Let's get the first 5.
+$latest_skema = array_slice($latest_skema, 0, 5);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +33,7 @@ $latest_skema = $latest_skema_stmt->fetchAll();
 </head>
 
 <body>
-    <?php require_once 'includes/sidebar.php'; ?>
+    <?php require_once __DIR__ . '/../src/View/partials/sidebar.php'; ?>
 
     <div class="main-content">
         <header>
@@ -61,7 +66,7 @@ $latest_skema = $latest_skema_stmt->fetchAll();
                     <?php foreach ($latest_blogs as $blog): ?>
                     <div class="blog-card">
                         <h3><?= htmlspecialchars($blog['title']) ?></h3>
-                        <p class="blog-summary"><?= substr(strip_tags($blog['content']), 0, 100) ?>...</p>
+                        <p class="blog-summary"><?= BlogManager::generateSummary($blog['content'], 15) ?>...</p>
                         <a href="blog_detail.php?id=<?= $blog['id'] ?>" target="_blank">Read more</a>
                     </div>
                     <?php endforeach; ?>

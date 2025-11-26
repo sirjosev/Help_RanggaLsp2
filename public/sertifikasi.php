@@ -3,8 +3,10 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require_once 'config.php';
-require_once 'skema_functions.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/config.php';
+
+use App\Model\SkemaManager;
 
 $skemaManager = new SkemaManager($conn);
 
@@ -342,4 +344,4 @@ if ($search_term) {
     </script>
 
 
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/View/partials/footer.php'; ?>

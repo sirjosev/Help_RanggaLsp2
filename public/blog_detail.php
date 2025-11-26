@@ -1,13 +1,16 @@
 <?php
-require_once 'config.php'; // For $conn
-require_once 'includes/blog_functions.php'; // For blog data functions
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/config.php';
+
+use App\Model\BlogManager;
 
 $blog_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $blog_post = null;
 $page_title = "Detail Berita"; // Default title
 
 if ($blog_id > 0) {
-    $blog_post = getBlogById($conn, $blog_id);
+    $blogManager = new BlogManager($conn);
+    $blog_post = $blogManager->getBlogById($blog_id);
     if ($blog_post) {
         $page_title = htmlspecialchars($blog_post['title']);
     } else {
@@ -65,7 +68,7 @@ if ($blog_id > 0) {
         </div>
 
         <div class="berita-meta text-center mb-4">
-          <small><i class="fas fa-calendar-alt"></i> <?php echo formatBlogDate($blog_post['publish_date']); ?></small>
+          <small><i class="fas fa-calendar-alt"></i> <?php echo BlogManager::formatBlogDate($blog_post['publish_date']); ?></small>
           <!-- Add author if available in DB and needed:
           <span class="ms-3"><i class="fas fa-user"></i> <?php echo htmlspecialchars($blog_post['author']); ?></span>
           -->
@@ -84,7 +87,7 @@ if ($blog_id > 0) {
         <?php endif; ?>
 
         <div class="isi-berita lead">
-          <?php echo nl2br(htmlspecialchars($blog_post['content'])); // Using htmlspecialchars and nl2br for basic formatting ?>
+          <?php echo $blog_post['content']; ?>
         </div>
       <?php else: ?>
         <h2 class="page-section-heading text-center text-uppercase text-danger mb-0">Berita Tidak Ditemukan</h2>
@@ -101,4 +104,4 @@ if ($blog_id > 0) {
     </div>
   </section>
 
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/View/partials/footer.php'; ?>

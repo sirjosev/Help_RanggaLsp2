@@ -3,6 +3,12 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/config.php';
+
+use App\Model\BlogManager;
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -10,7 +16,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>blog</title>
+    <title>Blog</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/blog.css" />
 </head>
@@ -52,15 +58,12 @@ if (session_status() == PHP_SESSION_NONE) {
     </nav>
 
     <?php
-    require_once 'config.php'; // For $conn
-    require_once 'includes/blog_functions.php'; // For blog data functions
-
+    $allBlogs = [];
     try {
-        $allBlogs = getAllBlogs($conn); // Fetch all blogs
-        // var_dump($allBlogs); // Uncomment for debugging
+        $blogManager = new BlogManager($conn);
+        $allBlogs = $blogManager->getAllBlogs(); // Fetch all blogs
     } catch (PDOException $e) {
         echo "<div class='container text-center'><p class='text-danger'>Error accessing database: " . $e->getMessage() . "</p></div>";
-        $allBlogs = []; // Ensure variable exists to prevent further errors
     }
     ?>
 
@@ -101,7 +104,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <div class="text-center mt-3 portfolio-item-details">
                                     <h5 class="portfolio-item-title"><?php echo htmlspecialchars($blog['title']); ?></h5>
                                     <p class="text-muted portfolio-item-summary">
-                                        <?php echo generateSummary($blog['content'], 20); // Shorter summary for card layout ?>
+                                        <?php echo BlogManager::generateSummary($blog['content'], 20); // Shorter summary for card layout ?>
                                     </p>
                                     <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
                                 </div>
@@ -113,4 +116,4 @@ if (session_status() == PHP_SESSION_NONE) {
 
         </div>
     </div>
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/View/partials/footer.php'; ?>

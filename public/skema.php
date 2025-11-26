@@ -1,6 +1,8 @@
 <?php
-require_once 'config.php';
-require_once 'skema_functions.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/config.php';
+
+use App\Model\SkemaManager;
 
 $skemaManager = new SkemaManager($conn);
 
@@ -453,4 +455,4 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
         }
     </script>
 
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/View/partials/footer.php'; ?>

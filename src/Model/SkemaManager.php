@@ -1,6 +1,8 @@
 <?php
-// skema_functions.php - Fixed Version
-require_once 'config.php';
+namespace App\Model;
+
+use PDO;
+use Exception;
 
 class SkemaManager {
     private $db;
@@ -10,8 +12,8 @@ class SkemaManager {
     }
     
     private function uploadGambar($file, $existingFile = null) {
-        // Path sesuai dengan yang di database - langsung ke assets/img/
-        $uploadDir = __DIR__ . '/dksassets/img/';
+        // Path corrected to be relative to the public directory from this file's location
+        $uploadDir = __DIR__ . '/../../public/dksassets/img/';
         
         // Pastikan folder assets/img ada
         if (!file_exists($uploadDir)) {
@@ -125,6 +127,17 @@ class SkemaManager {
         } catch (PDOException $e) {
             error_log("Error getting skema by ID: " . $e->getMessage());
             return null;
+        }
+    }
+
+    public function getTotalSkema(): int
+    {
+        try {
+            $stmt = $this->db->query("SELECT COUNT(*) FROM skema");
+            return (int) $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            error_log("Error getting total skema: " . $e->getMessage());
+            return 0;
         }
     }
     
