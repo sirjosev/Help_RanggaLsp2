@@ -1,0 +1,162 @@
+.tab-active {
+    background-color: #007BFF;
+    color: white;
+}
+
+.tab-content-box {
+    display: none;
+}
+
+.tab-content-box.active {
+    display: block;
+}
+
+.tab {
+    padding: 10px 15px;
+    background: #eee;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.tab:hover {
+    background-color: #ddd;
+}
+
+.skema-section {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.skema-title {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.skema-info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.skema-info-table td {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.skema-info-table td:first-child {
+    font-weight: bold;
+    width: 20%;
+    color: #2c3e50;
+}
+
+.price {
+    color: #e74c3c;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.tab-section {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.unit-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.unit-table th,
+.unit-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.unit-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.unit-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.unit-table tr:hover {
+    background-color: #e8f4fd;
+}
+
+.requirement-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.requirement-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ecf0f1;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.requirement-list li:before {
+    content: "✓";
+    color: #27ae60;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.method-section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border-left: 4px solid #3498db;
+}
+
+.method-section h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+
+.register-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #3498db, #2c3e50);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.register-button:hover {
+    background: linear-gradient(45deg, #2980b9, #34495e);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .skema-info-table td:first-child {
+        width: 30%;
+    }
+
+    .tab-scroll {
+        overflow-x: auto;
+    }
+
+    .tabs {
+        min-width: max-content;
+    }
+}

@@ -1,5 +1,7 @@
 <?php
-// Start the session if it hasn't been started yet
+
+declare(strict_types=1);
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -8,24 +10,21 @@ require_once 'skema_functions.php';
 
 $skemaManager = new SkemaManager($conn);
 
-// Get all skema for listing
 $skema_list = $skemaManager->getAllSkema();
 
-// Filter by jenis if provided
 $filter_jenis = isset($_GET['jenis']) ? $_GET['jenis'] : '';
 if ($filter_jenis) {
-    $skema_list = array_filter($skema_list, function($skema) use ($filter_jenis) {
+    $skema_list = array_filter($skema_list, function ($skema) use ($filter_jenis) {
         return $skema['jenis'] === $filter_jenis;
     });
 }
 
-// Search functionality
 $search_term = isset($_GET['search']) ? trim($_GET['search']) : '';
 if ($search_term) {
-    $skema_list = array_filter($skema_list, function($skema) use ($search_term) {
-        return stripos($skema['nama'], $search_term) !== false || 
-               stripos($skema['kode'], $search_term) !== false ||
-               stripos($skema['ringkasan'], $search_term) !== false;
+    $skema_list = array_filter($skema_list, function ($skema) use ($search_term) {
+        return stripos($skema['nama'], $search_term) !== false ||
+            stripos($skema['kode'], $search_term) !== false ||
+            stripos($skema['ringkasan'], $search_term) !== false;
     });
 }
 ?>
@@ -39,176 +38,15 @@ if ($search_term) {
     <title>Halaman Sertifikasi</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/sertifikasi.css" />
-    <style>
-        /* Additional styles for enhanced cards */
-        .card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            /* text-align: left; /* Diterapkan di css/sertifikasi.css */
-            display: flex; /* Memastikan flexbox diterapkan dari sini jika override */
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .card-header {
-            margin-bottom: 1rem;
-        }
-
-        .card-header {
-            text-align: left; /* Pastikan header card rata kiri */
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 0.25rem; /* Kurangi margin bawah sedikit */
-            word-break: break-word; /* Cegah overflow kata panjang */
-        }
-
-        .card-code {
-            font-size: 0.85rem; /* Sedikit lebih kecil */
-            color: #7f8c8d;
-            margin-bottom: 0.75rem; /* Kurangi margin bawah */
-            text-align: left; /* Pastikan rata kiri */
-        }
-
-        .card-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            font-size: 0.85rem; /* Sesuaikan ukuran font info */
-            text-align: left; /* Info item rata kiri secara default */
-        }
-
-        .info-item {
-             /* text-align: center; /* Dihapus, default ke left dari .card-info */
-             /* Jika ingin per item bisa diatur terpisah, tapi left lebih umum */
-        }
-
-        .info-label {
-            color: #7f8c8d;
-            font-size: 0.75rem; /* Sedikit lebih kecil */
-            display: block;
-            margin-bottom: 0.1rem;
-        }
-
-        .info-value {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .price {
-            color: #e74c3c;
-            font-size: 1rem; /* Sesuaikan ukuran harga */
-        }
-
-        .card-description {
-            color: #555; /* Sedikit lebih gelap untuk keterbacaan */
-            line-height: 1.6; /* Sedikit lebih lega */
-            margin-bottom: 1.5rem;
-            text-align: left; /* Pastikan deskripsi rata kiri */
-            font-size: 0.88rem; /* Sesuaikan ukuran font deskripsi */
-            word-break: break-word; /* Cegah overflow kata panjang */
-            flex-grow: 1; /* Biarkan deskripsi mengambil ruang tersedia */
-
-            /* Properti untuk membatasi 2 baris dengan elipsis */
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-            overflow: hidden;
-            /* Pertimbangkan max-height sebagai fallback jika diperlukan, berdasarkan line-height * 2 */
-             max-height: 2.816rem; /* (0.88rem * 1.6 line-height) * 2 baris */
-        }
-
-        .card button {
-            width: 100%;
-            padding: 0.7rem;
-            background: linear-gradient(45deg, #3498db, #2c3e50);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .card button:hover {
-            background: linear-gradient(45deg, #2980b9, #34495e);
-            transform: translateY(-2px);
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 2rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        body {
-             padding-top: 140px; /* tinggi navbar (120px) + extra ruang */
-        }
-
-        .filter-section {
-            margin-bottom: 2rem;
-        }
-
-        .filter-select {
-            padding: 0.5rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: white;
-            margin-bottom: 1rem;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 3rem;
-            color: #7f8c8d;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .card-info {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .info-item {
-                text-align: left; /* Sudah diatur di atas, ini untuk mobile override jika perlu */
-            }
-             .card-info .info-item { /* Pastikan info item di mobile juga rata kiri */
-                text-align: left;
-            }
-            .card-title, .card-code, .card-description {
-                text-align: left; /* Pastikan rata kiri di mobile juga */
-            }
-        }
-
-        .bold-item {
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 <body id="page-top">
-    <!-- Navigation -->
-     <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand navbar-brand-logos" href="#page-top">
                 <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
             </a>
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
@@ -235,43 +73,36 @@ if ($search_term) {
         </div>
     </nav>
 
-    <!-- Content -->
     <div class="container">
-        <!-- Sidebar -->
         <aside>
             <h3>Skema Sertifikasi</h3>
             <p><strong>Filter by</strong></p>
             <div class="filter-section">
                 <select class="filter-select" onchange="filterByJenis(this.value)">
                     <option value="">Semua Jenis</option>
-                    <option value="Klaster" <?php echo $filter_jenis === 'Klaster' ? 'selected' : ''; ?>>Klaster</option>
-                    <option value="Okupasi" <?php echo $filter_jenis === 'Okupasi' ? 'selected' : ''; ?>>Okupasi</option>
-                    <option value="Mandiri" <?php echo $filter_jenis === 'Mandiri' ? 'selected' : ''; ?>>Mandiri</option>
+                    <option value="Klaster" <?= $filter_jenis === 'Klaster' ? 'selected' : ''; ?>>Klaster</option>
+                    <option value="Okupasi" <?= $filter_jenis === 'Okupasi' ? 'selected' : ''; ?>>Okupasi</option>
+                    <option value="Mandiri" <?= $filter_jenis === 'Mandiri' ? 'selected' : ''; ?>>Mandiri</option>
                 </select>
             </div>
             <ul>
                 <li class="bold-item"><a href="sertifikasi.php" style="text-decoration: none; color: inherit;">Semua Skema:</a></li>
-                <li ><a href="sertifikasi.php?jenis=Klaster" style="text-decoration: none; color: inherit;">Skema Klaster</a></li>
-                <li ><a href="sertifikasi.php?jenis=Okupasi" style="text-decoration: none; color: inherit;">Skema Okupasi</a></li>
-                <li ><a href="sertifikasi.php?jenis=Mandiri" style="text-decoration: none; color: inherit;">Skema Mandiri</a></li>
+                <li><a href="sertifikasi.php?jenis=Klaster" style="text-decoration: none; color: inherit;">Skema Klaster</a></li>
+                <li><a href="sertifikasi.php?jenis=Okupasi" style="text-decoration: none; color: inherit;">Skema Okupasi</a></li>
+                <li><a href="sertifikasi.php?jenis=Mandiri" style="text-decoration: none; color: inherit;">Skema Mandiri</a></li>
             </ul>
         </aside>
 
-        <!-- Main -->
         <main>
             <form method="GET" action="sertifikasi.php" style="margin-bottom: 2rem;">
-                <input type="text" 
-                       class="search-box" 
-                       name="search" 
-                       value="<?php echo htmlspecialchars($search_term); ?>"
-                       placeholder="Cari skema sertifikasi berdasarkan nama, kode, atau deskripsi">
-                <?php if ($filter_jenis): ?>
-                    <input type="hidden" name="jenis" value="<?php echo htmlspecialchars($filter_jenis); ?>">
+                <input type="text" class="search-box" name="search" value="<?= htmlspecialchars($search_term); ?>" placeholder="Cari skema sertifikasi berdasarkan nama, kode, atau deskripsi">
+                <?php if ($filter_jenis) : ?>
+                    <input type="hidden" name="jenis" value="<?= htmlspecialchars($filter_jenis); ?>">
                 <?php endif; ?>
             </form>
 
             <h2>
-                <?php 
+                <?php
                 if ($search_term) {
                     echo "Hasil Pencarian untuk: \"" . htmlspecialchars($search_term) . "\"";
                 } elseif ($filter_jenis) {
@@ -281,45 +112,45 @@ if ($search_term) {
                 }
                 ?>
                 <span style="font-size: 0.8rem; color: #7f8c8d; font-weight: normal;">
-                    (<?php echo count($skema_list); ?> skema ditemukan)
+                    (<?= count($skema_list); ?> skema ditemukan)
                 </span>
             </h2>
 
-            <?php if (empty($skema_list)): ?>
+            <?php if (empty($skema_list)) : ?>
                 <div class="no-results">
                     <h3>Tidak ada skema yang ditemukan</h3>
                     <p>Silakan coba dengan kata kunci atau filter yang berbeda.</p>
                     <a href="sertifikasi.php" style="color: #3498db; text-decoration: none;">← Kembali ke semua skema</a>
                 </div>
-            <?php else: ?>
+            <?php else : ?>
                 <div class="card-grid">
-                    <?php foreach ($skema_list as $skema): ?>
+                    <?php foreach ($skema_list as $skema) : ?>
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title"><?php echo htmlspecialchars($skema['nama']); ?></div>
-                                <div class="card-code">Kode: <?php echo htmlspecialchars($skema['kode']); ?></div>
+                                <div class="card-title"><?= htmlspecialchars($skema['nama']); ?></div>
+                                <div class="card-code">Kode: <?= htmlspecialchars($skema['kode']); ?></div>
                             </div>
-                            
+
                             <div class="card-info">
                                 <div class="info-item">
                                     <span class="info-label">Jenis</span>
-                                    <span class="info-value"><?php echo htmlspecialchars($skema['jenis']); ?></span>
+                                    <span class="info-value"><?= htmlspecialchars($skema['jenis']); ?></span>
                                 </div>
                                 <div class="info-item">
                                     <span class="info-label">Unit Kompetensi</span>
-                                    <span class="info-value"><?php echo $skema['unit_kompetensi']; ?></span>
+                                    <span class="info-value"><?= $skema['unit_kompetensi']; ?></span>
                                 </div>
                                 <div class="info-item">
                                     <span class="info-label">Harga</span>
-                                    <span class="info-value price">Rp <?php echo number_format($skema['harga'], 0, ',', '.'); ?></span>
+                                    <span class="info-value price">Rp <?= number_format((float)$skema['harga'], 0, ',', '.'); ?></span>
                                 </div>
                             </div>
-                            
+
                             <div class="card-description">
-                                <?php echo htmlspecialchars(substr($skema['ringkasan'], 0, 120)) . (strlen($skema['ringkasan']) > 120 ? '...' : ''); ?>
+                                <?= htmlspecialchars(substr($skema['ringkasan'], 0, 120)) . (strlen($skema['ringkasan']) > 120 ? '...' : ''); ?>
                             </div>
-                            
-                            <button onclick="window.location.href='skema.php?id=<?php echo $skema['id']; ?>'">
+
+                            <button onclick="window.location.href='skema.php?id=<?= $skema['id']; ?>'">
                                 Lihat Skema
                             </button>
                         </div>
@@ -342,4 +173,7 @@ if ($search_term) {
     </script>
 
 
-<?php include 'includes/footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
+</body>
+
+</html>

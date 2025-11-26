@@ -1,52 +1,58 @@
 <?php
+
+declare(strict_types=1);
+
 // skema_functions.php - Fixed Version
 require_once 'config.php';
 
-class SkemaManager {
+class SkemaManager
+{
     private $db;
-    
-    public function __construct(PDO $pdo) {
+
+    public function __construct(PDO $pdo)
+    {
         $this->db = $pdo;
     }
-    
-    private function uploadGambar($file, $existingFile = null) {
+
+    private function uploadGambar($file, $existingFile = null)
+    {
         // Path sesuai dengan yang di database - langsung ke assets/img/
         $uploadDir = __DIR__ . '/dksassets/img/';
-        
+
         // Pastikan folder assets/img ada
         if (!file_exists($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
-        
+
         // Debug: Cek apakah folder bisa ditulis
         if (!is_writable($uploadDir)) {
             throw new Exception("Folder upload tidak bisa ditulis: " . $uploadDir);
         }
-        
+
         // Validasi file
         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
         $maxSize = 2 * 1024 * 1024; // 2MB
-        
+
         if ($file['error'] !== UPLOAD_ERR_OK) {
             if ($file['error'] === UPLOAD_ERR_NO_FILE) {
                 return $existingFile; // Tidak ada file yang diupload, kembalikan yang sudah ada
             }
             throw new Exception("Error uploading file: " . $file['error']);
         }
-        
+
         if (!in_array($file['type'], $allowedTypes)) {
             throw new Exception("Hanya file gambar (JPG, PNG, GIF) yang diperbolehkan");
         }
-        
+
         if ($file['size'] > $maxSize) {
             throw new Exception("Ukuran file maksimal 2MB");
         }
-        
+
         // Generate nama file unik (sama seperti di database)
         $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
         $filename = uniqid('skema_') . '.' . strtolower($extension);
         $targetPath = $uploadDir . $filename;
-        
+
         // Crop image to 1:1 ratio
         $this->cropImageToSquare($file['tmp_name'], $targetPath, 500);
 
@@ -54,12 +60,13 @@ class SkemaManager {
         if ($existingFile && file_exists($uploadDir . $existingFile)) {
             unlink($uploadDir . $existingFile);
         }
-        
+
         // Return hanya nama file (bukan path lengkap) untuk disimpan ke database
         return $filename;
     }
 
-    private function cropImageToSquare($sourcePath, $destPath, $size) {
+    private function cropImageToSquare($sourcePath, $destPath, $size)
+    {
         list($width, $height, $type) = getimagesize($sourcePath);
         $src_img = null;
         switch ($type) {
@@ -98,12 +105,13 @@ class SkemaManager {
         imagedestroy($src_img);
         imagedestroy($dst_img);
     }
-    
-    
+
+
     /**
      * Get all skema records
      */
-    public function getAllSkema() {
+    public function getAllSkema()
+    {
         try {
             $stmt = $this->db->prepare("SELECT * FROM skema ORDER BY created_at DESC");
             $stmt->execute();
@@ -113,11 +121,12 @@ class SkemaManager {
             return [];
         }
     }
-    
+
     /**
      * Get skema by ID (just the main record)
      */
-    public function getSkemaById($id) {
+    public function getSkemaById($id)
+    {
         try {
             $stmt = $this->db->prepare("SELECT * FROM skema WHERE id = ?");
             $stmt->execute([$id]);
@@ -127,21 +136,22 @@ class SkemaManager {
             return null;
         }
     }
-    
+
     /**
      * Get skema by ID with all related data
      */
-    public function getSkemaComplete($id) {
+    public function getSkemaComplete($id)
+    {
         try {
             // Get main skema data
             $stmt = $this->db->prepare("SELECT * FROM skema WHERE id = ?");
             $stmt->execute([$id]);
             $skema = $stmt->fetch(PDO::FETCH_ASSOC);
-            
+
             if (!$skema) {
                 return null;
             }
-            
+
             // Get related data
             $result = [
                 'skema' => $skema,
@@ -159,19 +169,19 @@ class SkemaManager {
             if ($result['skema']) { // Pastikan $skema tidak null
                 $result['skema']['metode_pengujian'] = $result['metode_pengujian_skema'];
             }
-            
+
             return $result;
-            
         } catch (PDOException $e) {
             error_log("Error getting complete skema by ID: " . $e->getMessage());
             return null;
         }
     }
-    
+
     /**
      * Get unit kompetensi by skema ID - NOW PUBLIC
      */
-    public function getUnitKompetensiBySkemaId($skema_id) {
+    public function getUnitKompetensiBySkemaId($skema_id)
+    {
         try {
             $stmt = $this->db->prepare("SELECT * FROM unit_kompetensi WHERE skema_id = ? ORDER BY no_urut");
             $stmt->execute([$skema_id]);
@@ -181,11 +191,12 @@ class SkemaManager {
             return [];
         }
     }
-    
+
     /**
      * Get persyaratan by skema ID - NOW PUBLIC
      */
-    public function getPersyaratanBySkemaId($skema_id) {
+    public function getPersyaratanBySkemaId($skema_id)
+    {
         try {
             $stmt = $this->db->prepare("SELECT * FROM persyaratan WHERE skema_id = ?");
             $stmt->execute([$skema_id]);
@@ -195,11 +206,12 @@ class SkemaManager {
             return [];
         }
     }
-    
+
     /**
      * Get dokumen persyaratan by skema ID - NOW PUBLIC
      */
-    public function getDokumenPersyaratanBySkemaId($skema_id) {
+    public function getDokumenPersyaratanBySkemaId($skema_id)
+    {
         try {
             $stmt = $this->db->prepare("SELECT * FROM dokumen_persyaratan WHERE skema_id = ?");
             $stmt->execute([$skema_id]);
@@ -209,11 +221,12 @@ class SkemaManager {
             return [];
         }
     }
-    
+
     /**
      * Get metode asesmen by skema ID - NOW PUBLIC
      */
-    public function getMetodeAsesmenBySkemaId($skema_id) {
+    public function getMetodeAsesmenBySkemaId($skema_id)
+    {
         try {
             $stmt = $this->db->prepare("SELECT * FROM metode_asesmen WHERE skema_id = ?");
             $stmt->execute([$skema_id]);
@@ -223,11 +236,12 @@ class SkemaManager {
             return [];
         }
     }
-    
+
     /**
      * Get pemeliharaan by skema ID - NOW PUBLIC
      */
-    public function getPemeliharaanBySkemaId($skema_id) {
+    public function getPemeliharaanBySkemaId($skema_id)
+    {
         try {
             $stmt = $this->db->prepare("SELECT * FROM pemeliharaan WHERE skema_id = ?");
             $stmt->execute([$skema_id]);
@@ -237,26 +251,27 @@ class SkemaManager {
             return [];
         }
     }
-    
+
     /**
      * Create a complete skema with all related data
      */
-    public function createSkemaComplete($data) {
+    public function createSkemaComplete($data)
+    {
         try {
             $this->db->beginTransaction();
-            
+
             // Handle file upload
             $gambar = null;
             if (!empty($_FILES['gambar']['name'])) {
                 $gambar = $this->uploadGambar($_FILES['gambar']);
             }
-            
+
             // Insert main skema record
             $stmt = $this->db->prepare("
-                INSERT INTO skema (nama, kode, jenis, harga, unit_kompetensi, masa_berlaku, ringkasan, gambar, created_at) 
+                INSERT INTO skema (nama, kode, jenis, harga, unit_kompetensi, masa_berlaku, ringkasan, gambar, created_at)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())
             ");
-            
+
             $stmt->execute([
                 $data['nama'],
                 $data['kode'],
@@ -267,27 +282,27 @@ class SkemaManager {
                 $data['ringkasan'],
                 $gambar
             ]);
-            
+
             $skema_id = $this->db->lastInsertId();
-            
+
             // Insert related data
             $this->insertRelatedData($skema_id, $data);
-            
+
             $this->db->commit();
             return $skema_id;
-            
         } catch (Exception $e) {
             $this->db->rollBack();
             error_log("Error creating skema: " . $e->getMessage());
             throw $e;
         }
     }
-    
-    public function updateSkemaComplete($data) {
+
+    public function updateSkemaComplete($data)
+    {
         error_log("Updating skema with data: " . print_r($data, true));
         try {
             $this->db->beginTransaction();
-            
+
             // Handle file upload
             $gambar = $data['existing_gambar'] ?? null;
             if (!empty($_FILES['gambar']['name'])) {
@@ -295,16 +310,16 @@ class SkemaManager {
                 $gambar = $this->uploadGambar($_FILES['gambar'], $gambar);
                 error_log("New image name: " . $gambar);
             }
-            
+
             // Update main skema record
             error_log("Updating main skema record...");
             $stmt = $this->db->prepare("
-                UPDATE skema 
-                SET nama = ?, kode = ?, jenis = ?, harga = ?, unit_kompetensi = ?, 
+                UPDATE skema
+                SET nama = ?, kode = ?, jenis = ?, harga = ?, unit_kompetensi = ?,
                     masa_berlaku = ?, ringkasan = ?, gambar = ?, updated_at = NOW()
                 WHERE id = ?
             ");
-            
+
             $stmt->execute([
                 $data['nama'],
                 $data['kode'],
@@ -316,24 +331,23 @@ class SkemaManager {
                 $gambar,
                 $data['skema_id']
             ]);
-            
+
             $skema_id = $data['skema_id'];
             error_log("Main skema record updated for ID: " . $skema_id);
-            
+
             // Delete existing related data
             error_log("Deleting related data for skema ID: " . $skema_id);
             $this->deleteRelatedData($skema_id);
             error_log("Related data deleted.");
-            
+
             // Insert new related data
             error_log("Inserting new related data...");
             $this->insertRelatedData($skema_id, $data);
             error_log("New related data inserted.");
-            
+
             $this->db->commit();
             error_log("Skema update committed successfully.");
             return true;
-            
         } catch (Exception $e) {
             $this->db->rollBack();
             error_log("Error updating skema: " . $e->getMessage());
@@ -341,95 +355,97 @@ class SkemaManager {
             throw $e;
         }
     }
-    
+
     /**
      * Delete a skema and all related data
      */
-    public function deleteSkema($skema_id) {
+    public function deleteSkema($skema_id)
+    {
         try {
             $this->db->beginTransaction();
-            
+
             // Delete related records first (due to foreign key constraints)
             $this->deleteRelatedData($skema_id);
-            
+
             // Delete main skema record
             $stmt = $this->db->prepare("DELETE FROM skema WHERE id = ?");
             $stmt->execute([$skema_id]);
-            
+
             $this->db->commit();
             return true;
-            
         } catch (PDOException $e) {
             $this->db->rollBack();
             error_log("Error deleting skema: " . $e->getMessage());
             return false;
         }
     }
-    
+
     /**
      * Check if skema code already exists
      */
-    public function isKodeExists($kode, $excludeId = null) {
+    public function isKodeExists($kode, $excludeId = null)
+    {
         $sql = "SELECT COUNT(*) FROM skema WHERE kode = ?";
         $params = [$kode];
-        
+
         if ($excludeId) {
             $sql .= " AND id != ?";
             $params[] = $excludeId;
         }
-        
+
         $stmt = $this->db->prepare($sql);
         $stmt->execute($params);
         return $stmt->fetchColumn() > 0;
     }
-    
+
     /**
      * Get skema statistics
      */
-    public function getSkemaStats() {
+    public function getSkemaStats()
+    {
         try {
             $stats = [];
-            
+
             // Total skema
             $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM skema");
             $stmt->execute();
             $stats['total'] = $stmt->fetchColumn();
-            
+
             // By jenis
             $stmt = $this->db->prepare("SELECT jenis, COUNT(*) as count FROM skema GROUP BY jenis");
             $stmt->execute();
             $stats['by_jenis'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
+
             return $stats;
-            
         } catch (PDOException $e) {
             error_log("Error getting skema stats: " . $e->getMessage());
             return null;
         }
     }
-    
+
     // PRIVATE HELPER METHODS BELOW
-    private function insertRelatedData($skema_id, $data) {
+    private function insertRelatedData($skema_id, $data)
+    {
         // Insert unit kompetensi
         if (isset($data['kode_unit']) && is_array($data['kode_unit'])) {
             $this->insertUnitKompetensi($skema_id, $data);
         }
-        
+
         // Insert persyaratan
         if (isset($data['persyaratan']) && is_array($data['persyaratan'])) {
             $this->insertPersyaratan($skema_id, $data['persyaratan']);
         }
-        
+
         // Insert dokumen persyaratan
         if (isset($data['dokumen_nama']) && is_array($data['dokumen_nama'])) {
             $this->insertDokumen($skema_id, $data);
         }
-        
+
         // Insert metode asesmen
         if (isset($data['asesmen_jenis']) && is_array($data['asesmen_jenis'])) {
             $this->insertMetodeAsesmen($skema_id, $data);
         }
-        
+
         // Insert pemeliharaan
         if (isset($data['pemeliharaan']) && !empty($data['pemeliharaan'])) {
             $this->insertPemeliharaan($skema_id, $data['pemeliharaan']);
@@ -440,22 +456,24 @@ class SkemaManager {
             $this->insertMetodePengujian($skema_id, $data['metode_pengujian_skema']);
         }
     }
-    
-    private function deleteRelatedData($skema_id) {
+
+    private function deleteRelatedData($skema_id)
+    {
         $tables = ['unit_kompetensi', 'persyaratan', 'dokumen_persyaratan', 'metode_asesmen', 'pemeliharaan', 'skema_metode_pengujian'];
-        
+
         foreach ($tables as $table) {
             $stmt = $this->db->prepare("DELETE FROM {$table} WHERE skema_id = ?");
             $stmt->execute([$skema_id]);
         }
     }
-    
-    private function insertUnitKompetensi($skema_id, $data) {
+
+    private function insertUnitKompetensi($skema_id, $data)
+    {
         $stmt = $this->db->prepare("
-            INSERT INTO unit_kompetensi (skema_id, no_urut, kode_unit, judul_unit, standar_kompetensi, lampiran_file) 
+            INSERT INTO unit_kompetensi (skema_id, no_urut, kode_unit, judul_unit, standar_kompetensi, lampiran_file)
             VALUES (?, ?, ?, ?, ?, ?)
         ");
-    
+
         for ($i = 0; $i < count($data['kode_unit']); $i++) {
             if (!empty($data['kode_unit'][$i])) {
                 $stmt->execute([
@@ -469,20 +487,22 @@ class SkemaManager {
             }
         }
     }
-    
-    private function insertPersyaratan($skema_id, $persyaratan_array) {
+
+    private function insertPersyaratan($skema_id, $persyaratan_array)
+    {
         $stmt = $this->db->prepare("INSERT INTO persyaratan (skema_id, deskripsi) VALUES (?, ?)");
-        
+
         foreach ($persyaratan_array as $persyaratan) {
             if (!empty($persyaratan)) {
                 $stmt->execute([$skema_id, $persyaratan]);
             }
         }
     }
-    
-    private function insertDokumen($skema_id, $data) {
+
+    private function insertDokumen($skema_id, $data)
+    {
         $stmt = $this->db->prepare("INSERT INTO dokumen_persyaratan (skema_id, nama_dokumen, wajib) VALUES (?, ?, ?)");
-        
+
         for ($i = 0; $i < count($data['dokumen_nama']); $i++) {
             if (!empty($data['dokumen_nama'][$i])) {
                 $wajib = isset($data['dokumen_wajib'][$i]) ? 1 : 0;
@@ -490,13 +510,14 @@ class SkemaManager {
             }
         }
     }
-    
-    private function insertMetodeAsesmen($skema_id, $data) {
+
+    private function insertMetodeAsesmen($skema_id, $data)
+    {
         $stmt = $this->db->prepare("
-            INSERT INTO metode_asesmen (skema_id, jenis_peserta, metode, deskripsi) 
+            INSERT INTO metode_asesmen (skema_id, jenis_peserta, metode, deskripsi)
             VALUES (?, ?, ?, ?)
         ");
-        
+
         for ($i = 0; $i < count($data['asesmen_jenis']); $i++) {
             if (!empty($data['asesmen_jenis'][$i])) {
                 $stmt->execute([
@@ -508,15 +529,17 @@ class SkemaManager {
             }
         }
     }
-    
-    private function insertPemeliharaan($skema_id, $deskripsi) {
+
+    private function insertPemeliharaan($skema_id, $deskripsi)
+    {
         if (!empty($deskripsi)) {
             $stmt = $this->db->prepare("INSERT INTO pemeliharaan (skema_id, deskripsi) VALUES (?, ?)");
             $stmt->execute([$skema_id, $deskripsi]);
         }
     }
 
-    private function insertMetodePengujian($skema_id, $metode_pengujian_array) {
+    private function insertMetodePengujian($skema_id, $metode_pengujian_array)
+    {
         if (is_array($metode_pengujian_array)) {
             $stmt = $this->db->prepare("INSERT INTO skema_metode_pengujian (skema_id, metode_pengujian) VALUES (?, ?)");
             foreach ($metode_pengujian_array as $metode) {
@@ -525,12 +548,13 @@ class SkemaManager {
                 }
             }
         } elseif (!empty($metode_pengujian_array)) { // Fallback jika hanya satu string yang dikirim
-             $stmt = $this->db->prepare("INSERT INTO skema_metode_pengujian (skema_id, metode_pengujian) VALUES (?, ?)");
-             $stmt->execute([$skema_id, $metode_pengujian_array]);
+            $stmt = $this->db->prepare("INSERT INTO skema_metode_pengujian (skema_id, metode_pengujian) VALUES (?, ?)");
+            $stmt->execute([$skema_id, $metode_pengujian_array]);
         }
     }
 
-    public function getMetodePengujianBySkemaId($skema_id) {
+    public function getMetodePengujianBySkemaId($skema_id)
+    {
         try {
             $stmt = $this->db->prepare("SELECT metode_pengujian FROM skema_metode_pengujian WHERE skema_id = ?");
             $stmt->execute([$skema_id]);
@@ -542,12 +566,11 @@ class SkemaManager {
         }
     }
 
-    public function getGambarPath($filename) {
+    public function getGambarPath($filename)
+    {
         if (empty($filename)) {
             return null;
         }
         return 'dksassets/img/' . $filename;
     }
-    
 }
-?>

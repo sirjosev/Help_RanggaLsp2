@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 session_start();
 include 'config.php';
 
@@ -8,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $pass = $_POST['pass'];
 
-    // Menggunakan PDO dan prepared statement dengan verifikasi password yang di-hash
     $sql = "SELECT * FROM users WHERE email = :email";
     $stmt = $conn->prepare($sql);
 
@@ -19,18 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($pass, $user['password'])) {
-            // Password cocok, buat session
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['admin_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['is_super_admin'] = ($user['email'] === SUPER_ADMIN_EMAIL);
-            header("Location: admin.php"); // Arahkan ke dashboard utama
-            exit();
+            header("Location: admin.php");
+            exit;
         } else {
-            // Email tidak ditemukan atau password salah
             $error = "Email atau password salah!";
         }
     } catch (PDOException $e) {
-        // error_log("Login PDOException: " . $e->getMessage());
         $error = "Terjadi kesalahan pada sistem. Silakan coba lagi nanti.";
     }
 }
@@ -38,12 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
+
 <body>
     <div class="limiter">
         <div class="container-login100">
@@ -56,7 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="login100-form-title">Welcome</span>
 
                     <?php
-                    // Menampilkan pesan sukses registrasi atau error login
                     if (isset($_GET['status']) && $_GET['status'] == 'register_success') {
                         echo '<p style="color:green; text-align:center;">Registrasi berhasil! Silakan login.</p>';
                     } elseif ($error) {
@@ -92,10 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <?php
-    // Cek untuk status logout dan tampilkan pop-up jika ada
     if (isset($_GET['status']) && $_GET['status'] == 'logout_success') {
         echo "<script>alert('Anda telah berhasil logout.');</script>";
     }
     ?>
 </body>
+
 </html>
