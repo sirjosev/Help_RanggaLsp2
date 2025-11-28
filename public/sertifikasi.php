@@ -68,6 +68,11 @@ if ($search_term) {
 
         .card-header {
             text-align: left; /* Pastikan header card rata kiri */
+            min-height: 140px; /* Menyamakan tinggi header */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #f8f9fa; /* Pastikan warna abu-abu konsisten */
         }
 
         .card-title {
@@ -231,9 +236,20 @@ if ($search_term) {
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog">Blog</a>
                     </li>
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="btn btn-outline-light ms-3" href="https://sertifikasi.lspdks.co.id" target="_blank">Register</a>
-                    </li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <?php if (isset($_SESSION['is_super_admin']) && $_SESSION['is_super_admin']): ?>
+                            <li class="nav-item mx-0 mx-lg-1">
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded" href="<?= defined('ADMIN_PATH_PREFIX') ? ADMIN_PATH_PREFIX : '' ?>/admin">Dashboard</a>
+                            </li>
+                        <?php endif; ?>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="logout.php">Logout</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="btn btn-outline-light ms-3" href="login">Login</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

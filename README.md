@@ -22,7 +22,12 @@ This is a web application for **Lembaga Sertifikasi Profesi (LSP)**. It manages 
 -   **Admin Management**: Manage other admin accounts.
 
 ### 3. Security & Architecture
--   **URL Rewriting**: `.php` extensions are removed from URLs for a cleaner look (e.g., `/login` instead of `/login.php`).
+-   **URL Rewriting**:
+    -   `landingPage` -> `index.php`
+    -   `sertifikasi` -> `sertifikasi.php`
+    -   `profile` -> `profile.php`
+    -   `blog` -> `blog.php`
+    -   `.php` extensions are removed from other URLs for a cleaner look.
 -   **Role-Based Access Control (RBAC)**:
     -   **Regular Users**: Can access public pages and their profile.
     -   **Super Admins**: Can access the Admin Dashboard and management features.
@@ -34,9 +39,14 @@ This is a web application for **Lembaga Sertifikasi Profesi (LSP)**. It manages 
 ### Authentication Flow
 1.  **Registration**: Users sign up via `/register`. Passwords are hashed using `password_hash`.
 2.  **Login**: Users log in via `/login`.
-    -   **Regular Users**: Redirected to `/index` (Home).
+    -   **Regular Users**: Redirected to `/landingPage` (Home).
     -   **Super Admins**: Redirected to the secret admin dashboard URL (configured in `config.php`).
 3.  **Logout**: Users log out via `/logout`, which destroys the session and redirects to login.
+4.  **Dynamic Navigation**: The navigation menu automatically shows "Login" or "Logout" based on the user's session state.
+
+### UI/UX Improvements
+-   **Card Layout**: Certification cards have equalized header heights for a consistent look.
+-   **Navigation**: Standardized navigation links across all pages.
 
 ### Admin Access
 -   The admin path is hidden. To access it, you must know the `ADMIN_PATH_PREFIX` defined in `config/config.php`.
