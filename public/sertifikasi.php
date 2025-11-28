@@ -243,7 +243,7 @@ if ($search_term) {
                             </li>
                         <?php endif; ?>
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="logout.php">Logout</a>
+                            <a class="btn btn-outline-light ms-3" href="logout.php">Logout</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item mx-0 mx-lg-1">
@@ -287,6 +287,14 @@ if ($search_term) {
                     <input type="hidden" name="jenis" value="<?php echo htmlspecialchars($filter_jenis); ?>">
                 <?php endif; ?>
             </form>
+
+            <?php if (isset($_SESSION['is_super_admin']) && $_SESSION['is_super_admin']): ?>
+                <div class="mb-4 text-end">
+                    <a href="admin_skema.php" class="btn btn-primary">
+                        <i class="fas fa-cog me-2"></i>Manage Skema
+                    </a>
+                </div>
+            <?php endif; ?>
 
             <h2>
                 <?php 

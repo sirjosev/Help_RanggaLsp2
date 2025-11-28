@@ -9,10 +9,23 @@ $password = '';
 define('ENCRYPTION_KEY', 'your-secret-key-change-this-in-production-1234567890');
 
 // Super Admin Email
-define('SUPER_ADMIN_EMAIL', 'admin@lspdks.co.id');
+define('SUPER_ADMIN_EMAILS', ['admin@lspdks.co.id', 'tes2@gmail.com']);
 
 // Secret Admin Path Prefix
+// Secret Admin Path Prefix
 define('ADMIN_PATH_PREFIX', 'secure-panel');
+
+// Define Base URL
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+$host = $_SERVER['HTTP_HOST'];
+$script_name = $_SERVER['SCRIPT_NAME'];
+$public_pos = strpos($script_name, '/public/');
+if ($public_pos !== false) {
+    $base_path = substr($script_name, 0, $public_pos + 7); // +7 to include '/public'
+} else {
+    $base_path = dirname($script_name);
+}
+define('BASE_URL', $protocol . "://" . $host . $base_path);
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);

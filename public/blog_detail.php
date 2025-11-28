@@ -35,35 +35,6 @@ if ($blog_post) {
             </a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-    if ($blog_post) {
-        $page_title = htmlspecialchars($blog_post['title']);
-    } else {
-        $page_title = "Berita Tidak Ditemukan";
-    }
-} else {
-    $page_title = "ID Berita Tidak Valid";
-}
-?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><?php echo $page_title; ?> - LSP DKS</title>
-  <link rel="icon" type="image/x-icon" href="assets/img/logo-digitalcreativesolusi.png" />
-  <link href="css/styles.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/detail.css" /> <!-- Assuming detail.css has specific styles for blog details -->
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-</head>
-<body id="page-top">
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-        <div class="container">
-           <a class="navbar-brand navbar-brand-logos" href="#page-top">
-                <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
-            </a>
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
@@ -81,7 +52,7 @@ if ($blog_post) {
                             </li>
                         <?php endif; ?>
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="logout.php">Logout</a>
+                            <a class="btn btn-outline-light ms-3" href="logout.php">Logout</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item mx-0 mx-lg-1">

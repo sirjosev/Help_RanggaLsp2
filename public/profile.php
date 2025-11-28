@@ -52,7 +52,7 @@ require_once __DIR__ . '/../config/config.php';
                             </li>
                         <?php endif; ?>
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="logout.php">Logout</a>
+                            <a class="btn btn-outline-light ms-3" href="logout.php">Logout</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item mx-0 mx-lg-1">

@@ -58,7 +58,7 @@ use App\Helper\UrlHelper;
                             </li>
                         <?php endif; ?>
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="logout.php">Logout</a>
+                            <a class="btn btn-outline-light ms-3" href="logout.php">Logout</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item mx-0 mx-lg-1">
@@ -88,6 +88,14 @@ use App\Helper\UrlHelper;
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
+            
+            <?php if (isset($_SESSION['is_super_admin']) && $_SESSION['is_super_admin']): ?>
+                <div class="mb-4 text-center">
+                    <a href="admin_blog.php" class="btn btn-primary">
+                        <i class="fas fa-cog me-2"></i>Manage Blog
+                    </a>
+                </div>
+            <?php endif; ?>
 
             <?php if (empty($allBlogs)): ?>
                 <div class="row">

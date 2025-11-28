@@ -1,4 +1,21 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_super_admin']) || !$_SESSION['is_super_admin']) {
+    header("Location: login");
+    exit();
+}
+
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/config.php';
+
+use App\Model\BlogManager;
+
+$blogManager = new BlogManager($conn);
+
+function processContentImages($content) {
+    $dom = new DOMDocument();
     libxml_use_internal_errors(true);
+    // Hack to load HTML with UTF-8 encoding
     $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
     libxml_clear_errors();
     
@@ -223,37 +240,33 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Management</title>
-    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/admin.css" />
     <script src="https://cdn.tiny.cloud/1/z879h2vkvp2801s702gci1i4gvps4263c2xwb6t06fa91302/tinymce/6/tinymce.min.js"></script>
-    <!-- Blok <style> dihapus, styling akan dikelola oleh css/admin.css -->
 </head>
-
 <body>
-    <?php require_once 'includes/sidebar.php'; ?>
+    <?php require_once __DIR__ . '/../src/View/partials/sidebar.php'; ?>
 
     <div class="main-content">
         <header>
             <div class="header-content">
                 <h1>Blog Management</h1>
-                <!-- Tombol Sign Out dihapus dari header -->
             </div>
         </header>
 
-        <!-- Menggunakan kelas 'form-section' seperti di admin_skema.php untuk konsistensi tombol aksi utama -->
         <section class="form-section">
-            <button class="btn" onclick="showCreateForm()">Create New Blog</button> <!-- Menggunakan kelas 'btn' umum -->
+            <button class="btn" onclick="showCreateForm()">Create New Blog</button>
         </section>
 
-        <section class="blog-list-section"> <!-- Bisa juga dinamakan schema-section jika ingin lebih generik -->
+        <section class="blog-list-section">
             <h2>All Blogs (<?= count($blogs) ?> total)</h2>
-            <div class="blog-list"> <!-- Bisa juga dinamakan schema-container jika ingin lebih generik -->
+            <div class="blog-list">
                 <?php if (empty($blogs)): ?>
-                    <div class="blog-card"> <!-- Akan di-style agar mirip schema-card via admin.css -->
+                    <div class="blog-card">
                         <p>No blogs found. Create your first blog!</p>
                     </div>
                 <?php else: ?>
                     <?php foreach ($blogs as $blog): ?>
-                    <div class="blog-card"> <!-- Akan di-style agar mirip schema-card via admin.css -->
+                    <div class="blog-card">
                         <?php if (!empty($blog['featured_image'])): ?>
                             <img src="<?= htmlspecialchars($blog['featured_image']) ?>" alt="Featured Image" class="blog-image">
                         <?php endif; ?>
@@ -266,7 +279,7 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
                             <strong>Created:</strong> <?= date('Y-m-d H:i', strtotime($blog['created_at'])) ?>
                             <br>
                             <strong>Status:</strong> 
-                            <span class="status-badge status-<?= $blog['status'] ?>"> <!-- Style untuk status badge akan dipastikan ada di admin.css -->
+                            <span class="status-badge status-<?= $blog['status'] ?>">
                                 <?= ucfirst($blog['status']) ?>
                             </span>
                         </div>
@@ -275,12 +288,12 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
                             <?= substr(strip_tags($blog['content']), 0, 150) ?>...
                         </p>
                         
-                        <div class="card-actions"> <!-- Menggunakan 'card-actions' seperti di admin_skema.php -->
-                            <a href="blog_detail.php?id=<?= $blog['id'] ?>" target="_blank" class="btn btn-small">Read more</a> <!-- Menambahkan kelas btn & btn-small -->
-                            <button class="btn btn-small" onclick="editBlog(<?= $blog['id'] ?>)">Edit</button> <!-- Menggunakan kelas btn & btn-small -->
-                            <button class="btn btn-danger btn-small" onclick="deleteBlog(<?= $blog['id'] ?>)">Delete</button> <!-- Menggunakan kelas btn, btn-danger & btn-small -->
+                        <div class="card-actions">
+                            <a href="blog_detail.php?id=<?= $blog['id'] ?>" target="_blank" class="btn btn-small">Read more</a>
+                            <button class="btn btn-small" onclick="editBlog(<?= $blog['id'] ?>)">Edit</button>
+                            <button class="btn btn-danger btn-small" onclick="deleteBlog(<?= $blog['id'] ?>)">Delete</button>
                             
-                            <select onchange="updateStatus(<?= $blog['id'] ?>, this.value)" style="margin-left: 10px;" class="form-control-small"> <!-- Menambahkan kelas untuk styling jika perlu -->
+                            <select onchange="updateStatus(<?= $blog['id'] ?>, this.value)" style="margin-left: 10px;" class="form-control-small">
                                 <option value="draft" <?= $blog['status'] == 'draft' ? 'selected' : '' ?>>Draft</option>
                                 <option value="published" <?= $blog['status'] == 'published' ? 'selected' : '' ?>>Published</option>
                             </select>

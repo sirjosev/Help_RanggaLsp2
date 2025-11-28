@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Password cocok, buat session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
-            $_SESSION['is_super_admin'] = ($user['email'] === SUPER_ADMIN_EMAIL);
+            $_SESSION['is_super_admin'] = in_array(strtolower($user['email']), array_map('strtolower', SUPER_ADMIN_EMAILS));
 
             if ($_SESSION['is_super_admin']) {
                 header("Location: " . ADMIN_PATH_PREFIX . "/admin"); // Arahkan ke dashboard admin dengan prefix rahasia

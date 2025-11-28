@@ -27,7 +27,7 @@ $admins = $stmt->fetchAll();
     <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-    <?php require_once 'includes/sidebar.php'; ?>
+    <?php require_once __DIR__ . '/../src/View/partials/sidebar.php'; ?>
 
     <div class="main-content">
         <header>

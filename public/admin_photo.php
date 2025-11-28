@@ -41,18 +41,6 @@ try {
     die("Database error: " . $e->getMessage());
 }
 ?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upload Foto Halaman Depan</title>
-  <link rel="stylesheet" href="css/admin.css" />
-  <style>
-  :root {
-    --card-width: 250px;
-    --card-height: 150px;
-  }
   .upload-page { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   .upload-page header { background: #ffffffff; color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
   .upload-page header h1 { margin: 0; font-size: 1.5rem; }
@@ -91,7 +79,7 @@ try {
   </style>
 </head>
 <body>
-  <?php require_once 'includes/sidebar.php'; ?>
+  <?php require_once __DIR__ . '/../src/View/partials/sidebar.php'; ?>
 
   <div class="main-content upload-page">
     <header>
