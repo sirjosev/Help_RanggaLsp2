@@ -113,4 +113,4 @@ if (session_status() == PHP_SESSION_NONE) {
         </div>
     </section>
 
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/../src/View/partials/footer.php'; ?>
