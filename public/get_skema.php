@@ -22,7 +22,7 @@ function sendJsonResponse($data) {
 // Function to log and send error
 function sendError($message, $details = null) {
     $errorData = ['success' => false, 'message' => $message];
-    if ($details && $_GET['debug'] ?? false) {
+    if ($details && ($_GET['debug'] ?? false)) {
         $errorData['details'] = $details;
     }
     error_log("get_skema.php Error: $message" . ($details ? " - Details: " . print_r($details, true) : ""));
@@ -78,19 +78,21 @@ try {
     $response = [
         'success' => true,
         'skema' => $skema,
-        'units' => [],
+        'unit_kompetensi' => [],
         'persyaratan' => [],
         'dokumen' => [],
-        'asesmen' => []
+        'metode_asesmen' => [],
+        'pemeliharaan' => [],
+        'metode_pengujian_skema' => $metode_pengujian
     ];
     
     // Process units
     if ($units && is_array($units)) {
-        $response['units'] = array_map(function($unit) {
+        $response['unit_kompetensi'] = array_map(function($unit) {
             return [
-                'nomor' => $unit['no_urut'] ?? $unit['nomor'] ?? '',
+                'no_urut' => $unit['no_urut'] ?? $unit['nomor'] ?? '',
                 'kode_unit' => $unit['kode_unit'] ?? '',
-                'judul' => $unit['judul_unit'] ?? $unit['judul'] ?? '',
+                'judul_unit' => $unit['judul_unit'] ?? $unit['judul'] ?? '',
                 'standar_kompetensi' => $unit['standar_kompetensi'] ?? ''
             ];
         }, $units);
@@ -113,7 +115,7 @@ try {
     if ($dokumen && is_array($dokumen)) {
         $response['dokumen'] = array_map(function($doc) {
             return [
-                'nama' => $doc['nama_dokumen'] ?? $doc['nama'] ?? '',
+                'nama_dokumen' => $doc['nama_dokumen'] ?? $doc['nama'] ?? '',
                 'wajib' => intval($doc['wajib'] ?? 1)
             ];
         }, $dokumen);
@@ -121,7 +123,7 @@ try {
     
     // Process asesmen
     if ($asesmen && is_array($asesmen)) {
-        $response['asesmen'] = array_map(function($asesmenItem) {
+        $response['metode_asesmen'] = array_map(function($asesmenItem) {
             return [
                 'jenis_peserta' => $asesmenItem['jenis_peserta'] ?? '',
                 'metode' => $asesmenItem['metode'] ?? '',
@@ -148,6 +150,11 @@ try {
         }
     }
     
+    // Set pemeliharaan as array of objects for frontend
+    if (!empty($pemeliharaanValue)) {
+        $response['pemeliharaan'][] = ['deskripsi' => $pemeliharaanValue];
+    }
+
     // Set pemeliharaan in skema
     $response['skema']['pemeliharaan'] = $pemeliharaanValue;
 
