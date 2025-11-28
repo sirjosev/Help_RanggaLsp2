@@ -1,9 +1,16 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/config.php';
 
 use App\Model\BlogManager;
 use App\Model\SkemaManager;
+use App\Helper\UrlHelper;
 
 $blogManager = new BlogManager($conn);
 $skemaManager = new SkemaManager($conn);
@@ -67,7 +74,7 @@ $latest_skema = array_slice($latest_skema, 0, 5);
                     <div class="blog-card">
                         <h3><?= htmlspecialchars($blog['title']) ?></h3>
                         <p class="blog-summary"><?= BlogManager::generateSummary($blog['content'], 15) ?>...</p>
-                        <a href="blog_detail.php?id=<?= $blog['id'] ?>" target="_blank">Read more</a>
+                        <a href="blog_detail.php?id=<?= UrlHelper::encrypt($blog['id']) ?>" target="_blank">Read more</a>
                     </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -86,7 +93,7 @@ $latest_skema = array_slice($latest_skema, 0, 5);
                     <div class="schema-card">
                         <h3><?= htmlspecialchars($skema['nama']) ?></h3>
                         <p><?= htmlspecialchars(substr($skema['ringkasan'], 0, 100)) ?>...</p>
-                         <a href="skema.php?id=<?= $skema['id'] ?>" target="_blank">Read more</a>
+                         <a href="skema.php?id=<?= UrlHelper::encrypt($skema['id']) ?>" target="_blank">Read more</a>
                     </div>
                     <?php endforeach; ?>
                 <?php endif; ?>

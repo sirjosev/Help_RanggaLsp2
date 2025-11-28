@@ -7,6 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/config.php';
 
 use App\Model\SkemaManager;
+use App\Helper\UrlHelper;
 
 $skemaManager = new SkemaManager($conn);
 
@@ -39,6 +40,7 @@ if ($search_term) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Halaman Sertifikasi</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-digitalcreativesolusi.png" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/sertifikasi.css" />
     <style>
@@ -248,14 +250,12 @@ if ($search_term) {
                     <option value="">Semua Jenis</option>
                     <option value="Klaster" <?php echo $filter_jenis === 'Klaster' ? 'selected' : ''; ?>>Klaster</option>
                     <option value="Okupasi" <?php echo $filter_jenis === 'Okupasi' ? 'selected' : ''; ?>>Okupasi</option>
-                    <option value="Mandiri" <?php echo $filter_jenis === 'Mandiri' ? 'selected' : ''; ?>>Mandiri</option>
                 </select>
             </div>
             <ul>
                 <li class="bold-item"><a href="sertifikasi.php" style="text-decoration: none; color: inherit;">Semua Skema:</a></li>
                 <li ><a href="sertifikasi.php?jenis=Klaster" style="text-decoration: none; color: inherit;">Skema Klaster</a></li>
                 <li ><a href="sertifikasi.php?jenis=Okupasi" style="text-decoration: none; color: inherit;">Skema Okupasi</a></li>
-                <li ><a href="sertifikasi.php?jenis=Mandiri" style="text-decoration: none; color: inherit;">Skema Mandiri</a></li>
             </ul>
         </aside>
 
@@ -321,7 +321,7 @@ if ($search_term) {
                                 <?php echo htmlspecialchars(substr($skema['ringkasan'], 0, 120)) . (strlen($skema['ringkasan']) > 120 ? '...' : ''); ?>
                             </div>
                             
-                            <button onclick="window.location.href='skema.php?id=<?php echo $skema['id']; ?>'">
+                            <button onclick="window.location.href='skema.php?id=<?php echo UrlHelper::encrypt($skema['id']); ?>'">
                                 Lihat Skema
                             </button>
                         </div>

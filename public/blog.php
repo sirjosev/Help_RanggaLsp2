@@ -8,6 +8,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/config.php';
 
 use App\Model\BlogManager;
+use App\Helper\UrlHelper;
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +17,8 @@ use App\Model\BlogManager;
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog</title>
+    <title>Blog - LSP DKS</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-digitalcreativesolusi.png" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/blog.css" />
 </head>
@@ -87,7 +89,7 @@ use App\Model\BlogManager;
                     <?php foreach ($allBlogs as $blog): ?>
                         <div class="col-md-6 col-lg-4 mb-5">
                             <div class="portfolio-item-wrapper">
-                                <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="portfolio-item-link">
+                                <a href="blog_detail.php?id=<?php echo UrlHelper::encrypt($blog['id']); ?>" class="portfolio-item-link">
                                     <div class="portfolio-item mx-auto">
                                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
@@ -106,7 +108,7 @@ use App\Model\BlogManager;
                                     <p class="text-muted portfolio-item-summary">
                                         <?php echo BlogManager::generateSummary($blog['content'], 20); // Shorter summary for card layout ?>
                                     </p>
-                                    <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                                    <a href="blog_detail.php?id=<?php echo UrlHelper::encrypt($blog['id']); ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
                                 </div>
                             </div>
                         </div>

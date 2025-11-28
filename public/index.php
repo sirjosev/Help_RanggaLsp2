@@ -10,6 +10,7 @@ require_once __DIR__ . '/../config/config.php';
 
 use App\Model\SkemaManager;
 use App\Model\BlogManager;
+use App\Helper\UrlHelper;
 
 // 2. Fetch all data needed for the page
 $db_error = '';
@@ -52,7 +53,7 @@ try {
     <meta name="author" content="" />
     <title>lsp-dks</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-digitalcreativesolusi.png" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -218,7 +219,7 @@ try {
                     <?php foreach ($skema_list as $skema): ?>
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item-wrapper">
-                            <a href="skema.php?id=<?php echo $skema['id']; ?>" class="portfolio-item-link">
+                            <a href="skema.php?id=<?php echo UrlHelper::encrypt($skema['id']); ?>" class="portfolio-item-link">
                                 <div class="portfolio-item mx-auto">
                                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                         <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
@@ -231,7 +232,7 @@ try {
                             </a>
                             <div class="text-center mt-3 portfolio-item-details">
                                 <h5 class="portfolio-item-title"><?php echo htmlspecialchars($skema['nama']); ?></h5>
-                                <a href="skema.php?id=<?php echo $skema['id']; ?>" class="btn btn-sm btn-primary">Lihat Detail</a>
+                                <a href="skema.php?id=<?php echo UrlHelper::encrypt($skema['id']); ?>" class="btn btn-sm btn-primary">Lihat Detail</a>
                             </div>
                         </div>
                     </div>
@@ -269,7 +270,7 @@ try {
                 <?php foreach ($latestBlogs as $blog): ?>
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item-wrapper">
-                            <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="portfolio-item-link">
+                            <a href="blog_detail.php?id=<?php echo UrlHelper::encrypt($blog['id']); ?>" class="portfolio-item-link">
                                 <div class="portfolio-item mx-auto">
                                     <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                         <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
@@ -288,7 +289,7 @@ try {
                             <div class="text-center mt-3 portfolio-item-details">
                                 <h5 class="portfolio-item-title"><?php echo htmlspecialchars($blog['title']); ?></h5>
                                 <p class="text-muted portfolio-item-summary"><?php echo BlogManager::generateSummary($blog['content'], 20); // Shorter summary ?></p>
-                                <a href="blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                                <a href="blog_detail.php?id=<?php echo UrlHelper::encrypt($blog['id']); ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
                             </div>
                         </div>
                     </div>

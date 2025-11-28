@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 
 function processContentImages($content) {
     $dom = new DOMDocument();
@@ -45,20 +50,6 @@ function processContentImages($content) {
 
 ini_set('upload_max_filesize', '10M');
 ini_set('post_max_size', '10M');
-ini_set('memory_limit', '256M');
-set_time_limit(300); // 5 minutes for upload
-ini_set('max_input_time', '300');
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-session_start();
-require_once 'config.php';
-
-// Check if GD library is installed
-if (!extension_loaded('gd')) {
-    die('PHP GD library is not installed');
-}
 
 // Image resize function
 function resizeAndSaveImage($sourceFile, $targetPath, $maxWidth = 800, $maxHeight = 600) {

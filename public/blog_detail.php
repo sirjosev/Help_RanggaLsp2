@@ -1,16 +1,3 @@
-<?php
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../config/config.php';
-
-use App\Model\BlogManager;
-
-$blog_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-$blog_post = null;
-$page_title = "Detail Berita"; // Default title
-
-if ($blog_id > 0) {
-    $blogManager = new BlogManager($conn);
-    $blog_post = $blogManager->getBlogById($blog_id);
     if ($blog_post) {
         $page_title = htmlspecialchars($blog_post['title']);
     } else {
@@ -26,6 +13,7 @@ if ($blog_id > 0) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?php echo $page_title; ?> - LSP DKS</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo-digitalcreativesolusi.png" />
   <link href="css/styles.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/detail.css" /> <!-- Assuming detail.css has specific styles for blog details -->
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>

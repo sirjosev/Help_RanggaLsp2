@@ -3,11 +3,13 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/config.php';
 
 use App\Model\SkemaManager;
+use App\Helper\UrlHelper;
 
 $skemaManager = new SkemaManager($conn);
 
 // Get skema ID from URL parameter
-$skema_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$encrypted_id = isset($_GET['id']) ? $_GET['id'] : '';
+$skema_id = $encrypted_id ? (int)UrlHelper::decrypt($encrypted_id) : 0;
 
 if (!$skema_id) {
     header('Location: sertifikasi.php');
@@ -45,6 +47,7 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php echo htmlspecialchars($skema['nama']); ?> - LSP DKS</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-digitalcreativesolusi.png" />
     <link rel="stylesheet" href="css/styles.css" />
     <style>
         .tab-active {
@@ -246,7 +249,7 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
     </nav>
 
     <div class="container" style="margin-top: 120px; padding: 20px;">
-        <a href="sertifikasi.php" class="back-button">← Kembali ke Daftar Sertifikasi</a>
+        <a href="sertifikasi.php" class="register-button" style="display: inline-block; margin-bottom: 20px;">← Kembali ke Daftar Sertifikasi</a>
         
         <!-- Section Skema -->
         <section class="skema-section">
@@ -273,7 +276,7 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
                 </tr>
                 <tr>
                     <td>Unit Kompetensi</td>
-                    <td>: <?php echo $skema['unit_kompetensi']; ?> Unit</td>
+                    <td>: <?php echo count($unit_kompetensi); ?> Unit</td>
                 </tr>
                 <tr>
                     <td>Masa Berlaku Sertifikat</td>
