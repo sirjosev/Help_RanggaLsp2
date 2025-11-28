@@ -218,23 +218,12 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
 <body>
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top">lsp-dks</a>
+            <a class="navbar-brand navbar-brand-logos" href="landingPage">
+                <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
+            </a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="landingPage">Home</a>
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="sertifikasi">Sertifikasi</a>
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded" href="profile">Profile</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">

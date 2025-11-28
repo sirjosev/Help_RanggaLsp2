@@ -212,7 +212,7 @@ if ($search_term) {
     <!-- Navigation -->
      <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand navbar-brand-logos" href="#page-top">
+            <a class="navbar-brand navbar-brand-logos" href="landingPage">
                 <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
             </a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
