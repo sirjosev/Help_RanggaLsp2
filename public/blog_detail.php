@@ -30,7 +30,7 @@ if ($blog_post) {
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-           <a class="navbar-brand navbar-brand-logos" href="landingPage">
+           <a class="navbar-brand navbar-brand-logos" href="#page-top">
                 <img src="assets/img/logo-digitalcreativesolusi.png" alt="Digital Creative Solusi Logo">
             </a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
@@ -85,7 +85,7 @@ if ($blog_post) {
                         </li>
                     <?php else: ?>
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a class="btn btn-outline-light ms-3" href="login">Login</a>
+                            <a class="btn btn-outline-light ms-3" href="https://sertifikasi.lspdks.co.id">Login</a>
                         </li>
                     <?php endif; ?>
                 </ul>

@@ -46,12 +46,6 @@ aside {
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   margin-top: 50px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 120px;
-  /* Adjust based on navbar height */
-  align-self: start;
-  height: fit-content;
 }
 
 aside h3 {
@@ -123,8 +117,6 @@ main {
     /* Sidebar mengambil lebar penuh dan akan di atas main content */
     margin-bottom: 20px;
     /* Jarak antara sidebar dan main content */
-    position: static;
-    /* Disable sticky on mobile */
   }
 
   .container {
