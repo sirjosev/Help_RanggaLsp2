@@ -104,10 +104,7 @@ try {
                         </li>
                     <?php else: ?>
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="login">Login</a>
-                        </li>
-                        <li class="nav-item mx-0 mx-lg-1">
-                            <a class="btn btn-outline-light ms-3" href="https://sertifikasi.lspdks.co.id" target="_blank">Register</a>
+                            <a class="btn btn-outline-light ms-3" href="login">Login</a>
                         </li>
                     <?php endif; ?>
                 </ul>
