@@ -11,6 +11,9 @@ define('ENCRYPTION_KEY', 'your-secret-key-change-this-in-production-1234567890')
 // Super Admin Email
 define('SUPER_ADMIN_EMAIL', 'admin@lspdks.co.id');
 
+// Secret Admin Path Prefix
+define('ADMIN_PATH_PREFIX', 'secure-panel');
+
 try {
     $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
     // Set the PDO error mode to exception

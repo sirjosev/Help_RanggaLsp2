@@ -18,12 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($pass, $user['password'])) {
+            if ($user && password_verify($pass, $user['password'])) {
             // Password cocok, buat session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['is_super_admin'] = ($user['email'] === SUPER_ADMIN_EMAIL);
-            header("Location: admin.php"); // Arahkan ke dashboard utama
+
+            if ($_SESSION['is_super_admin']) {
+                header("Location: " . ADMIN_PATH_PREFIX . "/admin"); // Arahkan ke dashboard admin dengan prefix rahasia
+            } else {
+                header("Location: index"); // Arahkan ke home untuk user biasa
+            }
             exit();
         } else {
             // Email tidak ditemukan atau password salah

@@ -1,13 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-function processContentImages($content) {
-    $dom = new DOMDocument();
-    // Disable libxml errors and use internal errors
     libxml_use_internal_errors(true);
     $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
     libxml_clear_errors();

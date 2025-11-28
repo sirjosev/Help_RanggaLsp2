@@ -1,7 +1,13 @@
 <?php
 require_once 'config.php';
+session_start();
 
 header('Content-Type: application/json');
+
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_super_admin']) || !$_SESSION['is_super_admin']) {
+    echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $photo_id = $_POST['id'];

@@ -1,13 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-require_once 'config.php';
-require_once 'skema_functions.php';
-
-$skemaManager = new SkemaManager($conn);
 $skema_list = $skemaManager->getAllSkema();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

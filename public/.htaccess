@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# 1. Remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([a-z0-9-_]+)/?$ $1.php [L]
+
+# 2. Secret Admin Prefix (Obfuscation)
+# Map /secure-panel/admin -> admin.php
+RewriteRule ^secure-panel/admin/?$ admin.php [L,QSA]
+
+# Map /secure-panel/admin_page -> admin_page.php
+RewriteRule ^secure-panel/([a-z0-9-_]+)/?$ $1.php [L,QSA]
+
+# Prevent direct access to admin files via .php (Optional, for stricter security)
+# RewriteCond %{THE_REQUEST} \s/admin [NC]
+# RewriteRule ^ - [F]

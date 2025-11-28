@@ -4,13 +4,13 @@ require_once 'config.php';
 
 // Redirect to login if not authenticated
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: login');
     exit();
 }
 
 // Redirect if not super admin
 if (!isset($_SESSION['is_super_admin']) || !$_SESSION['is_super_admin']) {
-    header('Location: admin.php');
+    header('Location: index');
     exit();
 }
 

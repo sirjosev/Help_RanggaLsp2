@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_super_admin']) || !$_SESSION['is_super_admin']) {
+    header("Location: login");
     exit();
 }
 require_once 'config.php';
