@@ -28,9 +28,14 @@ try {
     $latestBlogs = $blogManager->getAllBlogs('publish_date DESC', 3); // Get latest 3 blogs
 
     // Fetch published photos for the header carousel
-    $photo_stmt = $conn->query("SELECT * FROM photos WHERE status = 'published' ORDER BY uploaded_at DESC");
-    if ($photo_stmt) {
-        $header_photos = $photo_stmt->fetchAll();
+    try {
+        $photo_stmt = $conn->query("SELECT * FROM photos WHERE status = 'published' ORDER BY uploaded_at DESC");
+        if ($photo_stmt) {
+            $header_photos = $photo_stmt->fetchAll();
+        }
+    } catch (PDOException $e) {
+        // Ignore error if photos table doesn't exist or query fails
+        error_log("Error fetching photos: " . $e->getMessage());
     }
 
 } catch (PDOException $e) {

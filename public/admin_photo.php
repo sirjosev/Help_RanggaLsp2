@@ -4,7 +4,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_super_admin']) || !$_SE
     header("Location: login");
     exit();
 }
-require_once 'config.php';
+require_once '../config/config.php';
 
 try {
     // Check if the 'photos' table exists

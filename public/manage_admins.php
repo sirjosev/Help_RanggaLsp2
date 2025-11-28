@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config.php';
+require_once '../config/config.php';
 
 // Redirect to login if not authenticated
 if (!isset($_SESSION['user_id'])) {
