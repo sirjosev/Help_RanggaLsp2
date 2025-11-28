@@ -38,6 +38,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     break;
             }
         }
+    } catch (Exception $e) {
+        $error = $e->getMessage();
+    }
+}
+
+$skema_list = $skemaManager->getAllSkema();
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Skema - Admin DKS</title>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/admin.css">
+    <style>
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        .form-row { display: flex; gap: 20px; }
+        .form-row .form-group { flex: 1; }
         .btn { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
         .btn-danger { background-color: #f44336; }
         .btn-small { padding: 5px 10px; font-size: 12px; }

@@ -90,7 +90,7 @@ use App\Helper\UrlHelper;
             </div>
             
             <?php if (isset($_SESSION['is_super_admin']) && $_SESSION['is_super_admin']): ?>
-                <div class="mb-4 text-center">
+                <div class="mb-4 text-end">
                     <a href="admin_blog.php" class="btn btn-primary">
                         <i class="fas fa-cog me-2"></i>Manage Blog
                     </a>

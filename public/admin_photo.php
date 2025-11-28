@@ -41,11 +41,19 @@ try {
     die("Database error: " . $e->getMessage());
 }
 ?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Foto Halaman Depan</title>
+  <link rel="stylesheet" href="<?= BASE_URL ?>/css/admin.css" />
+  <style>
+  :root {
+    --card-width: 250px;
+    --card-height: 150px;
+  }
   .upload-page { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-  .upload-page header { background: #ffffffff; color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
-  .upload-page header h1 { margin: 0; font-size: 1.5rem; }
-  .upload-page .upload-section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 500px; }
-  .upload-page .upload-section label { font-weight: bold; font-size: 1rem; color: #444; }
   .upload-page .upload-section input[type="file"] { display: block; margin-top: 10px; padding: 10px; border: 2px dashed #cbd5e1; border-radius: 10px; width: 100%; background: #f9fafb; cursor: pointer; transition: 0.3s ease; }
   .upload-page .upload-section input[type="file"]:hover { border-color: #4f46e5; background: #eef2ff; }
   .button-group { display: flex; gap: 10px; margin-top: 20px; }
