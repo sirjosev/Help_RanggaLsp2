@@ -86,13 +86,13 @@ try {
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="index.php">Home</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="landingPage">Home</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="sertifikasi.php">Sertifikasi</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="sertifikasi">Sertifikasi</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="profile.php">Profile</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="profile">Profile</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
                     <li class="nav-item mx-0 mx-lg-1">
@@ -257,7 +257,7 @@ try {
                 <?php endif; ?>
             </div>
             <div style="text-align: right;">
-                <a href="sertifikasi.php" class="back-button">Lihat Semua Skema →</a>
+                <a href="sertifikasi" class="back-button">Lihat Semua Skema →</a>
             </div>
         </div>
     </section>
@@ -314,7 +314,7 @@ try {
             <?php endif; ?>
         </div>
         <div style="text-align: right;">
-            <a href="blog.php" class="back-button">Lihat Semua Blog →</a>
+            <a href="blog" class="back-button">Lihat Semua Blog →</a>
         </div>
     </div>
 </section>

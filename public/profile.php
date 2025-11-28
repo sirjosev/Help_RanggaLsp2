@@ -33,16 +33,16 @@ if (session_status() == PHP_SESSION_NONE) {
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="index.php">Home</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="landingPage">Home</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="sertifikasi.php">Sertifikasi</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="sertifikasi">Sertifikasi</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="profile.php">Profile</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="profile">Profile</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog.php">Blog</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog">Blog</a>
                     </li>
                    <li class="nav-item mx-0 mx-lg-1">
                         <a class="btn btn-outline-light ms-3" href="https://sertifikasi.lspdks.co.id" target="_blank">Register</a>

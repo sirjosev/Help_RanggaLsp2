@@ -100,14 +100,15 @@ class SkemaManager {
         imagedestroy($src_img);
         imagedestroy($dst_img);
     }
-    
-    
-    /**
-     * Get all skema records
-     */
+
     public function getAllSkema() {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM skema ORDER BY created_at DESC");
+            $stmt = $this->db->prepare("
+                SELECT s.*, 
+                       (SELECT COUNT(*) FROM unit_kompetensi uk WHERE uk.skema_id = s.id) as jumlah_unit
+                FROM skema s 
+                ORDER BY s.created_at DESC
+            ");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -115,10 +116,7 @@ class SkemaManager {
             return [];
         }
     }
-    
-    /**
-     * Get skema by ID (just the main record)
-     */
+
     public function getSkemaById($id) {
         try {
             $stmt = $this->db->prepare("SELECT * FROM skema WHERE id = ?");
@@ -140,10 +138,6 @@ class SkemaManager {
             return 0;
         }
     }
-    
-    /**
-     * Get skema by ID with all related data
-     */
     public function getSkemaComplete($id) {
         try {
             // Get main skema data

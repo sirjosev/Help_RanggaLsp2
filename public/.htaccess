@@ -1,5 +1,11 @@
 RewriteEngine On
 
+# Specific Rewrite for landingPage
+RewriteRule ^landingPage/?$ index.php [L]
+RewriteRule ^sertifikasi/?$ sertifikasi.php [L]
+RewriteRule ^profile/?$ profile.php [L]
+RewriteRule ^blog/?$ blog.php [L]
+
 # 1. Remove .php extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f

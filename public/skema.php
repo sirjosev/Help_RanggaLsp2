@@ -12,7 +12,7 @@ $encrypted_id = isset($_GET['id']) ? $_GET['id'] : '';
 $skema_id = $encrypted_id ? (int)UrlHelper::decrypt($encrypted_id) : 0;
 
 if (!$skema_id) {
-    header('Location: sertifikasi.php');
+    header('Location: sertifikasi');
     exit;
 }
 
@@ -20,7 +20,7 @@ if (!$skema_id) {
 $skema = $skemaManager->getSkemaById($skema_id);
 
 if (!$skema) {
-    header('Location: sertifikasi.php');
+    header('Location: sertifikasi');
     exit;
 }
 
@@ -229,16 +229,16 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="index.php">Home</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="landingPage">Home</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="sertifikasi.php">Sertifikasi</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="sertifikasi">Sertifikasi</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="profile.php">Profile</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="profile">Profile</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog.php">Blog</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog">Blog</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="btn btn-outline-light ms-3" href="https://sertifikasi.lspdks.co.id" target="_blank">Register</a>
@@ -249,7 +249,7 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
     </nav>
 
     <div class="container" style="margin-top: 120px; padding: 20px;">
-        <a href="sertifikasi.php" class="register-button" style="display: inline-block; margin-bottom: 20px;">← Kembali ke Daftar Sertifikasi</a>
+        <a href="sertifikasi" class="register-button" style="display: inline-block; margin-bottom: 20px;">← Kembali ke Daftar Sertifikasi</a>
         
         <!-- Section Skema -->
         <section class="skema-section">

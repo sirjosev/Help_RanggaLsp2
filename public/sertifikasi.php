@@ -220,16 +220,16 @@ if ($search_term) {
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="index.php">Home</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="landingPage">Home</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="sertifikasi.php">Sertifikasi</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="sertifikasi">Sertifikasi</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="profile.php">Profile</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="profile">Profile</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog.php">Blog</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog">Blog</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="btn btn-outline-light ms-3" href="https://sertifikasi.lspdks.co.id" target="_blank">Register</a>
@@ -253,15 +253,15 @@ if ($search_term) {
                 </select>
             </div>
             <ul>
-                <li class="bold-item"><a href="sertifikasi.php" style="text-decoration: none; color: inherit;">Semua Skema:</a></li>
-                <li ><a href="sertifikasi.php?jenis=Klaster" style="text-decoration: none; color: inherit;">Skema Klaster</a></li>
-                <li ><a href="sertifikasi.php?jenis=Okupasi" style="text-decoration: none; color: inherit;">Skema Okupasi</a></li>
+                <li class="bold-item"><a href="sertifikasi" style="text-decoration: none; color: inherit;">Semua Skema:</a></li>
+                <li ><a href="sertifikasi?jenis=Klaster" style="text-decoration: none; color: inherit;">Skema Klaster</a></li>
+                <li ><a href="sertifikasi?jenis=Okupasi" style="text-decoration: none; color: inherit;">Skema Okupasi</a></li>
             </ul>
         </aside>
 
         <!-- Main -->
         <main>
-            <form method="GET" action="sertifikasi.php" style="margin-bottom: 2rem;">
+            <form method="GET" action="sertifikasi" style="margin-bottom: 2rem;">
                 <input type="text" 
                        class="search-box" 
                        name="search" 
@@ -291,7 +291,7 @@ if ($search_term) {
                 <div class="no-results">
                     <h3>Tidak ada skema yang ditemukan</h3>
                     <p>Silakan coba dengan kata kunci atau filter yang berbeda.</p>
-                    <a href="sertifikasi.php" style="color: #3498db; text-decoration: none;">← Kembali ke semua skema</a>
+                    <a href="sertifikasi" style="color: #3498db; text-decoration: none;">← Kembali ke semua skema</a>
                 </div>
             <?php else: ?>
                 <div class="card-grid">
@@ -309,7 +309,7 @@ if ($search_term) {
                                 </div>
                                 <div class="info-item">
                                     <span class="info-label">Unit Kompetensi</span>
-                                    <span class="info-value"><?php echo $skema['unit_kompetensi']; ?></span>
+                                    <span class="info-value"><?php echo $skema['jumlah_unit']; ?></span>
                                 </div>
                                 <div class="info-item">
                                     <span class="info-label">Harga</span>
