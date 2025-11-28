@@ -1,10 +1,18 @@
-    if ($blog_post) {
-        $page_title = htmlspecialchars($blog_post['title']);
-    } else {
-        $page_title = "Berita Tidak Ditemukan";
-    }
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/config.php';
+
+use App\Model\BlogManager;
+use App\Helper\UrlHelper;
+
+$id = isset($_GET['id']) ? UrlHelper::decrypt($_GET['id']) : null;
+$blogManager = new BlogManager($conn);
+$blog_post = $id ? $blogManager->getBlogById($id) : null;
+
+if ($blog_post) {
+    $page_title = htmlspecialchars($blog_post['title']);
 } else {
-    $page_title = "ID Berita Tidak Valid";
+    $page_title = $id ? "Berita Tidak Ditemukan" : "ID Berita Tidak Valid";
 }
 ?>
 <!DOCTYPE html>

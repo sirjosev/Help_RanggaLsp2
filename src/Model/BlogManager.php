@@ -86,9 +86,23 @@ class BlogManager
         }
         try {
             $date = new DateTime($dateString);
-            $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
-            $formatter->setPattern('d MMMM yyyy');
-            return $formatter->format($date);
+            
+            if (class_exists('IntlDateFormatter')) {
+                $formatter = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+                $formatter->setPattern('d MMMM yyyy');
+                return $formatter->format($date);
+            } else {
+                // Fallback for when php-intl is not enabled
+                $months = [
+                    1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+                    5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+                    9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
+                ];
+                $day = $date->format('d');
+                $month = $months[(int)$date->format('n')];
+                $year = $date->format('Y');
+                return "$day $month $year";
+            }
         } catch (Exception $e) {
             error_log("Error formatting date: " . $e->getMessage());
             return $dateString;
