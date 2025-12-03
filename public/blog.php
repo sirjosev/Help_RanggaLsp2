@@ -84,9 +84,7 @@ use App\Helper\UrlHelper;
         <div class="container berita-container"> <!-- berita-container for specific blog layout if needed -->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Berita & Artikel Terbaru</h2>
             <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+                <div class="divider-custom-line" style="max-width: 20rem; width: 100%;"></div>
             </div>
             
             <?php if (isset($_SESSION['is_super_admin']) && $_SESSION['is_super_admin']): ?>

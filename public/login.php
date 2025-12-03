@@ -18,7 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($user && password_verify($pass, $user['password'])) {
+        // Check password: try password_verify first (for hashes), then plain text fallback
+        $password_valid = false;
+        if ($user) {
+            if (password_verify($pass, $user['password'])) {
+                $password_valid = true;
+            } elseif ($pass === $user['password']) {
+                $password_valid = true; // Fallback for plain text "123"
+            }
+        }
+
+        if ($password_valid) {
             // Password cocok, buat session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
@@ -36,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } catch (PDOException $e) {
         // error_log("Login PDOException: " . $e->getMessage());
-        $error = "Terjadi kesalahan pada sistem. Silakan coba lagi nanti.";
+        $error = "Debug Error: " . $e->getMessage();
     }
 }
 ?>

@@ -68,9 +68,7 @@ require_once __DIR__ . '/../config/config.php';
         <div class="container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Profil & Sejarah Singkat</h2>
             <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+                <div class="divider-custom-line" style="max-width: 20rem; width: 100%;"></div>
             </div>
             <div class="row">
                 <div class="col-lg-10 mx-auto">
@@ -97,9 +95,7 @@ require_once __DIR__ . '/../config/config.php';
         <div class="container">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Tujuan Dan Sasaran Mutu</h2>
             <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+                <div class="divider-custom-line" style="max-width: 20rem; width: 100%;"></div>
             </div>
             <div class="row">
                 <div class="col-lg-10 mx-auto">

@@ -1,6 +1,6 @@
 <?php
 // Database configuration
-$host = 'localhost';
+$db_host = 'localhost';
 $db_name = 'dks';
 $username = 'root';
 $password = '';
@@ -28,7 +28,7 @@ if ($public_pos !== false) {
 define('BASE_URL', $protocol . "://" . $host . $base_path);
 
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
+    $conn = new PDO("mysql:host=$db_host;dbname=$db_name", $username, $password);
     // Set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
