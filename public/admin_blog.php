@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_super_admin']) || !$_SE
     exit();
 }
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/manual_loader.php';
 require_once __DIR__ . '/../config/config.php';
 
 use App\Model\BlogManager;

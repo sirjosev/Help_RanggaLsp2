@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // 1. Include all necessary files once at the top
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/manual_loader.php';
 require_once __DIR__ . '/../config/config.php';
 
 use App\Model\SkemaManager;
