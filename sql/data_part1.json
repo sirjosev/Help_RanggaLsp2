@@ -1,0 +1,692 @@
+[
+    {
+        "no": 1,
+        "kode_skema": "SKM/2420/00010/2/2024/1",
+        "nama_skema": "Ilmuwan Data (Data Scientist)",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2500000
+        },
+        "kbli": {
+            "kode": "63111",
+            "uraian": "Aktifitas Pengolahan Data"
+        },
+        "kbji": {
+            "kode": "2521",
+            "uraian": "Pengelola dan perancang database"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62DMI00.001.1",
+                "judul": "Menentukan Objektif Bisnis"
+            },
+            {
+                "kode": "J.62DMI00.002.1",
+                "judul": "Menentukan Tujuan Teknis Data Science"
+            },
+            {
+                "kode": "J.62DMI00.005.1",
+                "judul": "Menelaah Data"
+            },
+            {
+                "kode": "J.62DMI00.006.1",
+                "judul": "Menvalidasi Data"
+            },
+            {
+                "kode": "J.62DMI00.007.1",
+                "judul": "Menentukan Objek Data"
+            },
+            {
+                "kode": "J.62DMI00.008.1",
+                "judul": "Membersihkan Data"
+            },
+            {
+                "kode": "J.62DMI00.009.1",
+                "judul": "Mengkontruksi Data"
+            },
+            {
+                "kode": "J.62DMI00.012.1",
+                "judul": "Membangun Skenario Model"
+            },
+            {
+                "kode": "J.62DMI00.013.1",
+                "judul": "Membangun Model"
+            },
+            {
+                "kode": "J.62DMI00.014.1",
+                "judul": "Mengevaluasi Hasil Pemodelan"
+            },
+            {
+                "kode": "J.62DMI00.015.1",
+                "judul": "Melakukan Proses Review Pemodelan"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Lulusan S1 Program studi Teknik Informatika; atau\n2. Lulusan S1 Program studi Teknik Komputer atau Manajemen Bisnis dan memiliki sertifikat berbasis kompetensi Ilmuwan Data (Data Scientist)\n3. Memiliki pengalaman kerja sebagai Ilmuwan Data (Data Scientist) minimal selama 2 (dua) tahun di jabatan tersebut.",
+            "dokumen": "1. Copy ijazah program studi Teknik Informatika; atau\n2. Copy ijazah program studi Teknik Elektro atau Teknik Komputer atau Manajemen Bisnis dan Copy sertifikat pelatihan berbasis kompetensi Ilmuwan Data (Data Scientist); atau\n3. Copy Surat Keterangan Kerja sebagai Ilmuwan Data (Data Scientist) minimal selamat 2 (dua) tahun di jabatan tersebut.\n4. Pas foto terbaru 3X4 sebanyak 3 lembar.\n5. Copy KTP yang masih berlaku."
+        }
+    },
+    {
+        "no": 2,
+        "kode_skema": "SKM/2420/00010/2/2024/2",
+        "nama_skema": "Business Intelligence Analyst",
+        "jenis": "Okupasi",
+        "jenjang": "Semester 8",
+        "harga": {
+            "sk": 1500000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "63111",
+            "uraian": "Aktifitas Pengolahan Data"
+        },
+        "kbji": {
+            "kode": "2521",
+            "uraian": "Pengelola dan Perancangan Database"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62DMI00.004.1",
+                "judul": "Mengumpulkan Data"
+            },
+            {
+                "kode": "J.62DMI00.005.1",
+                "judul": "Menelaah Data"
+            },
+            {
+                "kode": "J.62DMI00.006.1",
+                "judul": "Memvalidasi Data"
+            },
+            {
+                "kode": "J.62DMI00.007.1",
+                "judul": "Menentukan Objek Data"
+            },
+            {
+                "kode": "J.62DMI00.009.1",
+                "judul": "Mengkontruksi Data"
+            },
+            {
+                "kode": "J.62DMI00.011.1",
+                "judul": "Mengintegrasikan Data"
+            },
+            {
+                "kode": "J.62DMS00.015.1",
+                "judul": "Membuat Business Intelligence"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Mahasiswa semester 8 (delapan) program studi Teknik Informatika; atau\n2. Mahasiswa semester 8 (delapan) program studi Teknik Komputer atau manajemen Bisnis dan memiliki sertifikat pelatihan berbasis kompetensi Business Intelligence Analyst; atau\n3. Memiliki pengalaman kerja sebagai Business Intelligence Analyst minimal selama 2 (dua) tahun di jabatan tersebut",
+            "dokumen": "1. Copy Transkip Nilai atau Kartu Hasil Studi (KHS) semester 1 s/d 7 program studi Teknik Informatika; atau\n2. Copy Transkip Nilai atau Kartu Hasil Studi (KHS) semester 1 s/d 7 program studi Teknik Komputer atau Manajemen Bisnis dan Copy sertifikat pelatihan berbasis kompetensi Business Intelligence Analyst; atau\n3. Copy Surat Keterangan Kerja sebagai Business Intelligence Analyst minimal selamat 2 (dua) tahun di jabatan tersebut.\n4. Pas foto terbaru 3X4 sebanyak 3 lembar.\n5. Copy KTP yang masih berlaku."
+        }
+    },
+    {
+        "no": 3,
+        "kode_skema": "SKM/2420/00010/2/2024/3",
+        "nama_skema": "Pengembang Web (Web Developer)",
+        "jenis": "Okupasi",
+        "jenjang": "Semester 8",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2500000
+        },
+        "kbli": {
+            "kode": "62019",
+            "uraian": "Aktivitas Pemrograman Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "2513",
+            "uraian": "Pengembang Web dan Multimedia"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.620100.041.1",
+                "judul": "Melaksanakan Cutover Aplikasi"
+            },
+            {
+                "kode": "J.620100.045.1",
+                "judul": "Melakukan Pemantauan Resource yang Digunakan Aplikasi"
+            },
+            {
+                "kode": "J.620100.025.2",
+                "judul": "Melakukan Debugging"
+            },
+            {
+                "kode": "J.620100.038.1",
+                "judul": "Melakukan Pengujian oleh Pengguna (UAT)"
+            },
+            {
+                "kode": "J.62090.018.1",
+                "judul": "Mengelola Risiko Keamanan Informasi"
+            },
+            {
+                "kode": "J.620100.020.02",
+                "judul": "Menggunakan SQL"
+            },
+            {
+                "kode": "J.620100.044.01",
+                "judul": "Menerapkan Alert Notification jika Aplikasi Bermasalah"
+            },
+            {
+                "kode": "J.620100.003.01",
+                "judul": "Melakukan Identifikasi Library, Komponen atau Framework yang Diperlukan"
+            },
+            {
+                "kode": "J.620100.024.02",
+                "judul": "Melakukank Migrasi ke Teknologi Baru"
+            },
+            {
+                "kode": "J.620100.047.01",
+                "judul": "Melakukan Pembaharuan Perangkat Lunak"
+            },
+            {
+                "kode": "J.620100.039.02",
+                "judul": "Memberikan Petunjuk Teknis kepada Pelanggan"
+            },
+            {
+                "kode": "J.620100.030.02",
+                "judul": "Menerapkan Pemrograman Multimedia"
+            },
+            {
+                "kode": "TIK.SM03.001.01",
+                "judul": "Menentukan Arsitektur Perangkat Keras"
+            },
+            {
+                "kode": "M.702090.001.01",
+                "judul": "Mengelola Proyek secara Terintegritas (Project Integration Management)"
+            },
+            {
+                "kode": "J.620100.001.01",
+                "judul": "Menganalisis Tools"
+            },
+            {
+                "kode": "J.620100.002.01",
+                "judul": "Menganalisis Skalabilitas Perangkat Lunak"
+            },
+            {
+                "kode": "J.620100.043.01",
+                "judul": "Menganalisis Dampak Perubahan terhadap Aplikasi"
+            },
+            {
+                "kode": "J.620100.029.01",
+                "judul": "Menerapkan Pemrograman Paralel"
+            },
+            {
+                "kode": "M.702090.005.01",
+                "judul": "Meneglola Kualitas Proyek (Project Quality Management)"
+            },
+            {
+                "kode": "J.620100.022.02",
+                "judul": "Mengimplementasikan Algoritma Pemrograman"
+            },
+            {
+                "kode": "J.620100.028.01",
+                "judul": "Menerapkan Pemrograman Real Time"
+            },
+            {
+                "kode": "M.702090.002.01",
+                "judul": "Mengelola Ruang Lingkup"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Mahasiswa semester 8 (delapan) program studi Teknik Informatika dan Teknik Komputer; atau\n2. Mahasiswa semester 8 (delapan) program studi Teknik Elektro dan memiliki sertifikat pelatihan berbasis kompetensi Pengembang Web (Web Developer); atau\n3. Memiliki pengalaman kerja sebagai Pengembang Web (Web Developer) minimal selama 2 (dua) tahun di jabatan tersebut.",
+            "dokumen": "1. Copy Transkip Nilai atau Kartu Hasil Studi (KHS) semester 1 s/d 7 program studi Teknik Informatika dan Teknik Komputer; atau\n2. Copy Transkip Nilai atau Kartu Hasil Studi (KHS) semester 1 s/d 7 program studi Teknik Elektro dan Copy sertifikat pelatihan berbasis kompetensi Pengembang Web (Web Developer); atau\n3. Pas foto terbaru 3X4 sebanyak 3 lembar.\n4. Copy KTP yang masih berlaku."
+        }
+    },
+    {
+        "no": 4,
+        "kode_skema": "SKM/2420/00013/2/2024/4",
+        "nama_skema": "Desainer Grafis (Graphic Desainer)",
+        "jenis": "Okupasi",
+        "jenjang": "Semester 8",
+        "harga": {
+            "sk": 1000000,
+            "pricelist": 1250000
+        },
+        "kbli": {
+            "kode": "74130",
+            "uraian": "Aktivitas Desain Komunikasi Visual/ Desain Grafis"
+        },
+        "kbji": {
+            "kode": "2166",
+            "uraian": "Perancang Grafis dan Multimedia"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "M.74DKV13.002.3",
+                "judul": "Menerapkan Prinsip Desain"
+            },
+            {
+                "kode": "M.74DKV13.003.3",
+                "judul": "Menerapkan Prinsip Komunikasi"
+            },
+            {
+                "kode": "M.74DKV13.006.3",
+                "judul": "Menyusun Design Brief"
+            },
+            {
+                "kode": "M.74DKV13.009.3",
+                "judul": "Merumuskan Konsep Desain"
+            },
+            {
+                "kode": "M.74DKV13.010.3",
+                "judul": "Mengoperasikan Perangkat Lunak Desain"
+            },
+            {
+                "kode": "M.74DKV13.012.3",
+                "judul": "Menciptakan Karya Desain"
+            },
+            {
+                "kode": "M.74DKV13.014.3",
+                "judul": "Mempresentasikan Karya Desain"
+            },
+            {
+                "kode": "M.74DKV13.018.3",
+                "judul": "Menerapkan Perlindungan Kekayaan Intelektual"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Mahasiswa semester 8 (delapan) program studi Teknik Informatika dan Teknik Komputer; atau\n2. Mahasiswa semester 8 (delapan) dan memiliki sertifikat pelatihan berbasis kompetensi Desainer Grafis (Graphic Desainer); atau\n3. Memiliki pengalaman kerja sebagai Desainer Grafis (Graphic Desainer) minimal selama 2 (dua) tahun di jabatan tersebut.",
+            "dokumen": "1. Copy Transkip Nilai atau Kartu Hasil Studi (KHS) semester 1 s/d 7 program studi Teknik Informatika; atau\n2. Copy Transkip Nilai atau Kartu Hasil Studi (KHS) semester 1 s/d 7 program studi Teknik Elektro dan Copy sertifikat pelatihan berbasis kompetensi Desainer Grafis (Graphic Desainer); atau\n3. Copy Surat Keterangan Kerja sebagai Desainer Grafis (Graphic Desainer) minimal selamat 2 (dua) tahun di jabatan tersebut.\n4. Pas foto terbaru 3X4 sebanyak 3 lembar.\n5. Copy KTP yang masih berlaku."
+        }
+    },
+    {
+        "no": 5,
+        "kode_skema": "SKM/2420/00007/3/2024/5",
+        "nama_skema": "Pemasaran Digital (Digital Marketing)",
+        "jenis": "Klaster",
+        "jenjang": "SLTA",
+        "harga": {
+            "sk": 1000000,
+            "pricelist": 1550000
+        },
+        "kbli": {
+            "kode": "73100",
+            "uraian": "Periklanan"
+        },
+        "kbji": {
+            "kode": "2431",
+            "uraian": "Profesional Periklanan dan Pemasaran"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "M.70MKT00.005.2",
+                "judul": "Mengidentikasi Elemen Pemasaran Organisasi"
+            },
+            {
+                "kode": "M.70MKT00.029.2",
+                "judul": "Mewujudkan Kepuasan Pelanggan"
+            },
+            {
+                "kode": "M.70MKT00.036.2",
+                "judul": "Melaksanakan Keterampilan Penjualan"
+            },
+            {
+                "kode": "M.70MKT00.006.2",
+                "judul": "Menyusun Elemen Pemasaran Organisasi"
+            },
+            {
+                "kode": "M.73ADV00.010.1",
+                "judul": "Merumuskan Strategi Kampanye Periklanan"
+            },
+            {
+                "kode": "M.73ADV00.030.1",
+                "judul": "Menyusun Strategi Pemilihan Media dan Saluran"
+            },
+            {
+                "kode": "G.46RIT00.053.1",
+                "judul": "Memberdayakan Media Sosial untuk Menarik Pelanggan Ritel"
+            },
+            {
+                "kode": "G.46RIT00.055.1",
+                "judul": "Melakukan Aktivitas Pemasaran Digital untuk Bisnis"
+            },
+            {
+                "kode": "G.46RIT00.064.1",
+                "judul": "Menentukan Aplikasi Perdagangan Digital (e-commerce) untuk Meningkatkakn Penjualan dan Layanan Ritel"
+            },
+            {
+                "kode": "M.70MKT00.013.1",
+                "judul": "Melaksanakan Kegiatan Analisis di Media Sosial dan Media Bisnis Digital"
+            },
+            {
+                "kode": "M.70MKT00.012.1",
+                "judul": "Menggunakan Media Sosial dan Aplikasi Digital (Online Tools)"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal SLTA;\n2. Memiliki sertifikat pelatihan berbasis kompetensi Pemasaran Digital (Digital Marketing); atau\n3. Memiliki pengalaman kerja di bidang Pemasaran Digital (Digital Marketing) minimal selama 1 (satu) tahun di jabatan tersebut.",
+            "dokumen": "1. Copy ijazah terakhir;\n2. Copy sertifikat pelatihan berbasis kompetensi Pemasaran Digital (Digital Marketing); atau\n3. Copy surat Keterangan Kerja di bidang Pemasaran Digital (Digital Marketing) minimal selama 1 (satu) di jabatan tersebut.\n4. Pas foto tersebut 3X4 sebanyak 3 lembar.\n5. Copy KTP yang masih berlaku."
+        }
+    },
+    {
+        "no": 6,
+        "kode_skema": "N/A",
+        "nama_skema": "lnsinyur Data",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2500000,
+            "pricelist": 2500000
+        },
+        "kbli": {
+            "kode": "63111",
+            "uraian": "Aktifitas Pengolahan Data"
+        },
+        "kbji": {
+            "kode": "2521",
+            "uraian": "Pengelola dan Perancangan Database"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62DMS00.001.1",
+                "judul": "Mengidentifikasi Kebutuhan Pengelolaan Data untuk Proses Bisnis"
+            },
+            {
+                "kode": "J.62DMS00.002.1",
+                "judul": "Merencanakan Manajemen Data"
+            },
+            {
+                "kode": "J.62DMS00.003.1",
+                "judul": "Merencanakan Arsitektur Data"
+            },
+            {
+                "kode": "J.62DMS00.004.1",
+                "judul": "Merencanakan lntegrasi Data"
+            },
+            {
+                "kode": "J.62DMS00.005.1",
+                "judul": "Merencanakan Media Penyimpanan Data"
+            },
+            {
+                "kode": "J.62DMS00.007.1",
+                "judul": "Merancangbangun Big Data"
+            },
+            {
+                "kode": "J.62DMS00.008.1",
+                "judul": "Mengelola Reference and Master Data"
+            },
+            {
+                "kode": "J.62DMS00.009.1",
+                "judul": "Mengelola Metadata"
+            },
+            {
+                "kode": "J.62DMS00.012.1",
+                "judul": "Mengelola Kualitas Data"
+            },
+            {
+                "kode": "J.62DMS00.014.1",
+                "judul": "Membuat Data Warehotise"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada lnsinyur Data; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada lnsinyur Data dan memiliki sertifikat pelatihan berbasis kompetensi pada lnsinyur Data; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Ill dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja lnsinyur Data; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan bidang/area kerja lnsinyur Data.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada lnsinyur Data; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada lnsinyur Data dan Fotokopi sertifikat pelatihan berbasis kompetensi pada lnsinyur Data; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Ill dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja lnsinyur Data; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Insinyur Data;\n5. Fotokopi KTP dan KTM Universitas, Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 7,
+        "kode_skema": "N/A",
+        "nama_skema": "lnsinyur Data Madya",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "63111",
+            "uraian": "Aktifitas Pengolahan Data"
+        },
+        "kbji": {
+            "kode": "2521",
+            "uraian": "Pengelola dan perancang database"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62DMS00.006.1",
+                "judul": "Merancang Basis Data"
+            },
+            {
+                "kode": "J.62DMS00.008.1",
+                "judul": "Mengelola Reference and Master Data"
+            },
+            {
+                "kode": "J.62DMS00.009.1",
+                "judul": "Mengelola Metadata"
+            },
+            {
+                "kode": "J.620100.020.02",
+                "judul": "Menggunakan SQL"
+            },
+            {
+                "kode": "J.62DMS00.010.1",
+                "judul": "Membuat Basis Data"
+            },
+            {
+                "kode": "J.62DMS00.011.1",
+                "judul": "Membuat lntegrasi Data"
+            },
+            {
+                "kode": "J.62DMS00.019.1",
+                "judul": "Menggunakan Data"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada lnsinyur Data Madya; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada lnsinyur Data Madya dan memiliki sertifikat berbasis kompetensi pada lnsinyur Data Madya; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester VI dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area/ kerja Insinyur Daya Madya; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan bidang/area kerja lnsinyur Data Madya.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Insinyur Data Madya; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Insinyur Data Madya dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Insinyur Data Madya; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Insinyur Data Madya; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Insinyur Data Madya;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 Iatar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 8,
+        "kode_skema": "N/A",
+        "nama_skema": "Network Administrator Madya",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "62090",
+            "uraian": "Aktivitas Teknologi Informasi dan Jasa Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "2522",
+            "uraian": "Pengelola Sistem"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.611000.004.01",
+                "judul": "Merancang Pengalamatan Jaringan"
+            },
+            {
+                "kode": "J.611000.006.01",
+                "judul": "Merancang Keamanan Jaringan"
+            },
+            {
+                "kode": "J.611000.007.02",
+                "judul": "Merancang Pemulihan Jaringan"
+            },
+            {
+                "kode": "J.611000.010.02",
+                "judul": "Memasang Jaringan Nirkabel"
+            },
+            {
+                "kode": "J.611000.011.02",
+                "judul": "MemasangPerangkat Jaringan ke dalam Sistem Jaringan"
+            },
+            {
+                "kode": "J.611000.012.02",
+                "judul": "Mengkonfigurasi Switch pada Jaringan"
+            },
+            {
+                "kode": "J.611000.013.02",
+                "judul": "Mengkofigurasi Routing pada Perangkat Jaringan dalam Satu Autonomous System"
+            },
+            {
+                "kode": "J.611000.014.02",
+                "judul": "Mengkonfigurasi Routing pada Perangkat Jaringan antar Autonomous System"
+            },
+            {
+                "kode": "J.611000.015.01",
+                "judul": "Memonitor Keamanan dan Peraturan Akun Pengguna dalam Jaringan Komputer"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada Network Administrator Madya; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Network Administrator Madya dan memiliki pelatihan berbasis kompetensi pada Network Administrator Madya; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi Informatika atau Teknik Komputer yang telah menyelesaikan semester IV dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan bidang/area kerja Network Administrator Madya; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Komputer yang telah menyelesaikan semester lv dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Network Administrator Madya.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Network Administrator Madya; \n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Network Administrator Madya dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Network Administrator Madya; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan kompetensi dari suatu instansi/lembaga/perusahaan bidang/area kerja Network Administrator Madya; atau\n4. Fotokopi hasi studi (KHS) Sekolah Tinggi Program Studi Teknologi Informatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Network Administrator Madya;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 Iatar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 9,
+        "kode_skema": "N/A",
+        "nama_skema": "System Analyst",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "62090",
+            "uraian": "Aktivitas Teknologi Informasi Dan Jasa Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "2511",
+            "uraian": "Analis Sistem"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62SAD00.001.1",
+                "judul": "Mengaplikasikan Metodologi Pengembangan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.002.1",
+                "judul": "Melakukan ldentifikasi Sumber Kebutuhan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.003.1",
+                "judul": "Menentukan Teknik Elisitasi yang Sesuai"
+            },
+            {
+                "kode": "J.62SAD00.004.1",
+                "judul": "Melakukan Klasifikasi dan Alokasi Kebutuhan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.005.1",
+                "judul": "Melakukan Negosiasi Kebutuhan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.006.1",
+                "judul": "Membuat Kebutuhan Dokumentasi Spesifikasi Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.007.1",
+                "judul": "Menyusun Spesifikasi Kebutuhan Software Environment"
+            },
+            {
+                "kode": "J.62SAD00.008.1",
+                "judul": "Membuat Spesifikasi Kebutuhan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.009.1",
+                "judul": "Meninjau Ulang (review) Kebutuhan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.010.1",
+                "judul": "Melakukan Validasi Spesifikasi dan Menyusun Uji Penerimaan Pengguna Kebutuhan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.011.1",
+                "judul": "Merancang Struktur Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.013.1",
+                "judul": "Merancang User Interface (Ul)"
+            },
+            {
+                "kode": "J.62SAD00.014.1",
+                "judul": "Merancang User Experience (UX)"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada System Analyst; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada System Analyst dan memiliki sertifikat pelatihan berbasis kompetensi pada System Analyst; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi Informatika atau Teknik Komputer yang telah menyelesaikan semester VI dan memiliki surat keterangan telah melaksanakan praktek kerja/magang/sertifikat pelatihan berbasis kompetensi dari suatu bidang/area kerja System Analyst; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester VI dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja System Analyst.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada System Analyst; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada System Analyst dan Fotokopi sertifikat pelatihan berbasis kompetensi pada System Analyst; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perus bidang/area kerja System Analyst; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 10,
+        "kode_skema": "N/A",
+        "nama_skema": "Web Analyst",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "62029",
+            "uraian": "Aktivitas Konsultasi Komputer dan Manajemen Fasilitas Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "3514",
+            "uraian": "Teknisi Web"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.620100.001.01",
+                "judul": "Menganalisis Tools"
+            },
+            {
+                "kode": "J.620100.002.01",
+                "judul": "Menganalisis Skalabilitas Perangkat Lunak"
+            },
+            {
+                "kode": "J.620100.004.02",
+                "judul": "Menggunakan Struktur Data"
+            },
+            {
+                "kode": "J.620100.007.01",
+                "judul": "Mengimplementasikan Rancangan Entitas dan Keterkaitan Antar Entitas"
+            },
+            {
+                "kode": "J.620100.008.01",
+                "judul": "Merancang Arsitektur Aplikasi"
+            },
+            {
+                "kode": "J.620100.032.01",
+                "judul": "Menerapkan Code Review"
+            },
+            {
+                "kode": "J.620100.033.02",
+                "judul": "Melaksanakan Pengujian Unit Program"
+            },
+            {
+                "kode": "J.620100.034.02",
+                "judul": "Melaksanakan Pengujian lntegrasi Program"
+            },
+            {
+                "kode": "J.620100.035.02",
+                "judul": "Melaksanakan Pengujian Program Sistem"
+            },
+            {
+                "kode": "J.620100.036.02",
+                "judul": "Melaksanakan Pengujian Kode Program Secara Statis"
+            },
+            {
+                "kode": "J.620100.037.01",
+                "judul": "Melaksanakan Stress Test"
+            },
+            {
+                "kode": "J.620100.038.01",
+                "judul": "Melaksanakan Pengujian Oleh Pengguna (UAT)"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada Web Analyst; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Web Analyst dan memiliki sertifikat berbasis kompetensi pada Web Analyst; atau Tenaga kerja yang berpengalaman minimal 1 (satu) tahun secara berkelanjutan pada Web Analyst; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester IV dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Web Analyst; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi Informasi atau Teknik Komputer yang telah menyelesaikan semester IV dan memiliki surat keterangan telah melaksanakan praktek kerja/magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja web Analyst.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Web Analyst; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Web Analyst dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Web Analyst; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-VI dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Web Analyst; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-VI dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Web Analyst;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas toto berwarna ukuran 3x4 latar belakang merah lembar;"
+        }
+    }
+]

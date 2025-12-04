@@ -1,0 +1,843 @@
+[
+    {
+        "no": 11,
+        "kode_skema": "N/A",
+        "nama_skema": "Data Architect",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "63111",
+            "uraian": "Aktifitas Pengolahan Data"
+        },
+        "kbji": {
+            "kode": "2521",
+            "uraian": "Pengelola dan Perancangan Database"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.620200.007.01",
+                "judul": "Menentukan Metode Pemodelan, Sudut Pandang, dan Perangkat Bantu untuk Merancang Arsitektur Data"
+            },
+            {
+                "kode": "J.620200.008.01",
+                "judul": "Menyusun Roadmap dan Komponen Arsitektur Data"
+            },
+            {
+                "kode": "J.620200.009.01",
+                "judul": "Memfinalisasikan Arsitektur Data"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1.Pendidikan minimal S1/D4 dan memiliki sertjfikat pelatihan berbasis kompetensi pada Data Architect. atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahu secara berkelanjutan pada Data Architect dan memiliki sertifikat pelatihan berbasis kompetensi pada Data Architect; atau Tenaga kerja yang berpengpengalaman kerja minimal 1 (satu) tahun secara berkelanjutan pada Data Architect.\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi Komputer atau Teknik Informatika yang telah menyelesaikan semester VI dan memiliki surat keterangan telah melaksanakan praktek kerja/magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Architect.\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Architect.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Data Architect; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) Tahun secara berkelanjutan pada Data Architect dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Data Architect;\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-VI dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Architect; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Architect;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 Iembar;"
+        }
+    },
+    {
+        "no": 12,
+        "kode_skema": "N/A",
+        "nama_skema": "Database Administrator",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "63111",
+            "uraian": "Aktifitas Pengolahan Data"
+        },
+        "kbji": {
+            "kode": "2521",
+            "uraian": "Pengelola dan Perancangan Database"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62DMS00.006.1",
+                "judul": "Merancang Basis Data"
+            },
+            {
+                "kode": "J.62DMS00.010.1",
+                "judul": "Membuat Basis Data"
+            },
+            {
+                "kode": "J.62DMS00.011.1",
+                "judul": "Membuat Integrasi Data"
+            },
+            {
+                "kode": "J.62DMS00.012.1",
+                "judul": "Mengelola Kualitas Data"
+            },
+            {
+                "kode": "J.62DMS00.016.1",
+                "judul": "Mengelola Dokumen dan Konten"
+            },
+            {
+                "kode": "J.620100.020.02",
+                "judul": "Menggunakan SQL"
+            },
+            {
+                "kode": "J.620100.021.02",
+                "judul": "Menerapkan Akses Basis Data"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan kompetensi pada Database Administrator; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) Tahun secara berkelanjutan pada Database Administrator dan memiliki sertifikat berbasis kompetensi pada Database Administrator; atau Tenaga kerja yang berpengalaman kerja minimal 1 (satu) tahun secara berkelanjutan pada Database Administrator; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Database Administrator.\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester VI dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Database Administrator.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Database Administrator; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Database Administrator dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Database Administrator; atau\n3. Fotokopi hasil studj (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Database Administrator; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Database Administrator;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 13,
+        "kode_skema": "N/A",
+        "nama_skema": "Data Quality Engineer",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "63111",
+            "uraian": "Aktivitas Pengolahan Data"
+        },
+        "kbji": {
+            "kode": "2521",
+            "uraian": "Pengelola dan Perancang Database"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62DMI00.004.1",
+                "judul": "Mengumpulkan Data"
+            },
+            {
+                "kode": "J.62DMI00.005.1",
+                "judul": "Menelaah Data"
+            },
+            {
+                "kode": "J.62DMI00.006.1",
+                "judul": "Memvalidasi Data"
+            },
+            {
+                "kode": "J.62DMI00.007.1",
+                "judul": "Menentukan Objek Data"
+            },
+            {
+                "kode": "J.62DMI00.008.1",
+                "judul": "Membersihkan Data"
+            },
+            {
+                "kode": "J.62DMI00.009.1",
+                "judul": "Mengkontruksi Data"
+            },
+            {
+                "kode": "J.62DMI00.010.1",
+                "judul": "Menentukan Label Data"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1.Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada Data Quality Engineer; atau\n2.Tenaga kerja yang berpengalaman kerja minimal 2 (dua) Tahun secara berkelanjutan pada Data Quality Engineer dan memiliki sertifikat pelatihan berbasis kompetensi pada Data Quality Engineer; atau berpengalaman kerja minimal 1 (satu) tahun secara berkelanjutan pada Data Quality Engineer; atau\n3.Mahasiswa Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Quality Engineer; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Quality Engineer.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Data Quality Engineer; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Data Quality Engineer dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Data Quality Engineer; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Quality Engineer; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Quality Engineer;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 14,
+        "kode_skema": "N/A",
+        "nama_skema": "Manajer Cyber Security",
+        "jenis": "Okupasi",
+        "jenjang": "S2",
+        "harga": {
+            "sk": 2500000,
+            "pricelist": 2500000
+        },
+        "kbli": {
+            "kode": "62021",
+            "uraian": "Aktivitas Konsultasi Keamanan Informasi"
+        },
+        "kbji": {
+            "kode": "1330",
+            "uraian": "Manajer Layanan Teknologi Informasi dan Komunikasi"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62090.017.01",
+                "judul": "Mengelola Program Peningkatan Kepedulian dan Pelatihan Terkait dengan Keamanan Informasi"
+            },
+            {
+                "kode": "J.62090.018.01",
+                "judul": "Mengelola Risiko Keamanan Informasi"
+            },
+            {
+                "kode": "J.62090.002.01",
+                "judul": "Menyelaraskan Penerapan Prinsip Perlindungan Informasi dengan Misi dan Tujuan Organisasi"
+            },
+            {
+                "kode": "J.62090.047.01",
+                "judul": "Merancang dan Mengelola Sistem Backup"
+            },
+            {
+                "kode": "J.62090.006.01",
+                "judul": "Melaksanakan Kebijakan Keamanan Informasi"
+            },
+            {
+                "kode": "J.62090.010.01",
+                "judul": "Mengimplementasikan Prosedur Keamanan Informasi Dalam Kegiatan Pengadaan"
+            },
+            {
+                "kode": "J.62090.011.01",
+                "judul": "Menerapkan Standar-Standar Keamanan Informasi yang Berlaku"
+            },
+            {
+                "kode": "J.62090.007.01",
+                "judul": "Mengelola Siklus Informasi (Kualifikasi, Kategorisasi, Penanggung-Jawab)"
+            },
+            {
+                "kode": "J.62090.009.01",
+                "judul": "Mengelola Prosedur Keamanan Informasi"
+            },
+            {
+                "kode": "J.62090.025.01",
+                "judul": "Mengelola Sistem Pertahanan dan Perlindungan Keamanan Informasi"
+            },
+            {
+                "kode": "J.62090.014.01",
+                "judul": "Melaksanakan Alokasi Pemisahan Tugas-Tugas"
+            },
+            {
+                "kode": "J.62090.015.01",
+                "judul": "Melaksanakan Koordinasi dan Pengarahan Pelaksanaan Tugas-Tugas Keamanan Informasi"
+            },
+            {
+                "kode": "J.62090.016.01",
+                "judul": "Mengelola Sdm yang Terkait dengan Tugas-Tugas Keamanan Informasi"
+            },
+            {
+                "kode": "J.62090.022.01",
+                "judul": "Melakukan Evaluasi Kinerja Keamanan Informasi"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S2 dan memiliki sertifikat pelatihan berbasis kompetensi pada Manager Cyber Security; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Manager Cyber Security dan memiliki sertifikat pelatihan berbasis kompetensi pada Manager Cyber Security; atau\n3. Mahasiswa Universitas S2 Program Studi Teknologi lnformasi atau Teknik Komputer yang telah menyelesaikan semester Ill dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Manager Cyber Security.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S2 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Manager Cyber Security; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Manager Cyber Security dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Manager Cyber Security; atau\n3. Fotokopi hasil studi (KHS) Universitas S2 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Ill dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi pada suatu instansi/lembaga/perusahaan pada bidang Manager Cyber Security;\n4. Fotokopi KTP dan KTM Universitas, Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n5. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 Iembar;"
+        }
+    },
+    {
+        "no": 15,
+        "kode_skema": "N/A",
+        "nama_skema": "Pemrogram Basisdata",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "62019",
+            "uraian": "Aktivitas Pemrograman Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "2529",
+            "uraian": "Profesional Database dan Jaringan YTDL"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.620100.001.01",
+                "judul": "Menganalisis Tools"
+            },
+            {
+                "kode": "J.620100.003.01",
+                "judul": "Melakukan ldentifikasi Library, Komponen atau Framework yang Diperlukan"
+            },
+            {
+                "kode": "J.620100.004.02",
+                "judul": "Menggunakan Struktur Data"
+            },
+            {
+                "kode": "J.620100.007.01",
+                "judul": "Mengimplementasikan Rancangan Entitas Dan Keterkaitan Antar Entitas"
+            },
+            {
+                "kode": "J.620100.020.02",
+                "judul": "Menggunakan SQL"
+            },
+            {
+                "kode": "J.620100.021.02",
+                "judul": "Menerapkan Akses Basis Data"
+            },
+            {
+                "kode": "J.620100.022.02",
+                "judul": "Mengimplementasikan Algoritma Pemrograman"
+            },
+            {
+                "kode": "J.620100.025.02",
+                "judul": "Melakukan Debugging"
+            },
+            {
+                "kode": "J.620100.032.01",
+                "judul": "Menerapkan Code Review"
+            },
+            {
+                "kode": "J.620100.042.01",
+                "judul": "Melaksanakan Konfigurasi Perangkat Lunak Sesuai Environment (Development, Staging, Production)"
+            },
+            {
+                "kode": "J.620100.043.01",
+                "judul": "Menganalisis Dampak Perubahan Terhadap Aplikasi"
+            },
+            {
+                "kode": "J.620100.045.01",
+                "judul": "Melakukan Pemantauan Resource Yang Digunakan Aplikasi"
+            },
+            {
+                "kode": "J.620100.047.01",
+                "judul": "Melakukan Pembaharuan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62090.011.01",
+                "judul": "Menerapkan Standar-Standar Keamanan lnformasi yang Berlaku"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan kompetensi pada Pemrogram Basisdata; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Pemrogram Basisdata dan memiliki sertifikat pelatihan berbasis kompetensi pada Pemrogram Basisdata; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi dan Teknik Komputer yang telah menyelesaikan semester IV dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/ sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Pemrogram Basisdata; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester lv dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Pemrogram Basisdata.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Pemrogram Basisdata; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Pemrogram Basisdata dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Pemrogram Basisdata; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-VI dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Pemrogram Basisdata;\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi Informatika atau Teknik Komputer yang telah menyelesaikan semester I-VI dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Pemrogram Basisdata;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas toto bewarna ukuran 3x4 Iatar belakang merah sebanyak 2 Iembar;"
+        }
+    },
+    {
+        "no": 16,
+        "kode_skema": "N/A",
+        "nama_skema": "Software Engineer",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "62019",
+            "uraian": "Aktivitas Pemrograman Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "2514",
+            "uraian": "Pemrogram Aplikasi"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62SAD00.002.1",
+                "judul": "Melakukan ldentifikasi Sumber Kebutuhan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.004.1",
+                "judul": "Melakukan Klasifikasi dan Alokasi Kebutuhan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.006.1",
+                "judul": "Membuat Kebutuhan Dokumentasi Spesifikasi Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.008.1",
+                "judul": "Membuat Spesifikasi Kebutuhan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.011.1",
+                "judul": "Merancang Struktur Perangkat Lunak"
+            },
+            {
+                "kode": "J.62SAD00.012.1",
+                "judul": "Merancang Komponen Perangkat Lunak"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada Software Engineer; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Software Engineer dan memiliki sertifikat pelatihan berbasis kompetensi pada Software Engineer; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi Informatika atau Teknik Komputer yang telah menyelesaikan semester VI dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/ sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Software Engineer; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester VI dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Software Engineer.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Software Engineer; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Software Engineer dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Software Engineer; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Software Engineer; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Software Engineer;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 lembar."
+        }
+    },
+    {
+        "no": 17,
+        "kode_skema": "N/A",
+        "nama_skema": "Senior Mobile Programmer",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "62019",
+            "uraian": "Aktivitas Pemrograman Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "2514",
+            "uraian": "Pemrogram Aplikasi"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.620100.001.01",
+                "judul": "Menganalisis Tools"
+            },
+            {
+                "kode": "J.620100.002.01",
+                "judul": "Menganalisis Skalabilitas Perangkat Lunak"
+            },
+            {
+                "kode": "J.620100.003.01",
+                "judul": "Melakukan ldentifikasi Library, Komponen atau Framework yang Diperlukan"
+            },
+            {
+                "kode": "J.620100.006.01",
+                "judul": "Merancang User Experience"
+            },
+            {
+                "kode": "J.620100.008.01",
+                "judul": "Merancang Arsitektur Aplikasi"
+            },
+            {
+                "kode": "J.620100.028.02",
+                "judul": "Menerapkan Pemrograman Real Time"
+            },
+            {
+                "kode": "J.620100.032.01",
+                "judul": "Menerapkan Code Review"
+            },
+            {
+                "kode": "J.620100.036.02",
+                "judul": "Melaksanakan Pengujian Kode Program Secara Statis"
+            },
+            {
+                "kode": "J.620100.038.01",
+                "judul": "Melaksanakan Pengujian Oleh Pengguna (UAT)"
+            },
+            {
+                "kode": "J.620100.041.01",
+                "judul": "Melaksanakan Cutover Aplikasi"
+            },
+            {
+                "kode": "J.620100.043.01",
+                "judul": "Menganalisis Dampak Perubahan Terhadap Aplikasi"
+            },
+            {
+                "kode": "J.620100.044.01",
+                "judul": "Menerapkan Alert Notification Jika Aplikasi Bermasalah"
+            },
+            {
+                "kode": "J.620100.045.01",
+                "judul": "Melakukan Pemantauan Resource yang Digunakan Aplikasi"
+            },
+            {
+                "kode": "J.620100.047.01",
+                "judul": "Melakukan Pembaharuan Perangkat Lunak"
+            },
+            {
+                "kode": "J.62090.011.01",
+                "judul": "Menerapkan Standar-Standar Keamanan lnformasi yang Berlaku"
+            },
+            {
+                "kode": "J.62090.018.01",
+                "judul": "Mengelola Risiko Keamanan lnformasi"
+            },
+            {
+                "kode": "J.612000.026.01",
+                "judul": "Merancang Spesifikasi Teknis Smart Phone/ Tablet sesuai Kebutuhan Pengguna"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada Senior Mobile Programmer; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Senior Mobile Programmer dan memiliki sertifikat pelatihan berbasis kompetensi pada Senior Mobile Programmer; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi lnformasi atau Teknik Komputer yang telah menyelesaikan semester VI dan memiliki surat keterangan telah melaksanakan praktek kerja/magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja senior Mobile programmer; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Senior Mobile Programmer.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Senior Mobile Programmer; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Senior Mobile Programmer dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Senior Mobile Programmer; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-VI dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Senior Mobile Programmer;\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Senior Mobile Programmer;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 18,
+        "kode_skema": "N/A",
+        "nama_skema": "Network Security Analyst",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "62021",
+            "uraian": "Aktivitas Konsultasi Keamanan Informasi"
+        },
+        "kbji": {
+            "kode": "2529",
+            "uraian": "Spesialis Keamanan (TIK)"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62090.005.01",
+                "judul": "Menyusun Dokumen Kebijakan Keamanan Informasi"
+            },
+            {
+                "kode": "J.62090.006.01",
+                "judul": "Melaksanakan Kebijakan Keamanan lnformasi"
+            },
+            {
+                "kode": "J.62090.025.01",
+                "judul": "Mengelola Sistem Pertahanan dan Perlindungan Keamanan lnformasi"
+            },
+            {
+                "kode": "J.62090.026.01",
+                "judul": "Menyediakan Dukungan Keamanan Bagi Pengguna"
+            },
+            {
+                "kode": "J.62090.029.01",
+                "judul": "Mengelola Perimeter Keamanan"
+            },
+            {
+                "kode": "J.62090.032.01",
+                "judul": "Menerapkan Kontrol Akses Berdasarkan Konsep/Metodologi yang Telah Ditetapkan"
+            },
+            {
+                "kode": "J.62090.034.01",
+                "judul": "Mengkaji Efektivitas Penerapan Kontrol Akses"
+            },
+            {
+                "kode": "J.62090.035.01",
+                "judul": "Mengelola Siklus Pemberian Akses"
+            },
+            {
+                "kode": "J.62090.035.01",
+                "judul": "Melaksanakan Uji Coba Sistem Pertahanan Keamanan lnformasi"
+            },
+            {
+                "kode": "J.62090.037.01",
+                "judul": "Mendeteksi Kerentanan (Vulnerabilitas) Keamanan dan Potensi Pelanggaran"
+            },
+            {
+                "kode": "J.62090.038.01",
+                "judul": "Melaksanakan Evaluasi Kelemahan (Vulnerabilitas) Keamanan"
+            },
+            {
+                "kode": "J.62090.043.01",
+                "judul": "Mengimplementasikan Manajemen Perbaikan/Respon yang Terkait dengan Keamanan lnformasi"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada Network Security Analyst; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Network Security Analyst dan memiliki sertifikat pelatihan berbasis kompetensi pada Network Security Analyst; atau\n3. Mahasiswa Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Network Security Analyst; atau\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi Informasi atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Network Security Analyst.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Network Security Analyst; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Network Security Analyst dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Network Security Analyst; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Network Security Analyst; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Informatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area Network Security Analyst;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n6. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 19,
+        "kode_skema": "N/A",
+        "nama_skema": "Cyber Security Analyst",
+        "jenis": "Okupasi",
+        "jenjang": "S1/D4",
+        "harga": {
+            "sk": 2000000,
+            "pricelist": 2000000
+        },
+        "kbli": {
+            "kode": "62021",
+            "uraian": "Aktivitas Konsultasi Keamanan Informasi"
+        },
+        "kbji": {
+            "kode": "2529",
+            "uraian": "Spesialis Keamanan (TIK)"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.62090.015.01",
+                "judul": "Melaksanakan Koordinasi dan Pengarahan Pelaksanaan Tugas-Tugas Keamanan lnformasi"
+            },
+            {
+                "kode": "J.62090.037.01",
+                "judul": "Mendeteksi Kerentanan (vulnerabilitas) Keamanan dan Potensi Pelanggaran"
+            },
+            {
+                "kode": "J.62090.039.01",
+                "judul": "Mengimplementasikan Koreksi atas Kerentanan Keamanan lnformasi"
+            },
+            {
+                "kode": "J.62090.008.01",
+                "judul": "Melaksanakan Ketentuan Hukum yang Berlaku tentang Keamanan Informasi"
+            },
+            {
+                "kode": "J.62090.016.01",
+                "judul": "Mengelola SDM yang Terkait dengan Tugas-Tugas Keamanan lnformasi"
+            },
+            {
+                "kode": "J.62090.022.01",
+                "judul": "Melaksanakan Evaluasi Kinerja Keamanan lnformasi"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1.Pendidikan minimal S1/D4 dan memiliki sertifikat pelatihan berbasis kompetensi pada Cyber Security Analyst; atau\n2.Tenaga kerja yang berpengalaman kerja minimal 2 (dua) berkelanjutan pada Cyber Security Analyst dan memiliki sertifikat pelatihan berbasis kompetensi pada Cyber Security Analyst;\n3. Mahasiswa Universitas S1/D4 Program Studi 1 Teknik Komputer yang telah menyelesaikan seines keterangan telah melaksanakan praktek kerja/ magang/sertifikat peatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Cyber Security Analyst.\n4. Mahasiswa Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester Vl dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Cyber Security Analyst.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S1/D4 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Cyber Security Analyst; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Cyber Security Analyst dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Cyber Security Analyst; atau\n3. Fotokopi hasil studi (KHS) Universitas S1/D4 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-VI dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Cyber Security Analyst; atau\n4. Fotokopi hasil studi (KHS) Sekolah Tinggi Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Vl dan surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Cyber Security Analyst;\n5. Fotokopi KTP dan KTM Univ/Sekolah Tinggi Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\nPas foto berwarna ukuran 3x4 Iatar belakang merah sebanyak 2 Iembar;"
+        }
+    },
+    {
+        "no": 20,
+        "kode_skema": "N/A",
+        "nama_skema": "Data Warehouse Manager",
+        "jenis": "Okupasi",
+        "jenjang": "S2",
+        "harga": {
+            "sk": 2500000,
+            "pricelist": 2500000
+        },
+        "kbli": {
+            "kode": "62090",
+            "uraian": "Aktivitas Teknologi Informasi Dan Jasa Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "1330",
+            "uraian": "Manajer Operasi Data"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.612000.003.01",
+                "judul": "Merancang Database dan Data Persistence pada Mobile Data"
+            },
+            {
+                "kode": "J.620200.007.01",
+                "judul": "Menentukan Metode Pemodelan, Sudut Pandang dan Perangkat Bantu untuk Merancang Arsitektur Data"
+            },
+            {
+                "kode": "J.620200.008.01",
+                "judul": "Menyusun Roadmap dan Komponen Arsitektur Data"
+            },
+            {
+                "kode": "M.702090.005.01",
+                "judul": "Mengelola Kualitas Proyek (Project Quality Management)"
+            },
+            {
+                "kode": "M.702090.009.01",
+                "judul": "Mengelola Pengadaan-pengadaan proyek (Project Procurement Management)"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S2 dan memiliki sertifikat pelatihan berbasis kompetensi pada Data Warehouse Manager; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) Tahun secara berkelanjutan pada Data Warehouse Manager dan memiliki sertifikat pelatihan berbasis kompetensi pada Data Warehouse Manager; atau\n3. Mahasiswa Universitas S2 Program Studi Teknologi Informatika atau Teknik Komputer yang telah menyelesaikan semester III dan memiliki keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Warehouse Manager.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S2 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Data Warehouse Manager; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Data Warehouse Manager dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Data Warehouse Manager; atau\n3. Fotokopi hasil studi (KHS) Universitas S2 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-Ill dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi suatu instansi/lembaga/perusahaan pada bidang/area kerja Data Warehouse Manager;\n4. Fotokopi KTP dan KTM Universitas, Program Studi Prodi Teknologi Informatika atau Teknik Komputer;\n5. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 21,
+        "kode_skema": "N/A",
+        "nama_skema": "Manajer Pengembangan Sistem Aplikasi",
+        "jenis": "Okupasi",
+        "jenjang": "S2",
+        "harga": {
+            "sk": 2500000,
+            "pricelist": 2500000
+        },
+        "kbli": {
+            "kode": "62090",
+            "uraian": "Aktivitas Teknologi Informasi Dan Jasa Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "1330",
+            "uraian": "Manajer Pengembangan Teknologi Informasi dan Komunikasi"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.620100.002.01",
+                "judul": "Menganalisis Skalabilitas Perangkat Lunak"
+            },
+            {
+                "kode": "J.620100.008.01",
+                "judul": "Merancang Arsitektur Aplikasi"
+            },
+            {
+                "kode": "J.620100.024.02",
+                "judul": "Melakukan Migrasi Ke Teknologi Baru"
+            },
+            {
+                "kode": "J.620100.028.02",
+                "judul": "Menerapkan Pemrograman Real Time"
+            },
+            {
+                "kode": "J.620100.029.02",
+                "judul": "Menerapkan Pemrograman Paralel"
+            },
+            {
+                "kode": "J.620100.030.02",
+                "judul": "Menerapkan Pemrograman Multimedia"
+            },
+            {
+                "kode": "J.620100.032.01",
+                "judul": "Menerapkan Code Review"
+            },
+            {
+                "kode": "J.620100.036.02",
+                "judul": "Melaksanakan Penguj an Kode Program Secara Statis"
+            },
+            {
+                "kode": "J.620100.037.01",
+                "judul": "Melaksanakan Stress Test"
+            },
+            {
+                "kode": "J.620100.039.02",
+                "judul": "Memberikan Petunjuk Teknis Kepada Pelanggan"
+            },
+            {
+                "kode": "J.620200.002.01",
+                "judul": "Menetapkan Matriks, Diagram, dan Jenis Kebutuhan (Requirements) yang Diperlukan pada Arsitektur Bisnis"
+            },
+            {
+                "kode": "J.620200.007.01",
+                "judul": "Menentukan Metode Pemodelan, Sudut Pandang dan Perangkat Bantu untuk Merancang Arsitektur Data"
+            },
+            {
+                "kode": "J.620200.011.01",
+                "judul": "Menyusun Roadmap dan Komponen Arsitektur Aplikasi"
+            },
+            {
+                "kode": "J.62090.011.01",
+                "judul": "Menerapkan Standar-Standar Keamanan lnformasi yang Berlaku"
+            },
+            {
+                "kode": "J.62090.018.01",
+                "judul": "Mengelola Risiko Keamanan lnformasi"
+            },
+            {
+                "kode": "TIK.SM03.001.01",
+                "judul": "Manajer Pengembangan Sistem Aplikasi"
+            },
+            {
+                "kode": "TIK.SM03.002.01",
+                "judul": "Menentukan Arsitektur Perangkat Lunak"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S2 dan memiliki sertifikat pelatihan berbasis kompetensi pada Manajer Pengembangan Sistem Aplikasi; atau\n2.Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Manajer Pengembangan Sistem Aplikasi dan memiliki sertifikat pelatihan berbasis kompetensi pada Manajer Pengembangan Sistem Aplikasi; atau\n3. Mahasiswa Universitas S2 Program Studi Teknologi Informatika atau Teknik Komputer yang telah menyelesaikan semester III dan memeiliki surat keterangan telah melaksanakan praktek kerja/magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/ perusahaan pada bidang/area kerja Manajer pengembangan Sistem Aplikasi.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S2 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Data Warehouse Manager; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan Manajer Pengembangan Sistem Aplikasi dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Manajer Pengembangan SIstem Aplikasi.\n3. Fotokopi hasil studi (KHS) Universitas S2 program studi Teknologi lnformatika atau Teknik Komputer yang telah meneyelesaikan semester I-Ill dan memiliki surat keterangan telah melaksanakan magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Manajer Pengembangan Sistem Aplikasi;\n4. Fotokopi KTP dan KTM Universitas, Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n5. Pas foto berwarna ukuran 3x4 latar belakang merah sebanyak 2 lembar;"
+        }
+    },
+    {
+        "no": 22,
+        "kode_skema": "N/A",
+        "nama_skema": "Manajer Proyek TIK",
+        "jenis": "Okupasi",
+        "jenjang": "S2",
+        "harga": {
+            "sk": 2500000,
+            "pricelist": 2500000
+        },
+        "kbli": {
+            "kode": "62090",
+            "uraian": "Aktivitas Teknologi Informasi Dan Jasa Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "1330",
+            "uraian": "Manajer Pengembangan Aplikasi Teknologi Informasi Komunikasi"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "M.702090.001.01",
+                "judul": "Mengelola Proyek Secara Terintegrasi (Project Integration Management)"
+            },
+            {
+                "kode": "M.702090.002.01",
+                "judul": "Mengelola Ruang Lingkup Proyek (Project Scope Management)"
+            },
+            {
+                "kode": "M.702090.003.01",
+                "judul": "Mengelola Jadwal Waktu Proyek (Project Time Management)"
+            },
+            {
+                "kode": "M.702090.004.01",
+                "judul": "Mengelola Biaya Proyek (Project Cost Management)"
+            },
+            {
+                "kode": "M.702090.005.01",
+                "judul": "Mengelola Biaya Proyek (Project Quality Management)"
+            },
+            {
+                "kode": "M.702090.006.01",
+                "judul": "Mengelola Sumberdaya Manusia Proyek (Project Human Resource Managment)"
+            },
+            {
+                "kode": "M.702090.007.01",
+                "judul": "Mengelola Komunikasi Proyek (Project Communication Management)"
+            },
+            {
+                "kode": "M.702090.008.01",
+                "judul": "Mengelola Risiko Proyek (Project Risk Management)"
+            },
+            {
+                "kode": "M.702090.009.01",
+                "judul": "Mengelola Pengadaan-Pengadaan Proyek (Project Procurement Management)"
+            },
+            {
+                "kode": "M.702090.010.01",
+                "judul": "Mengelola Stakeholder Proyek (Project Stakeholder Management)"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S2 dan memiliki sertifikat pelatihan pada Manajer Proyek TIK; atau\n2. Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Manajer Proyek TIK dan memiliki sertifikat pelatihan berbasis kompetensi pada Manajer Proyek TIK; atau\n3. Mahasiswa Universitas S2 Program Studi Teknologi Informatika atau Teknik Komputer yang telah menyelesaikan semester III dan memiliki surat keterangan telah melaksanakan praktek kerja/magang/ sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Manajer Proyek TIK.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S2 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Manajer Proyek TIK; atau\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Manajer Proyek TIK dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Manajer Proyek TIK; atau\n3. Fotokopi hasil studi (KHS) Universitas S2 Program Studi Teknologi lnformatika atau Teknik Komputer yang telah menyelesaikan semester I-111 dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/lembaga/perusahaan pada bidang/area kerja Manajer Proyek TIK;\n4. Fotokopi KTP dan KTM Universitas, Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n5. Pas foto berwarna ukuran 3x4 latar belakang merah lembar;"
+        }
+    },
+    {
+        "no": 23,
+        "kode_skema": "N/A",
+        "nama_skema": "Manajer Pusat Data",
+        "jenis": "Okupasi",
+        "jenjang": "S2",
+        "harga": {
+            "sk": 2500000,
+            "pricelist": 2500000
+        },
+        "kbli": {
+            "kode": "62090",
+            "uraian": "Aktivitas Teknologi Informasi Dan Jasa Komputer Lainnya"
+        },
+        "kbji": {
+            "kode": "1330",
+            "uraian": "Manajer Pengolah Data"
+        },
+        "unit_kompetensi": [
+            {
+                "kode": "J.631100.001.01",
+                "judul": "Menetapkan Kebutuhan Pengelolaan Pusat Data Untuk Organisasi"
+            },
+            {
+                "kode": "J.631100.002.01",
+                "judul": "Menetapkan Standar Dan Acuan Praktik Terbaik Yang Berlaku"
+            },
+            {
+                "kode": "J.631100.003.01",
+                "judul": "Menetapkan Organisasi Pusat Data"
+            },
+            {
+                "kode": "J.631100.004.01",
+                "judul": "Menyusun Anggaran Pengelolaan Pusat Data"
+            },
+            {
+                "kode": "J.631100.005.01",
+                "judul": "Menyusun Rencana Pemeliharaan Pusat Data"
+            },
+            {
+                "kode": "J.631100.006.01",
+                "judul": "Menyusun Rencana Kapasitas Pusat Data"
+            },
+            {
+                "kode": "J.631100.007.01",
+                "judul": "Mengelola Organisasi Pusat Data"
+            },
+            {
+                "kode": "J.631100.008.01",
+                "judul": "Mengelola Pemasok"
+            },
+            {
+                "kode": "J.631100.015.01",
+                "judul": "Melakukan Pengawasan Pusat Data"
+            },
+            {
+                "kode": "J .631100.016.01",
+                "judul": "Menyusun dan Mengelola Dokumentasi"
+            },
+            {
+                "kode": "J.631100.017.01",
+                "judul": "Menalakukan Proses Audit Secara Berkala"
+            }
+        ],
+        "persyaratan": {
+            "dasar": "1. Pendidikan minimal S2 dan memiliki sertifikat pelatihan berbasis kompetensi pada Manager Pusat Data; atau\n2.Tenaga kerja yang berpengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Manager Pusat Data dan memiliki sertifikat berbasis kompetensi pada Manager pusat Data; atau\n3. Mahasiswa Universitas S2 Program Studi Teknologi Informasi atau Teknik Komputer yang telah menyelesaikan semester Ill dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Manager Pusat Data.",
+            "dokumen": "1. Fotokopi ijazah Pendidikan minimal S2 dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Manajer Pusat Data.\n2. Surat keterangan pengalaman kerja minimal 2 (dua) tahun secara berkelanjutan pada Manajer Pusat Data dan Fotokopi sertifikat pelatihan berbasis kompetensi pada Manajer Pusat Data: atau\n3. Fotokopi hasil studi (KHS) Universitas S2 Program Studi Teknologi Informatika atau Teknik Komputer yang telah menyelesaikan semester I-Ill dan memiliki surat keterangan telah melaksanakan praktek kerja/ magang/sertifikat pelatihan berbasis kompetensi dari suatu instansi/Iembaga/perusahaan pada bidang/area kerja Manajer Pusat Data;\n4. Fotokopi KTP dan KTM Universitas, Program Studi Prodi Teknologi lnformatika atau Teknik Komputer;\n5. Pas foto berwarna ukuran 3x4 Iatar belakang merah sebanyak 2 lembar;"
+        }
+    }
+]
