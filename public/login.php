@@ -32,13 +32,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Password cocok, buat session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
-            $_SESSION['is_super_admin'] = in_array(strtolower($user['email']), array_map('strtolower', SUPER_ADMIN_EMAILS));
+            
+            // Check for Super Admin status
+            // 1. Check DB role (if column exists)
+            $is_super_admin_db = isset($user['role']) && $user['role'] === 'super_admin';
+            
+            // 2. Check Config (Fallback/Bootstrap)
+            $is_super_admin_config = in_array(strtolower($user['email']), array_map('strtolower', SUPER_ADMIN_EMAILS));
+            
+            $_SESSION['is_super_admin'] = $is_super_admin_db || $is_super_admin_config;
 
-            if ($_SESSION['is_super_admin']) {
-                header("Location: " . ADMIN_PATH_PREFIX . "/admin"); // Arahkan ke dashboard admin dengan prefix rahasia
-            } else {
-                header("Location: index"); // Arahkan ke home untuk user biasa
-            }
+            // Redirect all logged-in users to the admin dashboard
+            // Access control for specific pages (like manage_admins) is handled in those files
+            header("Location: " . ADMIN_PATH_PREFIX . "/admin");
             exit();
         } else {
             // Email tidak ditemukan atau password salah
