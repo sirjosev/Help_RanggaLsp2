@@ -249,7 +249,7 @@ try {
                             </a>
                             <div class="text-center mt-3 portfolio-item-details">
                                 <h5 class="portfolio-item-title"><?php echo htmlspecialchars($skema['nama']); ?></h5>
-                                <a href="skema.php?id=<?php echo UrlHelper::encrypt($skema['id']); ?>" class="btn btn-sm btn-primary">Lihat Detail</a>
+                                <a href="skema.php?id=<?php echo UrlHelper::encrypt($skema['id']); ?>" class="btn btn-sm btn-primary btn-gradient">Lihat Detail</a>
                             </div>
                         </div>
                     </div>
@@ -306,7 +306,7 @@ try {
                             <div class="text-center mt-3 portfolio-item-details">
                                 <h5 class="portfolio-item-title"><?php echo htmlspecialchars($blog['title']); ?></h5>
                                 <p class="text-muted portfolio-item-summary"><?php echo BlogManager::generateSummary($blog['content'], 20); // Shorter summary ?></p>
-                                <a href="blog_detail.php?id=<?php echo UrlHelper::encrypt($blog['id']); ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                                <a href="blog_detail.php?id=<?php echo UrlHelper::encrypt($blog['id']); ?>" class="btn btn-sm btn-primary btn-gradient">Baca Selengkapnya</a>
                             </div>
                         </div>
                     </div>

@@ -112,13 +112,6 @@ $skema_list = $skemaManager->getAllSkema();
             <div class="schema-container">
                 <?php foreach ($skema_list as $skema): ?>
                     <div class="schema-card">
-                        <?php if (!empty($skema['gambar'])): ?>
-                            <div class="schema-image">
-                                <img src="dksassets/img/<?php echo htmlspecialchars($skema['gambar']); ?>" 
-                                     alt="<?php echo htmlspecialchars($skema['nama']); ?>">
-                            </div>
-                        <?php endif; ?>
-                        
                         <h3><?php echo htmlspecialchars($skema['nama']); ?></h3>
                         <div class="schema-info">
                             <strong>Kode:</strong> <?php echo htmlspecialchars($skema['kode']); ?><br>
@@ -151,18 +144,18 @@ $skema_list = $skemaManager->getAllSkema();
                 <div class="form-row">
                     <div class="form-group">
                         <label for="nama">Nama Skema *</label>
-                        <input type="text" id="nama" name="nama" required>
+                        <input type="text" id="nama" name="nama" required data-required="true">
                     </div>
                     <div class="form-group">
                         <label for="kode">Kode Skema *</label>
-                        <input type="text" id="kode" name="kode" required>
+                        <input type="text" id="kode" name="kode" required data-required="true">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="jenis">Jenis *</label>
-                        <select id="jenis" name="jenis" required>
+                        <select id="jenis" name="jenis" required data-required="true">
                             <option value="">Pilih Jenis</option>
                             <option value="Klaster">Klaster</option>
                             <option value="Okupasi">Okupasi</option>
@@ -171,14 +164,14 @@ $skema_list = $skemaManager->getAllSkema();
                     </div>
                     <div class="form-group">
                         <label for="harga">Harga *</label>
-                        <input type="number" id="harga" name="harga" required>
+                        <input type="number" id="harga" name="harga" required data-required="true">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="unit_kompetensi">Jumlah Unit Kompetensi *</label>
-                        <input type="number" id="unit_kompetensi" name="unit_kompetensi" required>
+                        <input type="number" id="unit_kompetensi" name="unit_kompetensi" required data-required="true">
                     </div>
                     <div class="form-group">
                         <label for="masa_berlaku">Masa Berlaku Sertifikat</label>
@@ -188,7 +181,7 @@ $skema_list = $skemaManager->getAllSkema();
 
                 <div class="form-group">
                     <label for="ringkasan">Ringkasan *</label>
-                    <textarea id="ringkasan" name="ringkasan" required placeholder="Masukkan ringkasan skema..."></textarea>
+                    <textarea id="ringkasan" name="ringkasan" required data-required="true" placeholder="Masukkan ringkasan skema..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -305,6 +298,19 @@ $skema_list = $skemaManager->getAllSkema();
     </div>
 
     <script>
+        // Function to toggle required attribute on form fields
+        function setFormRequired(isRequired) {
+            const form = document.getElementById('addSkemaForm');
+            const requiredFields = form.querySelectorAll('[data-required="true"]');
+            requiredFields.forEach(field => {
+                if (isRequired) {
+                    field.setAttribute('required', '');
+                } else {
+                    field.removeAttribute('required');
+                }
+            });
+        }
+
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
             if (modalId === 'addSkemaModal') {
@@ -314,7 +320,80 @@ $skema_list = $skemaManager->getAllSkema();
                 document.getElementById('skema_id').value = '';
                 document.getElementById('existing_gambar').value = '';
                 document.getElementById('current-image-preview').innerHTML = '';
+                // Enable required for create mode
+                setFormRequired(true);
+                
+                // Reset all dynamic fields to empty state
+                resetDynamicFields();
             }
+        }
+        
+        function resetDynamicFields() {
+            // Reset Unit Kompetensi - clear all and add one empty
+            const unitContainer = document.getElementById('unit-fields');
+            unitContainer.innerHTML = `
+                <div class="dynamic-field">
+                    <input type="number" name="unit_no[]" placeholder="No" style="flex: 0 0 60px;">
+                    <input type="text" name="kode_unit[]" placeholder="Kode Unit">
+                    <input type="text" name="unit_judul[]" placeholder="Judul Unit">
+                    <input type="text" name="unit_standar[]" placeholder="Standar Kompetensi">
+                    <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+                </div>
+            `;
+            
+            // Reset Persyaratan
+            const persContainer = document.getElementById('persyaratan-fields');
+            persContainer.innerHTML = `
+                <div class="dynamic-field">
+                    <textarea name="persyaratan[]" placeholder="Deskripsi persyaratan" style="flex: 1; height: 60px;"></textarea>
+                    <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+                </div>
+            `;
+            
+            // Reset Dokumen
+            const docContainer = document.getElementById('dokumen-fields');
+            docContainer.innerHTML = `
+                <div class="dynamic-field">
+                    <input type="text" name="dokumen_nama[]" placeholder="Nama Dokumen">
+                    <div class="checkbox-field">
+                        <input type="checkbox" name="dokumen_wajib[0]" value="1" checked>
+                        <label>Wajib</label>
+                    </div>
+                    <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+                </div>
+            `;
+            
+            // Reset Asesmen
+            const asesmenContainer = document.getElementById('asesmen-fields');
+            asesmenContainer.innerHTML = `
+                <div class="dynamic-field">
+                    <select name="asesmen_jenis[]">
+                        <option value="">Pilih Jenis Peserta</option>
+                        <option value="Berpengalaman">Berpengalaman</option>
+                        <option value="Belum Berpengalaman">Belum Berpengalaman</option>
+                    </select>
+                    <input type="text" name="asesmen_metode[]" placeholder="Metode Asesmen">
+                    <textarea name="asesmen_deskripsi[]" placeholder="Deskripsi" style="height: 60px;"></textarea>
+                    <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+                </div>
+            `;
+            
+            // Reset Pemeliharaan
+            document.getElementById('pemeliharaan').value = '';
+            
+            // Reset Metode Pengujian
+            const pengujianContainer = document.getElementById('add-metode-pengujian-fields');
+            pengujianContainer.innerHTML = `
+                <div class="dynamic-field">
+                    <select name="metode_pengujian_skema[]" class="form-control">
+                        <option value="">-- Pilih Metode --</option>
+                        <option value="Sertifikasi Jarak Jauh (SJJ)">Sertifikasi Jarak Jauh (SJJ)</option>
+                        <option value="Metode Paperless (non-kertas)">Metode Paperless (non-kertas)</option>
+                        <option value="Paper-based (berbasis kertas)">Paper-based (berbasis kertas)</option>
+                    </select>
+                    <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+                </div>
+            `;
         }
 
         function closeModal(modalId) {
@@ -450,6 +529,10 @@ $skema_list = $skemaManager->getAllSkema();
 
                 // Populate form
                 document.getElementById('modalTitle').innerText = 'Edit Skema';
+                
+                // Disable required for edit mode
+                setFormRequired(false);
+                
                 document.querySelector('input[name="action"]').value = 'update_skema';
                 document.getElementById('skema_id').value = data.skema.id;
                 document.getElementById('nama').value = data.skema.nama;

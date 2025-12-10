@@ -43,6 +43,7 @@ if ($search_term) {
     <link rel="icon" type="image/x-icon" href="assets/img/logo-digitalcreativesolusi.png" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/sertifikasi.css" />
+    <link rel="stylesheet" href="css/custom.css" />
     <style>
         /* Additional styles for enhanced cards */
         .card {
@@ -290,7 +291,7 @@ if ($search_term) {
 
             <?php if (isset($_SESSION['is_super_admin']) && $_SESSION['is_super_admin']): ?>
                 <div class="mb-4 text-end">
-                    <a href="admin_skema.php" class="btn btn-primary">
+                    <a href="admin_skema.php" class="btn btn-primary btn-gradient">
                         <i class="fas fa-cog me-2"></i>Manage Skema
                     </a>
                 </div>

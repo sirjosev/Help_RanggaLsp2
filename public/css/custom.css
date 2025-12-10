@@ -17,12 +17,13 @@
     margin-top: auto;
 }
 
-/* Index page layout improvements */
-.portfolio-item {
+/* Index page layout improvements - only for skema section on landing page */
+#skema-sertifikasi .portfolio-item {
     aspect-ratio: 1 / 1;
 }
 
-.portfolio-item .img-fluid {
+#skema-sertifikasi .portfolio-item .img-fluid,
+#berita-artikel .portfolio-item .img-fluid {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -34,7 +35,8 @@
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.0833%; /* Aspect Ratio 673 / 1200 */
+    padding-bottom: 56.0833%;
+    /* Aspect Ratio 673 / 1200 */
     background: #2c3e50;
 }
 
@@ -47,7 +49,8 @@
 }
 
 .masthead .carousel-item {
-    height: 100%; /* Make item fill the carousel-inner */
+    height: 100%;
+    /* Make item fill the carousel-inner */
 }
 
 .masthead .carousel-item img {
@@ -59,13 +62,16 @@
 
 .masthead.masthead-with-carousel {
     padding: 0;
-    height: 100vh; /* Set masthead to full viewport height */
+    height: 100vh;
+    /* Set masthead to full viewport height */
 }
 
 /* Override aspect-ratio sizing when carousel is active */
 .masthead.masthead-with-carousel .carousel {
-    height: 100%; /* Make carousel fill the masthead */
-    padding-bottom: 0; /* Remove aspect ratio padding */
+    height: 100%;
+    /* Make carousel fill the masthead */
+    padding-bottom: 0;
+    /* Remove aspect ratio padding */
 }
 
 /* Reusable Back/View All Button */
@@ -76,7 +82,8 @@
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 1rem; /* Changed from margin-bottom to margin-top for spacing */
+    margin-top: 1rem;
+    /* Changed from margin-bottom to margin-top for spacing */
     transition: background-color 0.3s;
 }
 
@@ -84,4 +91,50 @@
     background: #5a6268;
     color: white;
     text-decoration: none;
+}
+
+/* Gradient Button Style */
+.btn-gradient,
+.btn.btn-gradient,
+.btn-primary.btn-gradient,
+.btn-sm.btn-gradient,
+.btn.btn-sm.btn-primary.btn-gradient,
+a.btn.btn-gradient,
+a.btn-primary.btn-gradient,
+a.btn.btn-sm.btn-primary.btn-gradient,
+.portfolio-item-details .btn-gradient,
+.portfolio-item-details .btn.btn-sm.btn-primary.btn-gradient {
+    background: linear-gradient(45deg, #3498db, #2c3e50) !important;
+    background-color: transparent !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient:hover,
+.btn.btn-gradient:hover,
+.btn-primary.btn-gradient:hover,
+.btn-sm.btn-gradient:hover,
+.btn.btn-sm.btn-primary.btn-gradient:hover,
+a.btn.btn-gradient:hover,
+a.btn-primary.btn-gradient:hover,
+a.btn.btn-sm.btn-primary.btn-gradient:hover,
+.portfolio-item-details .btn-gradient:hover,
+.portfolio-item-details .btn.btn-sm.btn-primary.btn-gradient:hover {
+    background: linear-gradient(45deg, #2980b9, #34495e) !important;
+    background-color: transparent !important;
+    transform: translateY(-2px);
+    color: white !important;
+}
+
+/* Portfolio Item Overlay - Blue color with lower opacity */
+.portfolio .portfolio-item .portfolio-item-caption {
+    background-color: rgba(44, 62, 80, 0.7) !important;
+    /* Blue color #2c3e50 with 0.7 opacity */
+}
+
+.portfolio .portfolio-item .portfolio-item-caption:hover {
+    opacity: 1;
 }

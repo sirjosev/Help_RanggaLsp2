@@ -95,7 +95,7 @@ try {
     </header>
 
     <section class="upload-section">
-      <form id="upload-form" action="proses_upload.php" method="post" enctype="multipart/form-data">
+      <form id="upload-form" action="proses_upload" method="post" enctype="multipart/form-data">
         <label for="foto">Pilih Foto:</label>
         <input type="file" id="foto" name="foto" accept="image/*" required>
         <div class="button-group">
@@ -214,7 +214,7 @@ try {
       const formData = new FormData();
       formData.append('foto', file);
 
-      fetch('proses_draft.php', {
+      fetch('proses_draft', {
         method: 'POST',
         body: formData
       })
@@ -240,7 +240,7 @@ try {
         const formData = new FormData();
         formData.append('id', photoId);
 
-        fetch('proses_delete_photo.php', {
+        fetch('proses_delete_photo', {
           method: 'POST',
           body: formData
         })
@@ -265,7 +265,7 @@ try {
         const formData = new FormData();
         formData.append('id', photoId);
 
-        fetch('proses_publish_draft.php', {
+        fetch('proses_publish_draft', {
           method: 'POST',
           body: formData
         })

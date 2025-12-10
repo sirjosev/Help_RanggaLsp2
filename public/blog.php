@@ -21,6 +21,7 @@ use App\Helper\UrlHelper;
     <link rel="icon" type="image/x-icon" href="assets/img/logo-digitalcreativesolusi.png" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/blog.css" />
+    <link rel="stylesheet" href="css/custom.css" />
 </head>
 
 <body id="page-top">
@@ -89,7 +90,7 @@ use App\Helper\UrlHelper;
             
             <?php if (isset($_SESSION['is_super_admin']) && $_SESSION['is_super_admin']): ?>
                 <div class="mb-4 text-end">
-                    <a href="admin_blog.php" class="btn btn-primary">
+                    <a href="admin_blog.php" class="btn btn-primary btn-gradient">
                         <i class="fas fa-cog me-2"></i>Manage Blog
                     </a>
                 </div>
@@ -125,7 +126,7 @@ use App\Helper\UrlHelper;
                                     <p class="text-muted portfolio-item-summary">
                                         <?php echo BlogManager::generateSummary($blog['content'], 20); // Shorter summary for card layout ?>
                                     </p>
-                                    <a href="blog_detail.php?id=<?php echo UrlHelper::encrypt($blog['id']); ?>" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                                    <a href="blog_detail.php?id=<?php echo UrlHelper::encrypt($blog['id']); ?>" class="btn btn-sm btn-primary btn-gradient">Baca Selengkapnya</a>
                                 </div>
                             </div>
                         </div>

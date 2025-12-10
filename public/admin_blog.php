@@ -267,17 +267,12 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
                 <?php else: ?>
                     <?php foreach ($blogs as $blog): ?>
                     <div class="blog-card">
-                        <?php if (!empty($blog['featured_image'])): ?>
-                            <img src="<?= htmlspecialchars($blog['featured_image']) ?>" alt="Featured Image" class="blog-image">
-                        <?php endif; ?>
-                        
                         <h3><?= htmlspecialchars($blog['title']) ?></h3>
                         
                         <div class="blog-meta">
                             <strong>Author:</strong> <?= htmlspecialchars($blog['author']) ?> | 
-                            <strong>Date:</strong> <?= $blog['publish_date'] ?> | 
+                            <strong>Date:</strong> <?= $blog['publish_date'] ?><br>
                             <strong>Created:</strong> <?= date('Y-m-d H:i', strtotime($blog['created_at'])) ?>
-                            <br>
                             <strong>Status:</strong> 
                             <span class="status-badge status-<?= $blog['status'] ?>">
                                 <?= ucfirst($blog['status']) ?>
