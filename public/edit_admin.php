@@ -16,7 +16,7 @@ if (!isset($_SESSION['is_super_admin']) || !$_SESSION['is_super_admin']) {
 
 $admin_id = $_GET['id'] ?? null;
 if (!$admin_id) {
-    header('Location: manage_admins.php');
+    header('Location: manage_admins');
     exit();
 }
 
@@ -27,7 +27,7 @@ $stmt->execute();
 $admin = $stmt->fetch();
 
 if (!$admin) {
-    header('Location: manage_admins.php');
+    header('Location: manage_admins');
     exit();
 }
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $update_stmt->bindParam(':id', $admin_id, PDO::PARAM_INT);
 
     if ($update_stmt->execute()) {
-        header('Location: manage_admins.php');
+        header('Location: manage_admins');
         exit();
     } else {
         $error = "Failed to update admin details.";

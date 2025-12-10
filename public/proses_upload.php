@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
             $stmt->execute([$filename, $filename, $file_path]);
 
             // Redirect kembali ke halaman admin
-            header("Location: admin_photo.php?success=1");
+            header("Location: admin_photo?success=1");
             exit();
         } catch (PDOException $e) {
             // Hapus file jika insert DB gagal
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
     }
 } else {
     // Jika bukan POST request, redirect ke halaman utama
-    header("Location: admin_photo.php");
+    header("Location: admin_photo");
     exit();
 }
 ?>

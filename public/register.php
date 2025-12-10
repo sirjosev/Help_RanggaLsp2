@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if ($stmt_insert->execute()) {
                     // Redirect ke login dengan pesan sukses
-                    header("Location: login.php?status=register_success");
+                    header("Location: login?status=register_success");
                     exit();
                 } else {
                     $error = "Gagal mendaftar. Silakan coba lagi.";

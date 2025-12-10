@@ -19,20 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             switch ($_POST['action']) {
                 case 'create_skema':
                     $skemaManager->createSkemaComplete($_POST);
-                    header("Location: admin_skema.php?success=Skema berhasil ditambahkan");
+                    header("Location: admin_skema?success=Skema berhasil ditambahkan");
                     exit();
                     break;
                 
                 case 'update_skema':
                     $skemaManager->updateSkemaComplete($_POST);
-                    header("Location: admin_skema.php?success=Skema berhasil diperbarui");
+                    header("Location: admin_skema?success=Skema berhasil diperbarui");
                     exit();
                     break;
 
                 case 'delete_skema':
                     if (isset($_POST['skema_id'])) {
                         $skemaManager->deleteSkema($_POST['skema_id']);
-                        header("Location: admin_skema.php?success=Skema berhasil dihapus");
+                        header("Location: admin_skema?success=Skema berhasil dihapus");
                         exit();
                     }
                     break;
@@ -440,7 +440,7 @@ $skema_list = $skemaManager->getAllSkema();
 
         async function editSkema(id) {
             try {
-                const response = await fetch(`get_skema.php?id=${id}`);
+                const response = await fetch(`get_skema?id=${id}`);
                 const data = await response.json();
                 
                 if (data.error) {
@@ -576,7 +576,8 @@ $skema_list = $skemaManager->getAllSkema();
                     addMetodePengujianField();
                 }
 
-                openModal('addSkemaModal');
+                // Show modal without calling openModal to avoid form reset
+                document.getElementById('addSkemaModal').style.display = "block";
             } catch (error) {
                 console.error('Error:', error);
                 alert('Gagal mengambil data skema');

@@ -16,13 +16,13 @@ if (!isset($_SESSION['is_super_admin']) || !$_SESSION['is_super_admin']) {
 
 $admin_id = $_GET['id'] ?? null;
 if (!$admin_id) {
-    header('Location: manage_admins.php');
+    header('Location: manage_admins');
     exit();
 }
 
 // Prevent super admin from deleting themselves
 if ($admin_id == $_SESSION['user_id']) {
-    header('Location: manage_admins.php?error=cannot_delete_self');
+    header('Location: manage_admins?error=cannot_delete_self');
     exit();
 }
 
@@ -31,10 +31,10 @@ $stmt = $conn->prepare("DELETE FROM users WHERE id = :id");
 $stmt->bindParam(':id', $admin_id, PDO::PARAM_INT);
 
 if ($stmt->execute()) {
-    header('Location: manage_admins.php?success=deleted');
+    header('Location: manage_admins?success=deleted');
     exit();
 } else {
-    header('Location: manage_admins.php?error=delete_failed');
+    header('Location: manage_admins?error=delete_failed');
     exit();
 }
 ?>

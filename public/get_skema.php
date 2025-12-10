@@ -1,7 +1,9 @@
 <?php
 // get_skema.php - Improved version with better error handling and debugging
 require_once '../config/config.php';
-require_once 'skema_functions.php';
+require_once __DIR__ . '/../src/Model/SkemaManager.php';
+
+use App\Model\SkemaManager;
 
 // Set proper headers
 header('Content-Type: application/json; charset=utf-8');

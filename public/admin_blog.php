@@ -387,7 +387,7 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
 
         async function editBlog(id) {
             try {
-                const response = await fetch(`get_blog.php?id=${id}`);
+                const response = await fetch(`get_blog?id=${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch blog data');
                 }
