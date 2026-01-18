@@ -1,0 +1,36 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      # Ubah baris ini:
+      # Dari: - ./src:/var/www/html
+      # Menjadi:
+      - ./:/var/www/html # Map direktori saat ini (.) ke webroot container
+    networks:
+      - php-network
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: my_database
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    networks:
+      - php-network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - php-network
+
+networks:
+  php-network:
+    driver: bridge
