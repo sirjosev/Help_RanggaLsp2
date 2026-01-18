@@ -49,6 +49,119 @@
 <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https.cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+<!-- Custom Google Translate Widget -->
+<style>
+    /* Fixed Floating Widget */
+    #lang-toggle-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        background: linear-gradient(45deg, #3498db, #2c3e50); /* Theme Gradient */
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        border: 2px solid #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif; /* Match headings */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    
+    #lang-toggle-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Hide the default Google Translate Bar */
+    .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+    } 
+    body {
+        top: 0px !important; 
+    }
+    /* Hide the google translate element completely */
+    #google_translate_element {
+        display: none;
+    }
+</style>
+
+<!-- Hidden Google Translate Element -->
+<div id="google_translate_element"></div>
+
+<!-- Custom Toggle Button -->
+<div id="lang-toggle-btn" onclick="toggleLanguage()" title="Switch Language">
+    <span id="lang-text">EN</span>
+</div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'id',
+            includedLanguages: 'id,en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    // Function to get cookie
+    function getCookie(name) {
+        // Search for the cookie by name
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        if (match) return match[2];
+        return null; // Return null if not found
+    }
+
+    // Function to set cookie
+    function setCookie(name, value, days) {
+        var d = new Date;
+        d.setTime(d.getTime() + 24*60*60*1000*days);
+        document.cookie = name + "=" + value + ";path=/;domain=" + window.location.hostname;
+    }
+
+    // Initialize button state
+    function initLangButton() {
+        var lang = getCookie('googtrans');
+        var text = document.getElementById('lang-text');
+        
+        // If cookie exists and ends with /en (so /id/en or /auto/en), we are in English
+        // Button should show "ID" to switch back
+        if (lang && lang.match(/\/en$/)) {
+            text.innerText = "ID"; 
+        } else {
+            // Default or ID, show "EN" to switch to English
+            text.innerText = "EN"; 
+        }
+    }
+
+    function toggleLanguage() {
+        var lang = getCookie('googtrans');
+        if (lang && lang.match(/\/en$/)) {
+            // Current is English, switch to Indonesian
+            setCookie('googtrans', '/id/id', 0); // Clear or set to ID
+            // Also explicitly clear for domain just in case
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            location.reload();
+        } else {
+            // Current is ID (or null), switch to English
+            setCookie('googtrans', '/id/en', 1);
+            location.reload();
+        }
+    }
+
+    // Run init on load
+    window.addEventListener('load', initLangButton);
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>

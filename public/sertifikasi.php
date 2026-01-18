@@ -336,10 +336,7 @@ if ($search_term) {
                                     <span class="info-label">Unit Kompetensi</span>
                                     <span class="info-value"><?php echo $skema['jumlah_unit']; ?></span>
                                 </div>
-                                <div class="info-item">
-                                    <span class="info-label">Harga</span>
-                                    <span class="info-value price">Rp <?php echo number_format($skema['harga'], 0, ',', '.'); ?></span>
-                                </div>
+
                             </div>
                             
                             <div class="card-description">
