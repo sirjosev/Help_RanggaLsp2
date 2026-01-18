@@ -1,9 +1,15 @@
 <?php
-// Database configuration
-$db_host = 'localhost';
+// Database configuration XMPP MODE
+// $db_host = 'localhost';
+// $db_name = 'dks';
+// $username = 'root';
+// $password = '';
+
+// Database configuration DOCKER MODE
+$db_host = 'db';
 $db_name = 'dks';
 $username = 'root';
-$password = '';
+$password = 'password';
 
 // Encryption Key (Should be complex and kept secret in production)
 define('ENCRYPTION_KEY', 'your-secret-key-change-this-in-production-1234567890');
