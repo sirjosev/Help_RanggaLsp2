@@ -16,7 +16,7 @@ function processContentImages($content) {
     $dom = new DOMDocument();
     libxml_use_internal_errors(true);
     // Hack to load HTML with UTF-8 encoding
-    $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    $dom->loadHTML(mb_encode_numericentity($content, [0x80, 0x10FFFF, 0, ~0], 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
     libxml_clear_errors();
     
     $images = $dom->getElementsByTagName('img');
