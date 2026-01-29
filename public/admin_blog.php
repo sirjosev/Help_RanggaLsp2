@@ -241,7 +241,7 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Management</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/admin.css" />
-    <script src="https://cdn.tiny.cloud/1/z879h2vkvp2801s702gci1i4gvps4263c2xwb6t06fa91302/tinymce/6/tinymce.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 </head>
 <body>
     <?php require_once __DIR__ . '/../src/View/partials/sidebar.php'; ?>
@@ -346,23 +346,8 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
     </div>
 
     <script>
-        // Initialize TinyMCE
-        tinymce.init({
-            selector: '#content',
-            height: 400,
-            plugins: 'lists link image code',
-            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | link image | code',
-            image_dimensions: false,
-            content_style: 'img {max-width: 100%; height: auto;}',
-            setup: function (editor) {
-                editor.on('BeforeSetContent', function (e) {
-                    if (e.content.includes('<img')) {
-                        e.content = e.content.replace(/width=".*?"/g, '');
-                        e.content = e.content.replace(/height=".*?"/g, '');
-                    }
-                });
-            }
-        });
+        // Initialize CKEditor
+        CKEDITOR.replace('content');
 
         // Modal functions
         function showCreateForm() {
@@ -374,6 +359,11 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
             
             // Set default publish date to today
             document.getElementById('publish_date').value = new Date().toISOString().split('T')[0];
+            
+            // Clear CKEditor content
+            if (CKEDITOR.instances.content) {
+                CKEDITOR.instances.content.setData('');
+            }
         }
 
         function hideForm() {
@@ -395,8 +385,8 @@ $blogs = $conn->query("SELECT * FROM blogs ORDER BY created_at DESC")->fetchAll(
                 document.getElementById('currentImage').value = blog.featured_image || '';
                 document.getElementById('publish_date').value = blog.publish_date;
                 
-                // Set TinyMCE content
-                tinymce.get('content').setContent(blog.content || '');
+                // Set CKEditor content
+                CKEDITOR.instances.content.setData(blog.content || '');
                 
                 // Show current image preview
                 const imagePreview = document.getElementById('imagePreview');
