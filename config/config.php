@@ -6,10 +6,16 @@
 // $password = '';
 
 // Database configuration DOCKER MODE
-$db_host = 'db';
-$db_name = 'dks';
-$username = 'root';
-$password = 'password';
+// $db_host = 'db';
+// $db_name = 'dks'; 
+// $username = 'root';
+// $password = 'password';
+
+// Database configuration PRODUCTION MODE
+$host = 'localhost';
+$db_name = 'lspw1274_masterdata_dks';
+$username = 'lspw1274_admin';
+$password = 'Master@!Nterface';
 
 // Encryption Key (Should be complex and kept secret in production)
 define('ENCRYPTION_KEY', 'your-secret-key-change-this-in-production-1234567890');
