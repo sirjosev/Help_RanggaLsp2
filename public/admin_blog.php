@@ -37,18 +37,30 @@ function processContentImages($content) {
             
             // Generate unique filename
             $upload_dir = 'assets/content/';
+
+            // Ensure directory exists and is writable
             if (!file_exists($upload_dir)) {
-                mkdir($upload_dir, 0755, true);
+                if (!mkdir($upload_dir, 0755, true)) {
+                    error_log("Failed to create content directory: $upload_dir");
+                    continue; // Skip this image
+                }
+            }
+
+            if (!is_writable($upload_dir)) {
+                 error_log("Content directory not writable: $upload_dir");
+                 continue; // Skip this image
             }
             
             $file_name = uniqid() . '.' . $image_type;
             $file_path = $upload_dir . $file_name;
             
             // Save image file
-            file_put_contents($file_path, base64_decode($image_base64));
-            
-            // Replace base64 image with new file path in content
-            $processed_content = str_replace($src, $file_path, $processed_content);
+            if (file_put_contents($file_path, base64_decode($image_base64)) !== false) {
+                // Replace base64 image with new file path in content
+                $processed_content = str_replace($src, $file_path, $processed_content);
+            } else {
+                error_log("Failed to save content image: $file_path");
+            }
         }
     }
     
@@ -60,7 +72,29 @@ ini_set('post_max_size', '10M');
 
 // Image resize function
 function resizeAndSaveImage($sourceFile, $targetPath, $maxWidth = 800, $maxHeight = 600) {
-    list($width, $height, $type) = getimagesize($sourceFile);
+    // Ensure target directory exists and is writable
+    $targetDir = dirname($targetPath);
+    if (!file_exists($targetDir)) {
+        if (!mkdir($targetDir, 0755, true)) {
+            error_log("Failed to create directory: $targetDir");
+            return false;
+        }
+    }
+
+    if (!is_writable($targetDir)) {
+        error_log("Directory not writable: $targetDir");
+        return false;
+    }
+
+    if (!file_exists($sourceFile)) {
+        return false;
+    }
+
+    $info = getimagesize($sourceFile);
+    if ($info === false) {
+        return false;
+    }
+    list($width, $height, $type) = $info;
     
     // Calculate new dimensions
     $ratio = min($maxWidth / $width, $maxHeight / $height);
@@ -69,6 +103,9 @@ function resizeAndSaveImage($sourceFile, $targetPath, $maxWidth = 800, $maxHeigh
     
     // Create new image
     $new_image = imagecreatetruecolor($new_width, $new_height);
+    if (!$new_image) {
+        return false;
+    }
     
     // Handle PNG transparency
     if($type == IMAGETYPE_PNG) {
@@ -89,29 +126,44 @@ function resizeAndSaveImage($sourceFile, $targetPath, $maxWidth = 800, $maxHeigh
             $source = imagecreatefromgif($sourceFile);
             break;
         default:
+            imagedestroy($new_image);
             return false;
     }
     
+    if (!$source) {
+        imagedestroy($new_image);
+        return false;
+    }
+
     // Resize image
-    imagecopyresampled($new_image, $source, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+    if (!imagecopyresampled($new_image, $source, 0, 0, 0, 0, $new_width, $new_height, $width, $height)) {
+        imagedestroy($new_image);
+        imagedestroy($source);
+        return false;
+    }
     
     // Save image
+    $result = false;
     switch($type) {
         case IMAGETYPE_JPEG:
-            imagejpeg($new_image, $targetPath, 90);
+            $result = imagejpeg($new_image, $targetPath, 90);
             break;
         case IMAGETYPE_PNG:
-            imagepng($new_image, $targetPath, 9);
+            $result = imagepng($new_image, $targetPath, 9);
             break;
         case IMAGETYPE_GIF:
-            imagegif($new_image, $targetPath);
+            $result = imagegif($new_image, $targetPath);
             break;
     }
     
     imagedestroy($new_image);
     imagedestroy($source);
     
-    return true;
+    if (!$result) {
+        error_log("Failed to save image to $targetPath");
+    }
+
+    return $result;
 }
 
 // Handle blog operations
@@ -150,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $featured_image = $upload_dir . $unique_filename;
                     
                     if (!resizeAndSaveImage($_FILES['featured_image']['tmp_name'], $featured_image)) {
-                        die('Failed to process image');
+                        die('Failed to process image. Please check directory permissions for ' . $upload_dir);
                     }
                 }
                 
@@ -188,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $featured_image = $upload_dir . $unique_filename;
                     
                     if (!resizeAndSaveImage($_FILES['featured_image']['tmp_name'], $featured_image)) {
-                        die('Failed to process image');
+                        die('Failed to process image. Please check directory permissions for ' . $upload_dir);
                     }
                     
                     // Delete old image
