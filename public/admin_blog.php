@@ -90,6 +90,20 @@ function resizeAndSaveImage($sourceFile, $targetPath, $maxWidth = 800, $maxHeigh
         return false;
     }
 
+    // Check for GD library functions
+    if (!function_exists('imagecreatetruecolor')) {
+        // Fallback: Just copy/move the file without resizing
+        // Since we are uploading, move_uploaded_file is ideal if coming from $_FILES,
+        // but this function might be used for existing files too.
+        // Safer to use copy() if it's not a temp uploaded file, or just copy() generally works for both.
+        if (copy($sourceFile, $targetPath)) {
+            return true;
+        } else {
+            error_log("Failed to copy image (GD missing fallback): $sourceFile to $targetPath");
+            return false;
+        }
+    }
+
     $info = getimagesize($sourceFile);
     if ($info === false) {
         return false;
